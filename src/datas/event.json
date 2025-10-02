@@ -1,0 +1,35 @@
+[
+    {
+      "id": 4,
+      "image": "/event/jicac.jpeg",
+      "jours": "09 - 13",
+      "mois": "Sept 2025",
+      "titre": "JICAC",
+      "descrip": "Un évènement d'envergure organisé par la <strong class='text-secondary font-medium'>Chambre de Commerce Canada Afrique(CCCA)</strong> en parténariat avec l'agence de promotionn des investissements du cameroun (API), les Ministères (du Commerce,des affairres Étrangères, et de l'Économie"
+    },
+    {
+      "id": 5,
+      "image": "/event/jicag.jpeg",
+      "jours": "16 - 20",
+      "mois": "Sept 2025",
+      "titre": "JICAG",
+      "descrip": "<strong class=\"text-secondary\">Le Gabon</strong>, un trésor au cœur de l'Afrique, officiellement République gabonaise, est un pays d'Afrique centrale situé sur la côte atlantique. Il partage ses frontières avec la Guinée équatoriale au nord-ouest, le Cameroun au nord, et la République du Congo à l'est et au sud. Avec une superficie d’environ 267 667 km²."
+    },
+    {
+      "id": 6,
+      "image": "/event/impact.jpeg",
+      "jours": "30 - 01",
+      "mois": "Oct - Nov 2025",
+      "titre": "IMPACT DIASPORA FORUM 2025 SUMMIT",
+      "descrip": "IMPACT DIASPORA 2025 est une foire économique et multisectorielle d’envergure internationale, organisée à Ottawa, qui vise à valoriser le rôle stratégique des diasporas africaines dans le développement économique global."
+    },
+    {
+      "id": 3,
+      "image": "imag3",
+      "jours": "07 - 09",
+      "mois": "Nov 2025",
+      "titre": "t(evennt.evennt3.titre)",
+      "descrip": "t(evennt.evennt3.descrip)"
+    }
+  ]
+  

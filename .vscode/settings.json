@@ -1,0 +1,7 @@
+{
+    "i18next.i18nPaths": "/Users/maximetsafack/Documents/CCCA/build/locales,/Users/maximetsafack/Documents/CCCA/public/locales",
+    "i18n-ally.localesPaths": [
+        "public/locales"
+    ],
+    "i18n-ally.keystyle": "nested"
+}

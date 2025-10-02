@@ -1,0 +1,68 @@
+{
+      "mainMenu": [
+        {
+          "label": "aboutUs",
+          "path": "/a/Apropos-de-nous/Présentation",
+          "preload": "presentationPreload"
+        },
+        {
+          "label": "services",
+          "submenu": [
+            {
+              "link": "Entrepreneuriat",
+              "title": "serv.entrepreneur",
+              "desc": "serv.desc1"
+            },
+            {
+              "link": "Francophonie",
+              "title": "serv.francophonie",
+              "desc": "serv.desc2"
+            }
+          ]
+        },
+        {
+          "label": "events",
+          "path": "/a/Evenements",
+          "preload": "eventPreload"
+        },
+        {
+          "label": "activities",
+          "submenu": [
+            {
+              "title": "activitt.act1.titre",
+              "desc": "activitt.act1.descrip"
+            },
+            {
+              "title": "activitt.act2.titre",
+              "desc": "activitt.act2.descrip"
+            }
+          ]
+        },
+        {
+          "label": "africaOffices",
+          "zones": [
+            {
+              "region": "Afrique Centrale",
+              "countries": ["Cameroun", "Congo", "Gabon"]
+            },
+            {
+              "region": "Afrique de l'Ouest",
+              "countries": ["Nigeria", "Mali", "Ghana"]
+            }
+          ]
+        },
+        {
+          "label": "canadaRepresentation",
+          "zones": ["Québec", "Alberta", "Manitoba"]
+        },
+        {
+          "label": "news",
+          "path": "/a/Actualites"
+        },
+        {
+          "label": "cccaRevue",
+          "path": "/a/CCCA REVUE"
+        }
+      ]
+    }
+    

@@ -1,0 +1,832 @@
+{
+    "mission_title": "Une mission inchangée, une vision élargie",
+    "mission_content": "Bien que notre nom et notre portée évoluent, notre mission reste fidèle à nos valeurs fondamentales. Nous visons à être un pôle exceptionnel de développement économique solidaire et à favoriser une collaboration enrichissante pour les communautés d’affaires des deux côtés de l’Atlantique. Sous la direction éclairée du Dr Armand, La CCCA continuera de bâtir des ponts économiques entre le Canada et l’Afrique francophone, tout en accueillant de nouvelles opportunités et des partenaires anglophones, favorisant ainsi une approche inclusive et intégrée.",
+    "becomeMember": "Devenir Membre",
+    "chooseCategory": "Choisir votre Catégorie de Membership pour La CCCA",
+    "chamberInfo": "La Chambre de Commerce Canada Afrique (La CCCA), c’est :",
+    "whyBecomeMember": "Pourquoi devénir membre de la chambre?",
+    "moreInfo": "Pour plus d'informations",
+    "phone": "Téléphone",
+    "email": "Couriel",
+    "partners": "Nos Parténaires",
+    "welcome": "Bienvenue",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "changeLanguage": "Changer de langue",
+    "aboutUs": "À propos de nous",
+    "services": "Nos Services",
+    "events": "Nos Événements",
+    "activities": "Nos Activités",
+    "africaOffices": "Bureaux d'Afrique",
+    "canadaRepresentation": "Représentation au Canada",
+    "events": "Our Events",
+    "activities": "Our Activities",
+    "news": "Actualités",
+    "readMore": "Lire plus...",
+    "our_advantages": "Nos Avantages",
+    "member_list": "Liste des Membres",
+    "calendar": "Calendrier",
+    "more_details": "Plus de détails",
+    "become_partner": "Devenez partenaire",
+    "view_promotions": "Voir les promotions",
+    "news_banner_title": "Actualités",
+    "search_by_title": "Rechercher par titre",
+    "results": "Résultats",
+    "your_choices": "Vos choix",
+    "publications": "Publications",
+    "reset_choices": "Réinitialisez votre choix",
+    "news_title1": "Interview du Président de la Chambre de Commerce Canada Afrique sur Jambo TV",
+    "news_description1": "Création d'une plateforme numérique qui met en relation les entreprises canadiennes et africaines. Cette plateforme permet le partage d'informations sur les produits, services, opportunités d'investissement et projets en cours.",
+    "news_title2": "Exode des cerveaux : l’Afrique se vide au profit du Canada",
+    "news_description2": "Organisation de webinaires sur des sujets clés tels que l'entrée sur le marché, la culture d'affaires, la législation locale et les pratiques commerciales durables.",
+    "news_title3": "Québec cesse de recruter des infirmières en Afrique pour des raisons « éthiques »",
+    "news_description3": "Organisation de missions commerciales régulières au Canada et en Afrique pour permettre aux entreprises de rencontrer des partenaires potentiels et de découvrir les marchés locaux.",
+    "news_title4": "Exploiter les possibilités pour l’hydrogène vert au Canada atlantique",
+    "news_description4": "Exploration des possibilités offertes par le développement de l’hydrogène vert au Canada atlantique pour améliorer la transition énergétique et renforcer la coopération avec les pays africains pour une énergie propre.",
+    "newsletter_title": "Infolettre",
+    "newsletter_heading": "Abonnez-vous aux infolettres de la Chambre",
+    "newsletter_benefit1": "Ne ratez plus les activités profitables pour votre organisation",
+    "newsletter_benefit2": "Recevez les plus récentes nouvelles directement par courriel",
+    "newsletter_benefit3": "Restez au cœur de l'activité économique de la métropole",
+    "newsletter_benefit4": "Ne manquez rien du blogue",
+    "newsletter_placeholder": "Entrez votre mail",
+    "newsletter_subscribe": "S'inscrire",
+    "newsletter_error": "Veuillez entrer une adresse courriel.",
+    "newsletter_success": "Merci de vous être abonné à notre infolettre avec l'adresse: {{email}}",
+    "ccca_title": "La CCCA: Chambre de Commerce Canada Afrique",
+    "presentation": "Présentation",
+    "ccca_description": "La Chambre de Commerce Canada Afrique est un organisme chargé de représenter les intérêts des entreprises commerciales, industrielles et de services, d’assurer la formation des entrepreneurs et d’apporter un appui aux entreprises. Elle représente les professionnels des secteurs du commerce, de l'industrie et des services auprès des autorités publiques locales et internationales intervenant dans les domaines relevant de ses missions. La CCCA assume des missions à caractère représentatif, consultatif, de soutien et de promotion.",
+    "advantage_secure_investment": "Un Placement sûr",
+    "advantage_secure_investment_desc": "La CCCA comme acteur incontournable pour vous offrir des opportunités.",
+    "advantage_network_strength": "La Force du réseau",
+    "advantage_network_strength_desc": "Tisser des liens avec d'autres gens d'affaires pour une croissance assurée.",
+    "advantage_access_training": "Accès aux formations",
+    "advantage_access_training_desc": "Répondre aux besoins des membres avec des formations diversifiées et accessibles.",
+    "advantage_visibility": "Visibilité",
+    "advantage_visibility_desc": "La CCCA offre un espace publicitaire « Entreprise du mois ». Réservez votre mois!",
+    "advantage_influential_partnership": "Un partenariat influent",
+    "advantage_influential_partnership_desc": "Opportunités d’implication en tant que partenaire annuel ou sponsor d’événement.",
+    "advantage_exclusive_offers": "Offres exclusives",
+    "advantage_exclusive_offers_desc": "Économisez avec des promotions offertes PAR les membres POUR les membres de la CCCA.",
+    "upcoming_event": "Évènement à Venir",
+    "main_event_description": "Salon de Construction Durable et Transformation du Bois : Un Pont Entre le Canada et l’Afrique",
+    "location_quebec": "Québec",
+    "date_november_2025": "15 Novembre 2025",
+    "details": "Détail",
+    "galleries": "Galeries",
+    "event_title1": "Salon de Construction Durable et Transformation du Bois : Un Pont Entre le Canada et l’Afrique",
+    "event_description1": "Le Salon de Construction Durable et Transformation du Bois, prévu pour novembre 2025, sera un événement international majeur réunissant des acteurs clés des secteurs de la construction et de la transformation du bois provenant du Canada et de plusieurs pays d’Afrique. Cet événement se tiendra sous le thème “Innovations, Développement Durable et Coopération Internationale”.",
+    "event_title2": "Salon des municipalités Quebec Afrique francophone (SAMUQAF)",
+    "event_description2": "Le Salon des municipalités Quebec Afrique francophone (SAMUQAF) rassemble des communautés...",
+    "event_title3": "Salon International du Café (SICAF)",
+    "event_description3": "Le Salon International du Café (SICAF) est dédié à la promotion du café africain...",
+    "event_title4": "Programme de Perfectionnement des Capacités des Dirigeants et Entrepreneurs (PPCDE)",
+    "event_description4": "Le Programme de Perfectionnement des Capacités des Dirigeants et Entrepreneurs offre une formation...",
+    "objectives_title": "Objectifs du Salon",
+    "objectives_intro": "Le salon vise à :",
+    "objective1": "Promouvoir les pratiques de construction durable grâce aux innovations technologiques et aux matériaux écologiques.",
+    "objective2": "Favoriser les échanges entre les professionnels du bois, les architectes, les ingénieurs, les investisseurs et les décideurs politiques des deux continents.",
+    "objective3": "Encourager les partenariats commerciaux et technologiques entre le Canada, reconnu pour ses pratiques avancées en gestion forestière, et les pays africains, riches en ressources forestières.",
+    "why_participate": "Pourquoi Participer ?",
+    "why_participate_intro": "Le salon vise à :",
+    "business_opportunity": "Opportunités d’affaires: Le salon est une plateforme pour établir des relations commerciales solides entre les entreprises canadiennes et africaines, ouvrant la voie à des projets conjoints dans les domaines du bâtiment et de l’industrie du bois.",
+    "exchange_professionals": "Favoriser les échanges entre les professionnels du bois, les architectes, les ingénieurs, les investisseurs et les décideurs politiques des deux continents.",
+    "tech_partnerships": "Encourager les partenariats commerciaux et technologiques entre le Canada, reconnu pour ses pratiques avancées en gestion forestière, et les pays africains, riches en ressources forestières.",
+    "entrepreneurship": "Entrepreneuriat",
+    "francophonie": "Francophonie",
+    "repreneurship": "Repreneuriat",
+    "international_cooperation": "Coopération Internationale",
+    "business_networking": "Maillage d'Affaires",
+    "training": "Formations",
+    "incubation": "Incubations",
+    "event1_title": "Salon de Construction Durable et Transformation du Bois",
+    "event1_desc": "Un événement international réunissant les principaux acteurs des secteurs de la construction et de la transformation du bois provenant du Canada et de divers pays d'Afrique.",
+    "event2_title": "Forum des Municipalités Francophones",
+    "event2_desc": "Un forum collaboratif abordant les défis de main-d'œuvre et économiques entre le Québec et les municipalités africaines.",
+    "event3_title": "Salon International du Café",
+    "event3_desc": "Une plateforme unique pour promouvoir le café africain et établir des liens avec les distributeurs canadiens.",
+    "event4_title": "Programme de Développement des Capacités des Dirigeants et Entrepreneurs",
+    "event4_desc": "Un programme en partenariat avec des universités canadiennes offrant des formations pour les dirigeants africains et les entrepreneurs.",
+    "activity1_title": "Plateforme d’Échange Commercial",
+    "activity1_desc": "Création d'une plateforme numérique reliant les entreprises canadiennes et africaines.",
+    "activity2_title": "Webinaires et Ateliers de Formation",
+    "activity2_desc": "Organisation de webinaires sur des sujets comme l'entrée sur le marché et la culture d'affaires.",
+    "activity3_title": "Missions Commerciales",
+    "activity3_desc": "Missions commerciales régulières au Canada et en Afrique pour connecter les entreprises et explorer de nouveaux marchés.",
+    "presentationDescription": "La Chambre de Commerce Canada Afrique est un organisme chargé de représenter les intérêts des entreprises commerciales, industrielles et de services, d’assurer la formation des entrepreneurs et d’apporter un appui aux entreprises. Elle représente les professionnels des secteurs du commerce, de l'industrie et des services auprès des autorités publiques locales et internationales intervenant dans les domaines relevant de ses missions. La CCCA assume des missions à caractère représentatif, consultatif, de soutien et de promotion.",
+    "downloadPresentation": "Télécharger le document de présentation",
+    "stats": {
+        "souscrire": "souscrire",
+        "adherent1": "Adhérents",
+        "membres": "Membres",
+        "decideurs": "Décideurs",
+        "activites": "Activités",
+        "experts": "Experts",
+        "adherent": {
+            "elargirSonReseau": {
+                "title": "Elargir son réseau",
+                "option": [
+                    "Profitez de plus de 150 occasions de réseautage variées chaque année qui répondent à tous les types de besoins",
+                    "Réseautez tout en découvrant des endroits inédits du Canada",
+                    "Participez à des rencontres d’affaires exclusives aux membres",
+                    "Profitez des périodes de prévente pour certaines de nos activités",
+                    "Rencontrez des acheteurs en quête de nouveaux produits",
+                    "Développez votre réseau à l’international et partez à la conquête de nouveaux marchés",
+                    "Inspirez-vous des expériences vécues par d’autres gens d’affaires",
+                    "Obtenez de 15 à 35 % de réduction sur le prix d’inscription à nos activités"
+                ]
+            },
+            "apprendreEtSavoir": {
+                "title": "Apprendre et S'informer",
+                "option": [
+                    "Développez vos compétences grâce à nos ateliers de formation sur les meilleures pratiques d’affaires",
+                    "Apprenez l’abc du commerce international grâce à la formation offerte par la CCCA aux entreprises",
+                    "Inspirez-vous des plus grands noms de la scène politique et économique qui se partagent notre prestigieuse tribune",
+                    "Visitez notre centre de documentation pour obtenir de l’information stratégique",
+                    "Profitez de nos forums pour échanger sur les grands enjeux stratégiques",
+                    "Découvrez de nouvelles occasions d’affaires à l’étranger",
+                    "Obtenez de l’information sur les ressources disponibles pour le démarrage et la croissance de votre entreprise"
+                ]
+            },
+            "obtenirVisibilite": {
+                "title": "Obtenir de la visibilité",
+                "option": [
+                    "Affichez-vous dans les versions papier et électronique de notre répertoire des membres",
+                    "Publiez gratuitement des offres spéciales aux autres membres dans notre site Web",
+                    "Inspirez-vous des plus grands noms de la scène politique et économique qui se partagent notre prestigieuse tribune",
+                    "Visitez notre centre de documentation pour obtenir de l’information stratégique",
+                    "Profitez de nos forums pour échanger sur les grands enjeux stratégiques",
+                    "Découvrez de nouvelles occasions d’affaires à l’étranger",
+                    "Obtenez de l’information sur les ressources disponibles pour le démarrage et la croissance de votre entreprise"
+                ]
+            },
+            "croitreInternational": {
+                "title": "Croître à l'international",
+                "option": [
+                    "Affichez-vous dans les versions papier et électronique de notre répertoire des membres",
+                    "Publiez gratuitement des offres spéciales aux autres membres dans notre site Web",
+                    "Inspirez-vous des plus grands noms de la scène politique et économique qui se partagent notre prestigieuse tribune",
+                    "Visitez notre centre de documentation pour obtenir de l’information stratégique",
+                    "Profitez de nos forums pour échanger sur les grands enjeux stratégiques",
+                    "Découvrez de nouvelles occasions d’affaires à l’étranger",
+                    "Obtenez de l’information sur les ressources disponibles pour le démarrage et la croissance de votre entreprise"
+                ]
+            }
+        }
+    },
+    "tables": [
+        {
+            "type": "Entrepreneur",
+            "detail": [
+                {
+                    "title": "Entrepreneur - Étudiant",
+                    "descrip": {
+                        "libelle": "Pour les étudiants passionnés par le monde des affaires et souhaitant entrer en contact avec la communauté d’affaires au Canada et en Afrique",
+                        "option": [
+                            "Reconnaissance lors de nos activités ou de nos communications",
+                            "Exclusivité pour les événements réservés aux membres"
+                        ]
+                    },
+                    "price": {
+                        "af": "50",
+                        "can": "350"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/jL7YrF2F",
+                        "can": "https://ccca.mykajabi.com/offers/LEoLj73q"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "ENTREPRISES",
+            "detail": [
+                {
+                    "title": "Startup",
+                    "descrip": {
+                        "libelle": "Pour les nouvelles entreprises en activité depuis moins de deux ans",
+                        "option": [
+                            "Reconnaissance lors de nos activités ou de nos communications",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Participation à un podcast / Webinaire",
+                            "Visibilité du logo lors de nos événements en fonction du prix d’adhésion"
+                        ]
+                    },
+                    "price": {
+                        "af": "150",
+                        "can": "500"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/72f28T2q",
+                        "can": "https://ccca.mykajabi.com/offers/RQopXZ7D"
+                    }
+                },
+                {
+                    "title": "Travailleur autonome",
+                    "descrip": {
+                        "libelle": "Pour les entreprises avec 1 à 4 employés",
+                        "option": [
+                            "Reconnaissance lors de nos activités ou de nos communications",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Participation à un podcast et/ou webinaire",
+                            "Visibilité du logo lors de nos événements en fonction du prix d’adhésion"
+                        ]
+                    },
+                    "price": {
+                        "af": "100",
+                        "can": "400"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/566akTmd",
+                        "can": "https://ccca.mykajabi.com/offers/Q7oPuFTt"
+                    }
+                },
+                {
+                    "title": "Entreprise 5 à 49 employés",
+                    "descrip": {
+                        "libelle": "",
+                        "option": [
+                            "Reconnaissance lors de nos activités ou de nos communications",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Jusqu’à 5 employés inclus dans l’adhésion",
+                            "Participation à un podcast et/ou webinaire",
+                            "Visibilité du logo lors de nos événements en fonction du prix d’adhésion"
+                        ]
+                    },
+                    "price": {
+                        "af": "300",
+                        "can": "800"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/z5dd8yzp",
+                        "can": "https://ccca.mykajabi.com/offers/hmw2A6PF"
+                    }
+                },
+                {
+                    "title": "Entreprise 50 employés et +",
+                    "descrip": {
+                        "libelle": "Pour les entreprises avec plus de 51 employés",
+                        "option": [
+                            "Tarification partenaire-client lors des événements publics",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Jusqu’à 10 employés inclus dans l’adhésion",
+                            "Participation à un podcast et/ou webinaire",
+                            "Visibilité du logo lors de nos événements en fonction du prix d’adhésion"
+                        ]
+                    },
+                    "price": {
+                        "af": "900",
+                        "can": "1500"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/3wSJ32MJ",
+                        "can": "https://ccca.mykajabi.com/offers/8z78LhP2"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "OBNL / INSTITUTS",
+            "detail": [
+                {
+                    "title": "Organisme public",
+                    "descrip": {
+                        "libelle": "",
+                        "option": [
+                            "Tarification partenaire-client lors des événements publics",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Participation à un podcast",
+                            "Nombre maximum : Illimité"
+                        ]
+                    },
+                    "price": {
+                        "af": "500",
+                        "can": "1000"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/ejVX6AJt",
+                        "can": "https://ccca.mykajabi.com/offers/kFuE5wZ4"
+                    }
+                },
+                {
+                    "title": "Politique",
+                    "descrip": {
+                        "libelle": "Pour les politiciens désirant rencontrer la communauté d’affaires en Afrique et au Canada",
+                        "option": [
+                            "Tarification partenaire-client lors des événements publics",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Pour une personne"
+                        ]
+                    },
+                    "price": {
+                        "af": "2000",
+                        "can": "2500"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/7P2i2i23",
+                        "can": "https://ccca.mykajabi.com/offers/A6EkBFFC"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "PARTENAIRES PRESTIGES",
+            "detail": [
+                {
+                    "title": "Gold",
+                    "descrip": {
+                        "libelle": "Adhésion gratuite pour 100 membres de l’organisation",
+                        "option": [
+                            "Accès gratuit au PPCDE pour une cohorte de 100 membres",
+                            "2 billets pour les programmes de formation",
+                            "Aucune limite d’employés inscrits",
+                            "Tarification partenaire-client lors des événements publics",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Jusqu’à 2 employés inclus dans l’adhésion",
+                            "Participation à au moins 1 podcast / Webinaire par an"
+                        ]
+                    },
+                    "price": {
+                        "af": "5000",
+                        "can": "10000"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/8j2Wv3pa",
+                        "can": "https://ccca.mykajabi.com/offers/JFmegYyd"
+                    }
+                },
+                {
+                    "title": "Silver",
+                    "descrip": {
+                        "libelle": "Adhésion gratuite pour 50 membres de l’organisation",
+                        "option": [
+                            "Accès gratuit au PPCDE pour une cohorte de 50 membres",
+                            "Tarification partenaire-client lors des événements publics",
+                            "Exclusivité pour les événements réservés aux partenaires-clients",
+                            "Jusqu’à 3 employés inclus dans l’adhésion",
+                            "Participation à au moins 2 podcasts / Webinaires chaque année"
+                        ]
+                    },
+                    "price": {
+                        "af": "3500",
+                        "can": "7500"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/hiMzDnxb",
+                        "can": "https://ccca.mykajabi.com/offers/Z3PqAdXf"
+                    }
+                },
+                {
+                    "title": "Platine",
+                    "descrip": {
+                        "libelle": "Adhésion gratuite pour 25 membres de l’organisation",
+                        "option": [
+                            "Accès gratuit au PPCDE pour une cohorte de 25 membres",
+                            "Nombre maximum : Illimité (participation obligatoire à un comité)",
+                            "Participation gratuite aux activités de la chambre"
+                        ]
+                    },
+                    "price": {
+                        "af": "1500",
+                        "can": "2600"
+                    },
+                    "link": {
+                        "af": "https://ccca.mykajabi.com/offers/ZBpiKdey",
+                        "can": "https://ccca.mykajabi.com/offers/UnpFoik4"
+                    }
+                }
+            ]
+        }
+    ],
+    "devenir_membre": {
+        "contact_us": "Pour plus d'informations",
+        "phone": "Téléphone",
+        "email": "Courriel",
+        "our_partners": "Nos Parténaires",
+        "title": "Devenir Membre",
+        "choose_membership_category": "Choisir votre catégorie d'adhésion pour la CCCA",
+        "subscribe": "Souscrire",
+        "why_join": "Pourquoi devenir membre de la chambre ?",
+        "stats": {
+            "members": "Membres",
+            "decision_makers": "Décideurs",
+            "activities": "Activités",
+            "experts": "Experts"
+        },
+        "benefits": {
+            "expand_network": {
+                "title": "Élargir son réseau",
+                "options": [
+                    "Profitez de plus de 150 occasions de réseautage chaque année qui répondent à tous les types de besoins",
+                    "Réseautez tout en découvrant des endroits inédits du Canada",
+                    "Participez à des rencontres d’affaires exclusives aux membres",
+                    "Profitez des périodes de prévente pour certaines de nos activités",
+                    "Rencontrez des acheteurs en quête de nouveaux produits",
+                    "Développez votre réseau à l’international et partez à la conquête de nouveaux marchés",
+                    "Inspirez-vous des expériences vécues par d’autres gens d’affaires",
+                    "Obtenez de 15 à 35 % de réduction sur le prix d’inscription à nos activités"
+                ]
+            },
+            "learn_and_inform": {
+                "title": "Apprendre et S'informer",
+                "options": [
+                    "Développez vos compétences grâce à nos ateliers de formation sur les meilleures pratiques d’affaires",
+                    "Apprenez l’abc du commerce international grâce à la formation offerte par la CCCA aux entreprises",
+                    "Inspirez-vous des plus grands noms de la scène politique et économique qui se partagent notre prestigieuse tribune",
+                    "Visitez notre centre de documentation pour obtenir de l’information stratégique",
+                    "Profitez de nos forums pour échanger sur les grands enjeux stratégiques",
+                    "Découvrez de nouvelles occasions d’affaires à l’étranger",
+                    "Obtenez de l’information sur les ressources disponibles pour le démarrage et la croissance de votre entreprise"
+                ]
+            },
+            "gain_visibility": {
+                "title": "Obtenir de la visibilité",
+                "options": [
+                    "Affichez-vous dans les versions papier et électronique de notre répertoire des membres",
+                    "Publiez gratuitement des offres spéciales aux autres membres dans notre site Web",
+                    "Inspirez-vous des plus grands noms de la scène politique et économique qui se partagent notre prestigieuse tribune",
+                    "Visitez notre centre de documentation pour obtenir de l’information stratégique",
+                    "Profitez de nos forums pour échanger sur les grands enjeux stratégiques",
+                    "Découvrez de nouvelles occasions d’affaires à l’étranger",
+                    "Obtenez de l’information sur les ressources disponibles pour le démarrage et la croissance de votre entreprise"
+                ]
+            },
+            "grow_internationally": {
+                "title": "Croître à l'international",
+                "options": [
+                    "Affichez-vous dans les versions papier et électronique de notre répertoire des membres",
+                    "Publiez gratuitement des offres spéciales aux autres membres dans notre site Web",
+                    "Inspirez-vous des plus grands noms de la scène politique et économique qui se partagent notre prestigieuse tribune",
+                    "Visitez notre centre de documentation pour obtenir de l’information stratégique",
+                    "Profitez de nos forums pour échanger sur les grands enjeux stratégiques",
+                    "Découvrez de nouvelles occasions d’affaires à l’étranger",
+                    "Obtenez de l’information sur les ressources disponibles pour le démarrage et la croissance de votre entreprise"
+                ]
+            }
+        },
+        "membership_types": {
+            "entrepreneur": "Entrepreneur",
+            "businesses": "Entreprises",
+            "nonprofits": "OBNL/Instituts",
+            "prestige_partners": "Partenaires Prestiges"
+        },
+        "membership_levels": {
+            "student": {
+                "title": "Étudiant (25 ans et moins)",
+                "description": "Pour les étudiants ayant à cœur le monde des affaires et voulant être en contact avec la communauté d’affaires au Québec et en Afrique",
+                "benefits": [
+                    "Reconnaissance lors de nos activités ou de nos communications",
+                    "Exclusivité pour les événements réservés aux membres"
+                ]
+            },
+            "startup": {
+                "title": "Startup",
+                "description": "Pour les nouvelles entreprises en activité depuis moins de deux ans",
+                "benefits": [
+                    "Reconnaissance lors de nos activités ou de nos communications",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Participation à un podcast / Webinaire",
+                    "Visibilité du logo lors de nos événements à la hauteur du prix membre."
+                ]
+            },
+            "freelancer": {
+                "title": "Travailleur autonome",
+                "description": "Pour les entreprises ayant entre 1 à 4 employés",
+                "benefits": [
+                    "Reconnaissance lors de nos activités ou de nos communications",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Participation à un podcast et/ou webinaire",
+                    "Visibilité du logo lors de nos événements à la hauteur du prix membre."
+                ]
+            },
+            "small_business": {
+                "title": "Entreprise 5 à 49 employés",
+                "description": "",
+                "benefits": [
+                    "Reconnaissance lors de nos activités ou de nos communications",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Jusqu’à 5 employés inclus dans l’adhésion",
+                    "Participation à un podcast et/ou webinaire",
+                    "Visibilité du logo lors de nos événements à la hauteur du prix membre."
+                ]
+            },
+            "large_business": {
+                "title": "Entreprise 50 employés et +",
+                "description": "Pour les entreprises ayant plus de 50 employés",
+                "benefits": [
+                    "Prix partenaire-client lors des événements publics",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Jusqu’à 10 employés inclus dans l’adhésion",
+                    "Participation à un podcast et/ou webinaire",
+                    "Visibilité du logo lors de nos événements à la hauteur du prix membre."
+                ]
+            },
+            "organization": {
+                "title": "Organisme",
+                "description": "Pour les organisations à but non lucratif et instituts",
+                "benefits": [
+                    "Prix partenaire-client lors des événements publics",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Participation à un podcast",
+                    "Nombre maximum : Illimité"
+                ]
+            },
+            "political": {
+                "title": "Politique",
+                "description": "Pour les personnes politiques désirant rencontrer la communauté d’affaires en Afrique et au Canada",
+                "benefits": [
+                    "Prix partenaire-client lors des événements publics",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Pour une personne"
+                ]
+            },
+            "representative": {
+                "title": "Représentant",
+                "description": "Pour bénéficier de visibilité marketing",
+                "benefits": [
+                    "Prix partenaire-client lors des événements publics",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Jusqu’à 3 employés inclus dans l’adhésion",
+                    "Participation à au moins 2 podcasts / Webinaire chaque année"
+                ]
+            },
+            "exclusive": {
+                "title": "Exclusif",
+                "description": "Un seul partenaire par expertise : « Partenaire mention du service officiel de la CCCA »",
+                "benefits": [
+                    "Aucune limite d’employés inscrits",
+                    "Prix partenaire-client lors des événements publics",
+                    "Exclusivité pour les événements réservés aux partenaires-clients",
+                    "Jusqu’à 2 employés inclus dans l’adhésion",
+                    "Participation à au moins 1 podcast / Webinaire par an."
+                ]
+            },
+            "ambassador": {
+                "title": "Ambassadeur",
+                "description": "",
+                "benefits": [
+                    "Nombre maximum : Illimité (participation obligatoire à un comité)",
+                    "Participation gratuite aux activités de la chambre"
+                ]
+            }
+        },
+        "free": "Gratuit"
+    },
+    "servicesData": [
+        {
+            "title": "Entrepreneuriat",
+            "description": "La CCCA offre un service complet en matière de démarrage d’entreprise au Canada."
+        },
+        {
+            "title": "Francophonie",
+            "description": "La CCCA est avant tout un marché économique francophone reliant la francophonie canadienne et africaine."
+        },
+        {
+            "title": "Repreneuriat",
+            "description": "La CCCA se donne pour mandat d’attirer des investisseurs et entrepreneurs africains souhaitant reprendre une entreprise."
+        },
+        {
+            "title": "Coopération Internationale",
+            "description": "La CCCA regroupe des expertises pour conduire des missions commerciales au Canada et en Afrique."
+        },
+        {
+            "title": "Maillage d'Affaires",
+            "description": "La CCCA offre un programme de maillage d’affaires à travers des salons et forums B-to-B et B-to-C."
+        },
+        {
+            "title": "Formations",
+            "description": "Ce programme de formation est donné par des experts en développement d’affaires basés au Canada et en Afrique."
+        },
+        {
+            "title": "Incubations",
+            "description": "La CCCA accompagne des entrepreneurs du Canada de l’idéation au démarrage d’une entreprise via le programme \"CCCA-Propuls\"."
+        }
+    ],
+    "africaOfficesData": [
+        {
+            "title": "Afrique Centrale",
+            "countries": [
+                "Cameroun",
+                "Angola",
+                "Congo",
+                "Tchad",
+                "Gabon",
+                "Sao Tomé-et-Principe",
+                "Guinée équatoriale",
+                "République Centrafricaine"
+            ]
+        },
+        {
+            "title": "Afrique de l'Ouest",
+            "countries": [
+                "Nigeria",
+                "Burkina Faso",
+                "Cap-vert",
+                "Côte d'Ivoire",
+                "Gambie",
+                "Ghana",
+                "Guinée",
+                "Guinée-Bissau",
+                "Libéria",
+                "Mali"
+            ]
+        },
+        {
+            "title": "Afrique de L'est",
+            "countries": [
+                "Burundi",
+                "Kenya",
+                "Djibouti",
+                "Malawi",
+                "Maurice",
+                "Mozambique",
+                "Rwanda",
+                "Ouganda",
+                "Zambie"
+            ]
+        },
+        {
+            "title": "Afrique du Nord",
+            "countries": [
+                "Algérie",
+                "Égypte",
+                "Libye",
+                "Maroc",
+                "Mauritanie",
+                "Soudan",
+                "Tunisie"
+            ]
+        },
+        {
+            "title": "Afrique Australe",
+            "countries": [
+                "Botswana",
+                "Lesotho",
+                "Namibie",
+                "Suaziland",
+                "Afrique du Sud"
+            ]
+        },
+        {
+            "title": "Océan Indien",
+            "countries": [
+                "Comore",
+                "Madagascar"
+            ]
+        }
+    ],
+    "contact_us": "Nous Contacter",
+    "email_label": "info@cc-ca.ca",
+    "phone_number": "+1 (438) 388-3606",
+    "website": "www.cc-ca.ca",
+    "address": "400 - 257 rue Sherbrooke Est, Montréal, H2X 1E3, QC, Canada",
+    "enter_name": "Entrez votre nom",
+    "enter_email": "Entrez votre email",
+    "enter_phone": "Entrez votre numéro de téléphone",
+    "ask_questions": "Posez vos questions",
+    "send_button": "Envoyer",
+    "entrepreneurship_title": "Entrepreneuriat",
+    "repreneurship_title": "Repreneuriat",
+    "francophonie_title": "Francophonie",
+    "international_cooperation_title": "Coopération Internationale",
+    "business_networking_title": "Maillage d'Affaires",
+    "incubation_title": "Incubations",
+    "training_title": "Formations",
+    "entrepreneurship_para_1": "La CCCA offre un service complet en matière de démarrage d’entreprise au Canada. À travers son réseau d’experts en entrepreneuriat au Canada, les membres de la CCCA peuvent solliciter nos services afin de les accompagner à démarrer et à réaliser leurs entreprises au Canada ou dans un pays d’Afrique où elle est représentée.",
+    "entrepreneurship_para_2": "La CCCA s’appuie sur des partenariats solides ainsi que sur des organismes d’accompagnement en entrepreneuriat au Canada.Ainsi, nous pouvons suggérer des idées d’entreprises innovantes, faire un accompagnement dans la rédaction du projet entrepreneurial, le plan d’affaires ainsi que la planification stratégique, et également le plan de communication marketing.",
+    "entrepreneurship_para_3": "En outre, le service d’appui à l’accompagnement de la CCCA est structuré de son incubateur intégré qui offre un environnement complet et des outils clés pour démarrer une entreprise, ouvrir une filiale ou réactiver une entreprise dormante au Canada et en Afrique",
+    "entrepreneurship_partners": "Nos Partenaires",
+    "repreneurship_para": "La CCCA se donne pour mandat d’attirer des investisseurs, des gens d’affaires basés en Afrique et qui souhaitent reprendre une entreprise en général et au Québec en particulier. Le repreneuriat est un programme économique qui est particulièrement mis en avant par le gouvernement du Québec à travers le ministère de l’économie, de l’innovation et de l’énergie ainsi que le ministère de l’immigration, de la francisation et de l’intégration.Ce programme repose sur une problématique: près de 25% des 65 ans et plus ont l’intention de fermer leurs entreprises par manque de relève.Moins de 20% des entrepreneurs résidants au Québec ont l’intention de reprendre les entreprises existantes.Plus de 60% sont plutôt intéressés à démarrer une entreprise.",
+    "repreneurship_benefits": "Les avantages avec le programme du repreneuriat sont directement perceptibles :",
+    "repreneurship_benefit_1": "Il est plus facile d’obtenir du financement parce que l’entreprise présente déjà un historique financier et des actifs",
+    "repreneurship_benefit_2": "L’image de marque et la réputation de l’entreprise sont déjà établies",
+    "repreneurship_benefit_3": "Les produits au service de l’entreprise sont déjà bien alignés dans un marché concurrentiel",
+    "repreneurship_benefit_4": "Il y a peu de risque de faillite car l’entreprise est déjà dans sa phase productive",
+    "repreneurship_benefit_5": "Il existe déjà une relation entre les clients et les fournisseurs",
+    "repreneurship_benefit_6": "Le personnel est déjà suffisamment formé et aguerri",
+    "repreneurship_benefit_7": "Dans certains camps, l’ancien dirigeant peut aider à faire la transition pour que la reprise soit optimale",
+    "francophonie_para_1": "La CCCA est avant tout un marché économique francophone qui relie la francophonie canadienne et celle africaine.Elle s’ouvre ensuite vers les économies anglophones afin de susciter des dynamiques d’affaires impulsées par la volonté de commercialiser en langue française. À travers la francophonie, la CCCA entend attirer les économies diverses au sein d’un écosystème drainé par la langue française.La CCCA offre également des espaces d’apprentissage du français comme langue d’affaires.",
+    "francophonie_para_2": "À ce titre, elle offre un programme de francisation à tout entrepreneur ou investisseur qui choisit de s’installer au Québec ou au sein de communautés francophones au canada.",
+    "international_cooperation_para": "La CCCA regroupe en son sein des expertises pour conduire des missions commerciales aussi bien au canada qu’en Afrique.Ce service vise à accompagner des gouvernements, institutions publiques ou para publiques, des organisations à but non lucratif, des entreprises, qui souhaitent effecteur une mission commerciale, de prospection ou d’exploration en vue de générer en développement d’affaires de partenariats ou de représentations.",
+    "business_networking_para_1": "La CCCA offre un programme de maillage d’affaires à travers des salons, des forums, des foires organisées sous forme de rencontre B to B et B to C et dont l’objectif est de permettre aux participants de nouer ou conclure des alliances d’affaires entre le canada et l’Afrique.À ce titre, la CCCA a plusieurs concepts évènementiels d’affaires qui se tiennent annuellement au canada ou dans l’un des pays africains où elle possède une délégation.",
+    "business_networking_para_2": "La CCCA collabore également avec des partenaires organisateurs pour attirer des délégations canadiennes d’entrepreneurs ou investisseurs pour participer à des évènements économiquement importants en Afrique, et inversement, cette dernière à travers ses délégués pays, mobilise des délégations africaines d’entrepreneurs et ou d’investisseurs pour prendre part à des événements d’affaires organisés au Canada.",
+    "incubation_para": "La CCCA à travers son programme d’incubation et d’accélération intitué « CCCA - Propuls » accompagne des entrepreneurs résident au canada de l’idéation au démarrage d’une entreprise.A travers ses 4 parcours, CCCA - Propuls vous permettra d’acquérir des ressources clés pour démarrer une entreprise au Canada et la réaliser.",
+    "training_para": "La CCCA à travers son programme De formation accompagne des entrepreneurs résident en afrique de l’idéation au démarrage d’une entreprise.A travers ses 2 grands types de formations parcours, CCCA - Propuls vous permettra d’acquérir des ressources clés pour démarrer une entreprise au Canada et la réaliser.""leadership_program_title": "Programme de perfectionnement des capacités des dirigeants et entrepreneurs (PPCDE)",
+    "leadership_program_description": "Un programme approfondi qui se connecte avec les principales universités pour doter les dirigeants de compétences...",
+    "repreneurship_program_title": "Programme de formation sur le repreneuriat",
+    "repreneurship_program_description": "Formation spécialisée visant à aider les entrepreneurs à reprendre des entreprises existantes.",
+    "hec_montreal_programs": [
+        "Intelligence numérique (Big Data et IA)",
+        "Communication, Marketing et vente",
+        "Développement durable et éthique",
+        "Finances et comptabilité",
+        "Leadership et ressources humaines",
+        "Stratégie, innovation et prise de décision"
+    ],
+    "university_laval_programs": [
+        "Certificat universitaire en gouvernance des sociétés",
+        "Formation continue en gouvernance",
+        "Formation en organisation"
+    ],
+    "boreal_programs": [
+        "Entrepreneuriat",
+        "Commerce international (Import-Export Canada-Afrique)",
+        "Expertise minière"
+    ],
+    "subscribe_to_service": "Souscrire à {{service}}",
+    "chamber_of_commerce": "Chambre de Commerce",
+    "canada_africa": "Canada Afrique",
+    "links": "Liens:",
+    "become_member": "Devenir membre",
+    "about_us": "À propos de nous",
+    "our_events": "Nos Événements",
+    "contact": "Contact",
+    "news": "Actualités",
+    "why_become_member": "Pourquoi devenir membre",
+    "member_benefits": "Avantages aux membres",
+    "become_volunteer": "Devenir bénévole",
+    "member_news": "Nouvelles des membres",
+    "advertising_partnership": "Publicité et partenariat",
+    "member_directory": "Répertoire des membres",
+    "tools_resources": "Outils et ressources",
+    "newsletter": "Notre info lettre",
+    "newsletter_info": "Pour rester au cœur de l’activité économique de la métropole",
+    "enter_email": "Adresse Courriel",
+    "subscribe": "S'inscrire",
+    "privacy_policy": "Politique de confidentialité",
+    "site_map": "Plan du site",
+    "designed_by": "Conçu par",
+    "events_component_translations": {
+        "events_title": "Événements",
+        "recent_events": "Événements Récents",
+        "past_events": "Événements Passés"
+    },
+    "past_event_title1": "Rencontre d’Affaires de la Francophonie (RAF24)",
+    "past_event_description1": "Lorem Ipsum est un texte factice de l'industrie de l'impression et de la composition.",
+    "past_event_title2": "Rencontre d’Affaires de la Francophonie (RAF24)",
+    "past_event_description2": "Lorem Ipsum est un texte factice de l'industrie de l'impression et de la composition.",
+    "emerging_markets_access": "Accès aux Marchés Émergents",
+    "emerging_markets_access_desc": "Les petites et moyennes entreprises (PME) canadiennes ont des opportunités uniques pour pénétrer les marchés africains, souvent moins concurrentiels et plus ouverts à l’innovation. Les secteurs de niche, comme les technologies vertes ou l’agriculture durable, offrent des opportunités spécifiques pour les PME.",
+    "support_programs": "Programmes de Soutien",
+    "support_programs_desc": "Divers programmes canadiens existent pour aider les PME à explorer et à s’implanter sur les marchés africains, y compris le financement, le mentoring, et le soutien logistique.",
+    "find_ccca_nearby": "Trouvez la CCCA proche de chez vous",
+    "access_via_ccca": "Ceux à quoi vous avez accès via La CCCA:",
+    "network_of_5000_entrepreneurs": "Un réseau de prêt de 5000 entrepreneurs",
+    "representatives_in_africa": "Avec plus de 25 réprésentants en Afrique",
+    "jambo_tv_interview": "Interview du Président de la Chambre de Commerce Canada Afrique sur le plateau de Jambo TV à Canal2",
+    "brain_drain_africa": "Exode des cerveaux : l’Afrique se vide au profit du Canada",
+    "quebec_recruitment": "Québec cesse de recruter des infirmières en Afrique pour des raisons « éthiques »",
+    "green_hydrogen_opportunities": "Exploiter les possibilités pour l’hydrogène vert au Canada atlantique",
+    "canadaRepresentationData": [
+        "Alberta",
+        "Colombie-Britannique",
+        "Île-du-Prince-Édouard",
+        "Manitoba",
+        "Nouvelle-Écosse",
+        "Québec",
+        "Saskatchewan",
+        "Terre-Neuve-et-Labrador"
+    ],
+    "activitiesData": [
+        {
+            "title": "Plateforme d’Échange Commercial",
+            "description": "Création d'une plateforme numérique qui met en relation les entreprises canadiennes et africaines."
+        },
+        {
+            "title": "Webinaires et Ateliers de Formation",
+            "description": "Organisation de webinaires sur des sujets clés comme la culture d'affaires."
+        },
+        {
+            "title": "Missions Commerciales",
+            "description": "Organisation de missions commerciales régulières au Canada et en Afrique."
+        },
+        {
+            "title": "Foires et Salons Professionnels",
+            "description": "Participation à des salons commerciaux pour mettre en avant les entreprises des deux régions."
+        },
+        {
+            "title": "Programme de Mentorat",
+            "description": "Mise en place d'un programme de mentorat pour accompagner les startups et PME."
+        },
+        {
+            "title": "Initiatives d’Innovation et de Durabilité",
+            "description": "Soutien à des projets innovants et durables."
+        },
+        {
+            "title": "Forum Annuel des Affaires Canada Afrique",
+            "description": "Organisation d'un forum annuel pour discuter des opportunités économiques."
+        },
+        {
+            "title": "Publications et Ressources Éducatives",
+            "description": "Création de rapports et études de marché."
+        },
+        {
+            "title": "Réseaux Sociaux et Communication",
+            "description": "Utilisation des réseaux sociaux pour promouvoir les entreprises."
+        },
+        {
+            "title": "Soutien à la Francophonie",
+            "description": "Développement d'initiatives pour promouvoir les échanges au sein de la francophonie."
+        }
+    ]
+}

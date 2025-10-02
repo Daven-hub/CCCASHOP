@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+/* @import url('../node_modules/@syncfusion/ej2-base/styles/bootstrap5.css'); */
+/* @import url('../node_modules/@syncfusion/ej2-icons/styles/bootstrap5.css'); */
+/* @import '../node_modules/@syncfusion/ej2-buttons/styles/bootstrap5.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/bootstrap5.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/bootstrap5.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/bootstrap5.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/bootstrap5.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/bootstrap5.css';
+@import '../node_modules/@syncfusion/ej2-richtexteditor/styles/bootstrap5.css'; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  /* --background: #ffffff; */
+  /* --foreground: #171717; */
+  --color-action:rgb(0, 0, 255,.85)
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+*{
+  box-sizing: border-box;
+  scroll-snap-type: mandatory;
+  scroll-behavior: smooth;
+  scroll-timeline: 500ms;
+}
+body {
+  font-family: "Monrope","Quicksand",Helvetica,'Roboto',sans-serif, Arial, Helvetica;
+  margin: 0;
+  padding: 0;
+   /* overflow-y: auto; */
+  /* scrollbar-color: #052f70 ; */
+  /* scrollbar-width: thin; */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

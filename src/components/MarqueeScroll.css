@@ -1,0 +1,33 @@
+/* Conteneur principal */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  background-color: #f8f9fa; /* Optionnel : couleur de fond */
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alignement au début */
+}
+
+/* Élément individuel */
+.marquee-item {
+  position: absolute;
+  width: 100%;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  /* animation: scroll 5s linear infinite; */
+}
+
+/* Animation de défilement de gauche à droite */
+@keyframes scroll {
+  0% {
+    transform: translateX(-100%); /* Commence hors écran à gauche */
+  }
+  100% {
+    transform: translateX(100%); /* Termine hors écran à droite */
+  }
+}

@@ -1,0 +1,284 @@
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import {
+  FiHome,
+  FiBook,
+  FiFileText,
+  FiCalendar,
+  FiFlag,
+  FiSettings,
+  FiUsers,
+  FiBriefcase,
+  FiLogOut,
+  FiPackage,
+  FiTag,
+  FiClipboard,
+  FiDollarSign,
+  FiGrid,
+} from 'react-icons/fi';
+import { MdClose, MdOutlineDoubleArrow } from 'react-icons/md';
+import logo from '../../assets/1x/icone blanc.png';
+import { ArrowRight01Icon, Notification01Icon } from 'hugeicons-react';
+import $ from 'jquery'
+// import { roleChange } from '../../pages/Admin/Dashboard';
+import { File, FileTextIcon, Newspaper, UserIcon } from 'lucide-react';
+import { FaNewspaper } from 'react-icons/fa';
+
+function Sidebar({setIsSidebarOpen}) {
+
+  $(function () {
+    let toggleValue = false;
+    $(document).on('click', '.settings-btn', function () {
+      toggleValue = !toggleValue
+      const pixel = $(this).siblings().prop('scrollHeight');
+      if (toggleValue) {
+        $(this).siblings().css('height', `${pixel}px`);
+        $(this).children().last().addClass('rotate-[90deg]');
+      } else {
+        $(this).siblings().css('height', `0px`);
+        $(this).children().last().removeClass('rotate-[90deg]');
+      }
+    })
+  })
+
+  const [menuItems, setMenuItems] = useState([])
+
+  const userFromStorage= localStorage.getItem("user")
+  const detail=JSON.parse(userFromStorage)
+
+  useEffect(() => {
+    const packAdmin = [
+      {
+        group: '',
+        corps: [
+          { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
+          { title: 'Acceuil du site', icon: <FiHome size={18} />, path: '/a', children: [] },
+        ]
+      },
+      {
+        group: "Centrale d'achat",
+        corps: [
+          { title: 'Catégories', icon: <FiTag size={18} />, path: '/admin/categories', children: [] },
+          { title: 'Sous catégories', icon: <FiTag size={18} />, path: '/admin/sous-categories', children: [] },
+          { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
+          { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
+          { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
+          { title: 'Acheteurs', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
+          { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
+        ]
+      },
+      {
+        group: 'Pages',
+        corps: [
+          { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/admin/ccca-revue', children: [] },
+          { title: 'Actualité', icon: <Newspaper size={18} />, path: '/admin/news', children: [] },
+          // { title: 'Événements', icon: <FiCalendar size={18} />, path: '/admin/events', children: [] },
+          // { title: 'Activité', icon: <FiFlag size={18} />, path: '/admin/activities', children: [] },
+          // { title: 'Services', icon: <FiBriefcase size={18} />, path: '/admin/Services', children: [] },
+          {
+            title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
+              { title: 'Presentation', path: "/admin/à-propos/presentation" },
+              { title: 'Conseil d\'administration', path: "/admin/à-propos/Conseil-d'administration" },
+              // { title: 'Diretion Éxecutive', path: '/admin/ConseilAdministration' },
+              // { title: 'Bureau Afrique', path: '/admin/à-propos/bureau-afrique' },
+              // { title: 'Bureau éxécutive', path: '/admin/ConseilAdministration' },
+              // { title: 'Galérie', path: '/admin/à-propos/galéries' },
+            ]
+          },
+        ]
+      },
+      // {
+      //   group: 'Autre',
+      //   corps: [
+      //     { title: 'Utilisateurs', icon: <FiUsers size={18} />, path: '/Admin/Utilisateurs', children: [] },
+      //     { title: 'Parténaires', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+      //     { title: 'Membership', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+      //     { title: 'Publicité', icon: <FiUsers size={18} />, path: '/Admin/publicite', children: [] },
+      //     { title: 'Communiqué', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+      //   ]
+      // },
+      {
+        group: 'Autre',
+        corps: [
+          { title: 'Rapports', icon: <FileTextIcon size={18} />, path: '/Admin/Utilisateurs', children: [] },
+          { title: 'Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+        ]
+      },
+      {
+        group: 'Paramétre',
+        corps: [
+          { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
+          { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/parametres', children: [] },
+          // { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+        ]
+      },
+    ];
+    const packFournisseur = [
+      {
+        group: '',
+        corps: [
+          { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
+          { title: 'Acceuil du site', icon: <FiHome size={18} />, path: '/a', children: [] },
+        ]
+      },
+      {
+        group: 'Produits',
+        corps: [
+          { title: 'Catégories', icon: <FiTag size={18} />, path: '/admin/categories', children: [] },
+          { title: 'Sous catégories', icon: <FiTag size={18} />, path: '/admin/sous-categories', children: [] },
+          { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
+          // { title: 'Offres', icon: <FiBook size={18}/>, path: '/Admin/ccca-revue',children:[] },
+        ]
+      },
+      {
+        group: 'Commandes & Ventes',
+        corps: [
+          { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
+          { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
+          { title: 'Mes Clients', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
+        ]
+      },
+      {
+        group: 'Paramétre',
+        corps: [
+          { title: 'Rapport', icon: <FiFileText size={18} />, path: '/admin/rapport', children: [] },
+          { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
+          { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/admin/parametres', children: [] },
+          // { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/admin/ConseilAdministration', children: [] },
+        ]
+      },
+    ];
+    const packCustomer = [
+      {
+        group: '',
+        corps: [
+          { title: 'Tableau de Bord', icon: <FiHome size={18} />, path: '/admin/tableau-de-bord', children: [] },
+          { title: 'Acceuil du site', icon: <FiHome size={18} />, path: '/a', children: [] },
+        ]
+      },
+      {
+        group: 'Pages',
+        corps: [
+          { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/Admin/ccca-revue', children: [] },
+          { title: 'Actualité', icon: <FiFileText size={18} />, path: '/Admin/news', children: [] },
+          { title: 'Événements', icon: <FiCalendar size={18} />, path: '/Admin/events', children: [] },
+          { title: 'Activité', icon: <FiFlag size={18} />, path: '/Admin/activities', children: [] },
+          { title: 'Services', icon: <FiBriefcase size={18} />, path: '/Admin/Services', children: [] },
+          {
+            title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
+              { title: 'Presentation', path: "/Admin/à-propos/presentation" },
+              { title: 'Conseil d\'administration', path: "/Admin/à-propos/Conseil-d'administration" },
+              { title: 'Diretion Éxecutive', path: '/Admin/ConseilAdministration' },
+              { title: 'Bureau Afrique', path: '/Admin/à-propos/bureau-afrique' },
+              { title: 'Bureau éxécutive', path: '/Admin/ConseilAdministration' },
+              { title: 'Galérie', path: '/Admin/à-propos/galéries' },
+            ]
+          },
+        ]
+      },
+      // {
+      //   group: 'Autre',
+      //   corps: [
+      //     { title: 'Utilisateurs', icon: <FiUsers size={18} />, path: '/Admin/Utilisateurs', children: [] },
+      //     { title: 'Parténaires', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+      //     { title: 'Membership', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+      //     { title: 'Publicité', icon: <FiUsers size={18} />, path: '/Admin/publicite', children: [] },
+      //     { title: 'Communiqué', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+      //   ]
+      // },
+      {
+        group: 'Paramétre',
+        corps: [
+          { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+          { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+        ]
+      },
+    ];
+    if (detail?.role === "admin") {
+      setMenuItems(packAdmin)
+    } else if (detail?.role === "fournisseur") {
+      setMenuItems(packFournisseur)
+    } else {
+      setMenuItems(packCustomer)
+    }
+  }, [detail?.role])
+ 
+  // console.log(detail)
+
+  return (
+    <div
+      className={`fixed h-[100vh] left-0 side-ccca w-[18.5%] max-md:w-[60%] max-sm:w-[80%] bg-primary shadow-sm transform transition-transform duration-500`}
+    >
+      {/* Sidebar Header */}
+      <div className="flex items-center justify-between py-[.95rem] max-md:py-[.85rem] border-b border-white/10 shadow-sm px-[7%]">
+        <div className="flex items-center justify-center max-md:justify-start gap-1.5 w-full">
+          <img src={logo} alt="Logo" className="w-[2.2rem] max-md:w-7 max-md:h-7 h-[2rem]" />
+          <div className='flex flex-col font-semibold text-[.85rem] max-md:text-[.8rem] text-white leading-[1.1rem]'>
+            <span>Chambre de Commerce</span>
+            <span>Canada Afrique</span>
+          </div>
+        </div>
+        <div className='menu-close hidden cursor-pointer max-md:block'><MdClose size={25} color='white' /></div>
+      </div>
+      {/* Sidebar Menu */}
+      <div className="px-3 py-3 overflow-y-auto h-[calc(100vh-69px)]">
+        <div className="sidebare-admin flex flex-col gap-4">
+          {menuItems?.map((x, indexi) => (
+            <div key={indexi}>
+              <p className={`text-[.9rem] font-medium text-white text-opacity-30 mb-1`}>{x.group}</p>
+              <div className='flex flex-col gap-0.5'>
+                {x?.corps.map((item, index) => (
+                  item.children.length <= 0 ?
+                    <NavLink
+                      key={index}
+                      to={item.path}
+                      className={`flex items-center nav-items gap-3 w-full px-4 py-2.5 text-white text-opacity-60 font-medium transition-all duration-200 hover:bg-white hover:text-opacity-100 hover:bg-opacity-20 rounded-md`}
+                      onClick={() => setIsSidebarOpen(false)}
+                    >
+                      <span className="text-xl">{item.icon}</span>
+                      <span className="text-[.91rem]">{item.title}</span>
+                    </NavLink> :
+                    <div
+                      key={index}
+                      // to={item.path}
+                      className={`flex cursor-pointer flex-col nav-items overflow-hidden w-full text-white text-opacity-60 font-medium rounded-md`}
+                      onClick={() => setIsSidebarOpen()}
+                    >
+                      <div className='settings-btn flex justify-between px-4 hover:text-white hover:bg-white hover:text-opacity-100 hover:bg-opacity-20 py-2.5 items-center'>
+                        <div className='flex items-center gap-3'>
+                          {item.icon}
+                          <span className="text-[.91rem]">{item.title}</span>
+                        </div>
+                        <ArrowRight01Icon size={17} className='transition-all duration-200' />
+                      </div>
+                      <ul className='overflow-y-hidden transition-all flex flex-col gap-0.5 ps-7 duration-500 text-[1.02rem]' style={{ height: 0 }}>
+                        {item.children.map((y, inde) =>
+                          <li key={inde} className='py-2'><NavLink className='text-[.9rem] flex hover:text-white hover:text-opacity-100 items-center gap-3' to={y?.path}><MdOutlineDoubleArrow /> {y?.title}</NavLink></li>
+                        )}
+                      </ul>
+                    </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Account Section
+          <div className="mt-2 space-y-1">
+            {accountItems.map((item, index) => (
+              <button
+                key={index}
+                className={`flex items-center gap-3 w-full px-4 py-4 text-gray-700 transition-all duration-200 hover:bg-gray-200 rounded-md`}
+              >
+                <span className="text-xl">{item.icon}</span>
+                <span className="">{item.title}</span>
+              </button>
+            ))}
+          </div> */}
+      </div>
+
+    </div>
+  );
+}
+
+export default Sidebar;
