@@ -15,7 +15,7 @@
     ],
     "volume": "€0,7M - €10M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -34,7 +34,7 @@
     ],
     "volume": "€10M - €50M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -53,7 +53,7 @@
     ],
     "volume": "€10M - €50M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -72,7 +72,7 @@
     ],
     "volume": "€0,7M - €10M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -91,7 +91,7 @@
     ],
     "volume": "€10M - €50M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -110,7 +110,7 @@
     ],
     "volume": "€10M - €50M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -129,7 +129,7 @@
     ],
     "volume": "€10M - €50M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -148,7 +148,7 @@
     ],
     "volume": "€10M - €50M/an",
     "pu": "5000",
-    "monaie": "FCFA",
+    "monaie": "$",
     "statut": "Disponible"
   },
   {
@@ -165,7 +165,7 @@
         ],
         "volume":"€10M - €50M/an",
         "pu":"5000",
-        "monaie":"FCFA",
+        "monaie":"$",
         "statut":"Disponible"
       }
 ]

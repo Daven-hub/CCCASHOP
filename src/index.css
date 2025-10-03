@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 /* @import url('../node_modules/@syncfusion/ej2-base/styles/bootstrap5.css'); */
 /* @import url('../node_modules/@syncfusion/ej2-icons/styles/bootstrap5.css'); */
 /* @import '../node_modules/@syncfusion/ej2-buttons/styles/bootstrap5.css';
@@ -33,7 +34,7 @@
   scroll-timeline: 500ms;
 }
 body {
-  font-family: "Monrope","Quicksand",Helvetica,'Roboto',sans-serif, Arial, Helvetica;
+  font-family: "Bai Jamjuree","Monrope","Quicksand",Helvetica,'Roboto',sans-serif, Arial, Helvetica;
   margin: 0;
   padding: 0;
    /* overflow-y: auto; */

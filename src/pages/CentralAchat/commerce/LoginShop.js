@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Controller, useForm } from 'react-hook-form'
 import { login } from '../../../store/slices/auth.slice'
 import { useToast } from '../../../hook/use-toast'
+import { useAuth } from '../../../context/authContext'
 
 export const BreadShop = ({ data }) => {
       return (
@@ -21,13 +22,11 @@ function LoginShop() {
       const navigate = useNavigate();
       const [loading, setIsLoading] = useState(false)
       const dispatch = useDispatch();
+      const {userConnected} = useAuth()
       const datas = [
             "Fournisseur", "Acheteur"
       ]
       const { toast } = useToast();
-      // const { usershop, token, csrf, authStatus, error } = useSelector(
-      //       (state) => state.auth
-      // );
       const bread = [
             { label: t("accueille"), path: "/a" },
             { label: "Login Shop", path: "/login" }
@@ -42,6 +41,12 @@ function LoginShop() {
       //             console.log("How are you?")
       //       }
       // }, [usershop?.role])
+
+      useEffect(() => {
+            if (userConnected) {
+              navigate("/");
+            }
+          }, [userConnected, navigate]);
       
       const { register: connexion, control: controle, handleSubmit: handleSubmite, watch: watchs, formState: { errors: errorLog } } = useForm({
             defaultValues: {
@@ -71,8 +76,7 @@ function LoginShop() {
                   setIsLoading(false);
             }
       };
-
-      // console.log("usershop",usershop)
+   
       return (
             <div className='flex flex-col'>
                   <BreadShop data={bread} />
@@ -115,7 +119,7 @@ function LoginShop() {
                                                 "Se connecter"
                                           )}
                                     </button>
-                                    <NavLink to={"/centrale_achats/enregistrement"} className='flex cursor-pointer transition-all duration-500 hover:opacity-85 justify-center items-center rounded-[5px] text-primary border-2 border-primary'>Creer mon compte</NavLink>
+                                    <NavLink to={"/enregistrement"} className='flex cursor-pointer transition-all duration-500 hover:opacity-85 justify-center items-center rounded-[5px] text-primary border-2 border-primary'>Creer mon compte</NavLink>
                               </div>
                         </div>
                   </form>

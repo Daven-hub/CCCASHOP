@@ -99,90 +99,56 @@ export const CardPourquoi = ({ item }) => {
       )
 }
 
-// export const CardProduit = ({ x }) => {
-//       return (
-//             <NavLink to={"/centrale_achats/produits/" + x.id} className='group overflow-hidden bg-white rounded-[6px]'>
-//                   <div className='relative h-[200px] md:h-[150px] '>
-//                         <img className='absolute rounded-t-[6px] overflow-hidden left-0 top-0 w-full h-full object-cover' src={x.image} alt='item' />
-//                         <div className='absolute top-[5%] text-white right-[3%] bg-green-700 font-bold border border-white rounded-[50px] px-4 text-[.7rem]'>
-//                               {x.statut}
-//                         </div>
-//                   </div>
-//                   <div className='pt-3 pb-5 flex flex-col gap-3'>
-//                         <div className='flex items-center gap-1.5'>
-//                               <div className='flex flex-col gap-1 w-[85%] whitespace-nowrap overflow-hidden'>
-//                                     <h1 className='group-hover:text-secondary text-ellipsis duration-300 transition-all text-[1.13rem] leading-[1.3] font-bold'>{x.titre}</h1>
-//                                     <span className='text-[.7rem] text-gray-600 text-ellipsis font-medium flex items-center gap-1'><Building06Icon strokeWidth={2} size={13} /> Franchise IT</span>
-//                               </div>
-//                               <div title='Commander' className='w-[15%] hover:bg-secondary hover:text-white/80 duration-300 transition-all p-2 rounded-[6px] text-secondary bg-secondary/60 flex items-center justify-center border'>
-//                                     <ShoppingCart01Icon strokeWidth={2} size={20} />
-//                               </div>
-//                         </div>
-//                         <div className='py-2 px-4 text-[.9rem] text-primary/90 font-bold flex items-center justify-between bg-green-50'>
-//                               <span className='flex gap-1 items-center'>{x.qte} <sub className='text-[.6rem] text-gray-500'>{x.meter}</sub></span>
-//                               <span className='flex gap-1 items-center'>{x.pu} <sub className='text-[.6rem] text-gray-500'>{x.monaie}</sub></span>
-//                         </div>
-//                         <div className='py-2.5 px-4 text-[.85rem] text-primary/90 font-semibold flex items-center justify-between bg-yellow-50'>
-//                               <span className='flex gap-1.5 items-center'><Location01Icon size={17} />{x.local + ", " + x.pays}</span>
-//                               {/* <span className='flex gap-1 items-center'>{x.pu} <sub className='text-[.6rem] text-gray-500'>{x.monaie}</sub></span> */}
-//                         </div>
-//                         <p className='text-gray-600 leading-[1.3] text-[.85rem] font-medium'>{x.descrip}</p>
-//                         <div className='flex items-center justify-between'>
-//                               <div className='flex items-center gap-1'>
-//                                     <span className='font-medium text-[.75rem] text-gray-600'>Rating :</span>
-//                                     <ul className='flex items-center gap-0.5'>
-//                                           <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-//                                           <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-//                                           <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-//                                           <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-//                                           <li><StarHalfIcon strokeWidth={0.5} className='text-yellow-500 fill-yellow-500' size={12} /> </li>
-//                                     </ul>
-//                               </div>
-//                               <span className='text-[0.7rem] px-4 rounded-[50px] text-primary font-bold py-0 bg-primary/10'>{x.qalite}</span>
-//                         </div>
-//                   </div>
-//             </NavLink>
-//       )
-// }
 
 export const CardProduit = ({ x }) => {
       return (
-            <NavLink to={"/centrale_achats/produits/" + x.id} className='group border-gray-200 overflow-hidden bg-white rounded-[5px]'>
-                  <div className='relative h-[200px] md:h-[240px] bg-gray-200'>
-                        <img className='absolute rounded-t-[5px] overflow-hidden left-0 top-0 w-full h-full object-contain' src={x.image} alt='item' />
-                        <div className='absolute top-[5%] text-white right-[3%] bg-green-700 font-bold border border-white rounded-[50px] px-4 text-[.7rem]'>
+            <div className='group border p-2 border-gray-200 overflow-hidden bg-white rounded-[5px]'>
+                  <div className='relative h-[200px] md:h-[265px] p-6 bg-gray-100'>
+                        <img className='absolute group-hover:scale-[.75] duration-500 transition-all scale-[.65] rounded-t-[5px] overflow-hidden left-0 top-0 w-full h-full object-contain' src={x.image} alt='item' />
+                        {/* <div className='absolute top-[5%] text-white right-[3%] bg-green-700 font-bold border border-white rounded-[50px] px-4 text-[.7rem]'>
                               {x.statut}
-                        </div>
-                  </div>
-                  <div className='px-1.5s py-3.5 flex flex-col gap-3'>
-                        <div className='flex items-center gap-1.5'>
-                              <div className='flex flex-col gap-1 w-[85%] whitespace-nowrap overflow-hidden'>
-                                    <h1 className='group-hover:text-secondary text-ellipsis duration-300 transition-all text-[1.13rem] leading-[1.3] font-bold'>{x.titre}</h1>
-                                    <span className='text-[.7rem] text-gray-600 text-ellipsis font-medium flex items-center gap-1'><Building06Icon strokeWidth={2} size={13} /> Franchise IT</span>
-                              </div>
-                              <div title='Commander' className='w-[15%] hover:bg-secondary hover:text-white/80 duration-300 transition-all p-2 rounded-[6px] text-secondary bg-secondary/60 flex items-center justify-center border'>
-                                    <ShoppingCart01Icon strokeWidth={2} size={20} />
-                              </div>
-                        </div>
-                        {/* <div className='py-2 px-4 text-[.9rem] text-primary/90 font-bold flex items-center justify-between bg-green-50'>
-                              <span className='flex gap-1 items-center'>{x.qte} <sub className='text-[.6rem] text-gray-500'>{x.meter}</sub></span>
-                              <span className='flex gap-1 items-center'>{x.pu} <sub className='text-[.6rem] text-gray-500'>{x.monaie}</sub></span>
                         </div> */}
-                        <div className='flex items-center justify-between'>
-                              <div className='flex items-center gap-1'>
-                                    <span className='font-medium text-[.75rem] text-gray-600'>Rating :</span>
-                                    <ul className='flex items-center gap-0.5'>
-                                          <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-                                          <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-                                          <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-                                          <li><StarIcon size={12} className='text-yellow-500 fill-yellow-500' /> </li>
-                                          <li><StarHalfIcon strokeWidth={0.5} className='text-yellow-500 fill-yellow-500' size={12} /> </li>
-                                    </ul>
-                              </div>
-                              <span className='text-[0.7rem] px-4 rounded-[50px] text-primary font-bold py-0 bg-primary/10'>{x.qalite}</span>
-                        </div>
                   </div>
-            </NavLink>
+                  <div className='py-3 px-2 flex flex-col gap-2'>
+                        <NavLink to={"/produits/" + x.id} className='flex items-center gap-1.5'>
+                              <div className='flex flex-col gap-1 whitespace-nowrap overflow-hidden'>
+                                    <h1 className='group-hover:text-primary/80 text-gray-700 text-ellipsis duration-300 transition-all text-[1.05rem] leading-[1.3] font-semibold'>{x.titre}</h1>
+                              </div>
+                        </NavLink>
+                        <div className="flex flex-col gap-2">
+                        <span className="flex items-center text-green-700 font-bold text-[.7rem]">EN STOCK : <mark className="bg-transparent">&nbsp;{x.qte+" "+x.meter} </mark></span>
+                        <ul className='flex items-center gap-0.5'>
+                              <li><StarIcon size={11} className='text-yellow-500 fill-yellow-500' /> </li>
+                              <li><StarIcon size={11} className='text-yellow-500 fill-yellow-500' /> </li>
+                              <li><StarIcon size={11} className='text-yellow-500 fill-yellow-500' /> </li>
+                              <li><StarIcon size={11} className='text-yellow-500 fill-yellow-500' /> </li>
+                              <li><StarHalfIcon strokeWidth={0.5} className='text-yellow-500 fill-yellow-500' size={11} /> </li>
+                        </ul>
+                        <span className='
+                        text-secondary text-[.9rem] font-bold'>{x.monaie+""+x.pu}<sub className="text-[.62rem] top-[0] font-bold text-primary/80">{"/"+x.meter}</sub></span>
+                       
+</div>
+
+{/* <span className='text-[.85rem] text-gray-600 text-ellipsis font-medium flex items-center gap-1'><Building06Icon strokeWidth={2} size={13} /> Franchise IT</span> */}
+                        <button className="relative w-full mt-1.5 rounded-[6px] border  
+                   text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 
+                   py-2 font-semibold px-1 overflow-hidden group">
+
+  <span className="absolute left-0 top-0 h-full w-0 bg-primary/30 
+                   transition-all duration-500 ease-out group-hover:w-full"></span>
+
+  <span className="relative z-10 flex items-center gap-2.5 
+                   transition-colors duration-500 group-hover:text-primary/80">
+    <ShoppingCart01Icon 
+      strokeWidth={2} 
+      size={19} 
+      className="transition-colors duration-500 group-hover:text-primary/80"
+    />
+    Ajouter au panier
+  </span>
+</button>
+                  </div>
+            </div>
       )
 }
 
@@ -260,19 +226,19 @@ function CentralAchat() {
 
       const apropos = [
             {
-                  icon: <Building04Icon strokeWidth={2}/>,
+                  icon: <Building04Icon strokeWidth={2} />,
                   label: "100+",
                   descrip: "Fournisseurs Actifs",
                   sty: "self-start"
             },
             {
-                  icon: <UserMultiple02Icon strokeWidth={2}/>,
+                  icon: <UserMultiple02Icon strokeWidth={2} />,
                   label: "50+",
                   descrip: "Acheteurs Actifs",
                   sty: "self-center"
             },
             {
-                  icon: <Bitcoin04Icon strokeWidth={2}/>,
+                  icon: <Bitcoin04Icon strokeWidth={2} />,
                   label: "€10M+",
                   descrip: "Volume d'Affaires",
                   sty: "self-end"
@@ -291,7 +257,7 @@ function CentralAchat() {
                                     Découvrez notre plateforme centralisée qui connecte les fournisseurs et les acheteurs à travers une large gamme de produits de qualité
                               </p>
                               <div className='grid w-[80%] max-md:w-full grid-cols-2 max-md:text-[.9rem] max-md:grid-cols-1 gap-4 mt-2'>
-                              <NavLink to={'/centrale_achats/login'} className='py-2 font-semibold text-center flex justify-center gap-3 px-5 bg-secondary  border-2 text-white rounded-md border-white'>Se connecter<ArrowRight02Icon /></NavLink>
+                                    <NavLink to={'/centrale_achats/login'} className='py-2 font-semibold text-center flex justify-center gap-3 px-5 bg-secondary  border-2 text-white rounded-md border-white'>Se connecter<ArrowRight02Icon /></NavLink>
                                     <NavLink to={'/centrale_achats/'} className='py-2 font-semibold text-center flex justify-center gap-3 px-5  border-2 text-white rounded-md border-white'>Commencer mes achats <ArrowRight02Icon /></NavLink>
                                     {/* <NavLink to={'/a/centrale_d_achat/enregistrement/acheteur'} className='py-2 font-semibold text-center flex justify-center items-center gap-4 text-white bg-secondary rounded-md '>Je suis un acheteur<ArrowRight02Icon /></NavLink> */}
                               </div>

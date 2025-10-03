@@ -33,7 +33,7 @@ function ProductShop() {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 25;
 
   // Découper la liste en pages
   const startIndex = (currentPage - 1) * itemsPerPage;

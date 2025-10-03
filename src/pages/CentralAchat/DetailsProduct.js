@@ -30,7 +30,7 @@ function DetailsProduct() {
 
       <div className='px-[5%] pt-10 pb-12 max-md:py-10 flex max-md:flex-col gap-7 md:gap-8'>
         <div className='w-full md:w-[65%] flex flex-col gap-6'>
-          <div className='relative overflow-hidden bg-black aspect-video rounded-[6px] h-[330px] md:h-[500px] w-full'>
+          <div className='relative overflow-hidden bg-gray-100 p-8 aspect-video rounded-[6px] h-[330px] md:h-[500px] w-full'>
             <img className='w-full h-full object-contain' src={produit?.image} alt='products_ccca_detail' />
           </div>
 

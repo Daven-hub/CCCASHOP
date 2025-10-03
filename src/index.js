@@ -20,11 +20,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
-      <AuthProvider>
         <BrowserRouter>
+          <AuthProvider>
             <App />
+          </AuthProvider>
         </BrowserRouter>
-        </AuthProvider>
       </I18nextProvider>
     </Provider>
   </React.StrictMode>

@@ -11,8 +11,8 @@
         "email":"info@franchisecc.com",
         "telephone":"+237690657905",
         "site":"franchise-it-tech.com",
-        "devise":"FCFA",
-        "zoneCouverture":"FCFA",
+        "devise":"$",
+        "zoneCouverture":"$",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
         "rating": 5
       },
@@ -29,7 +29,7 @@
         "telephone":"+237690657905",
         "site":"franchiseconseilsarl.com",
         "devise":"$CAD",
-        "zoneCouverture":"FCFA",
+        "zoneCouverture":"$",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
         "rating": 5
       }
@@ -47,7 +47,7 @@
         "telephone":"+237690657905",
         "site":"franchiseconseilsarl.com",
         "devise":"$CAD",
-        "zoneCouverture":"FCFA",
+        "zoneCouverture":"$",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
         "rating": 5
       },
@@ -63,8 +63,8 @@
         "email":"info@franchisecc.com",
         "telephone":"+237690657905",
         "site":"franchise-it-tech.com",
-        "devise":"FCFA",
-        "zoneCouverture":"FCFA",
+        "devise":"$",
+        "zoneCouverture":"$",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
         "rating": 5
       },
@@ -81,7 +81,7 @@
         "telephone":"+237690657905",
         "site":"franchiseconseilsarl.com",
         "devise":"$CAD",
-        "zoneCouverture":"FCFA",
+        "zoneCouverture":"$",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
         "rating": 5
       },
@@ -98,7 +98,7 @@
         "telephone":"+237690657905",
         "site":"franchiseconseilsarl.com",
         "devise":"$CAD",
-        "zoneCouverture":"FCFA",
+        "zoneCouverture":"$",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
         "rating": 5
       }
