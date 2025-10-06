@@ -23,9 +23,8 @@ function TypeEnregistrement() {
   };
   const bread = [
     { label: t("accueille"), path: "/a" },
-    { label: " Centrale d'achat", path: "/centrale_achats" },
-    { label: " Enregistrement", path: "/centrale_achats/enregistrement" },
-    { label: id, path: "/centrale_achats/enregistrement/" + id }
+    { label: " Enregistrement", path: "/enregistrement" },
+    { label: id, path: "/enregistrement/" + id }
   ];
   return (
     <div className=''>
@@ -48,7 +47,7 @@ function TypeEnregistrement() {
       </div> */}
       <div className='px-[5%] md:px-[15%] bg-white flex flex-col gap-6 py-7 max-md:py-8'>
         {id==="fournisseur"?<FormFournisseur compte={id} handleChange={handleChange} image={image} />:
-        <FormAcheteur handleChange={handleChange} image={image} />}
+        <FormAcheteur compte={id} handleChange={handleChange} image={image} />}
       </div>
     </div>
   )

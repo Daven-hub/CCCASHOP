@@ -11,8 +11,7 @@ function Enregistrement() {
 
   const bread = [
     { label: t("accueille"), path: "/a" },
-    { label: " Centrale d'achat", path: "/centrale_achats" },
-    { label: " Enregistrement", path: "/centrale_achats/enregistrement" },
+    { label: " Enregistrement", path: "/enregistrement" },
   ];
   return (
     <div className=''>

@@ -24,7 +24,7 @@ function LoginShop() {
       const dispatch = useDispatch();
       const {userConnected} = useAuth()
       const datas = [
-            "Fournisseur", "Acheteur"
+            "Fournisseur", "Acheteur", "Admin"
       ]
       const { toast } = useToast();
       const bread = [
@@ -87,7 +87,7 @@ function LoginShop() {
                                     name="role"
                                     control={controle}
                                     render={({ field }) => (
-                                          <div className='grid md:grid-cols-2 text-black/80 grid-cols-1 gap-1'>
+                                          <div className='grid md:grid-cols-3 text-black/80 grid-cols-1 gap-1'>
                                                 {datas?.map((x, ind) =>
                                                       <div key={ind} onClick={() => field.onChange(x.toLowerCase())} className={`px-4 flex ${x.toLowerCase() === field.value && "bg-primary/70 text-white"} items-center gap-1.5 cursor-pointer hover:bg-gray-50 py-4 justify-center border rounded-[7px] font-semibold text-[.9rem]`}>{x.toLowerCase() !== field.value ? <Circle size={17} /> : <CircleCheck className='text-green-700' size={17} />} {x}</div>
                                                 )}

@@ -6,14 +6,14 @@ import data from "../../../datas/produits.json"
 import { CardProduit } from '../';
 import { paddingH } from '../../../components/Navbar/CentraleAchat/Headers'
 import $ from "jquery"
+import SideShop from '../../../components/SideShop';
 // import Pagination from '../../../components/Pagination';
 
 function ProductShop() {
   const { t } = useTranslation()
   const bread = [
-    { label: t("accueille"), path: "/a" },
-    { label: " Centrale d'achat", path: "/a/centrale_d_achat" },
-    { label: "Liste des produits", path: "/a/centrale_d_achat/produits" },
+    { label: t("accueille"), path: "/" },
+    { label: "Liste des produits", path: "/produits" },
   ];
 
   $(function () {
@@ -41,33 +41,34 @@ function ProductShop() {
     startIndex,
     startIndex + itemsPerPage
   );
-  
+
   return (
     <Annimated className="bg-white">
       <div className="px-[5%] py-[1.5rem] bg-gray-100">
         <Breadcrumb data={bread} />
       </div>
-      <div className={`flex px-[${paddingH}] gap-6 py-12 md:py-12`}>
-        <div className='w-[22%] rounded-[7px] bg-green-600 sticky top-[15px] h-[650px]'></div>
-        <div className='w-[78%] flex overflow-hidden flex-col gap-8'>
-          {/* <div className='flex flex-col px-4 md:px-5 overflow-hidden border rounded-[7px] py-3.5'>
-          <div className='flex gap-5 items-center'>
-            <div className='w-[94%] flex border rounded-[7px] overflow-hidden items-center'>
-              <label htmlFor='search' className='w-[4.3%] px-5 flex justify-center items-center py-2.5'><Search01Icon size={18} strokeWidth={3} aria-label='name' className='flex-shrink-0 text-gray-600' /></label>
-              <input id="search" name="search" className='w-[95.7%] px-4 outline-0 text-[.9rem] py-2.5' type='text' placeholder='Enter text' />
+      <div className={`flex px-[${paddingH}] gap-8 py-12 md:py-12`}>
+        <div className='w-[18%] rounded-[7px] sticky top-[15px] h-[650px]'>
+          <SideShop />
+        </div>
+        <div className='w-[82%] flex overflow-hidden flex-col gap-6'>
+          <div className='flex text-[.7rem] items-center justify-between'>
+            <div className='flex items-center gap-1.5'>
+              <span className='font-semibold'>Filtré par :</span>
+              <select className='text-[.8rem] outline-0 border p-2.5'>
+                <option>Fitré par le plus populaire</option>
+                <option>Fitré par l'ancien</option>
+                <option>Fitré par le prix : plus pétit</option>
+              </select>
             </div>
-            <div className='w-[6%] cursor-pointer settings-btn text-[1.1rem] flex items-center gap-2 text-black/70 font-semibold'>
-              <FilterIcon strokeWidth={1} className='text-gray-600 fill-gray-600' size={20}/>
-              <span className='max-md:hidden'>Filter</span>
+            <div className=''>
+              <select className='text-[.8rem] outline-0 border p-2.5'>
+                <option>Show 15</option>
+                <option>Show 25</option>
+                <option>Show 30</option>
+              </select>
             </div>
           </div>
-          <div className='corps overflow-hidden transition-all duration-300' style={{ height: 0 }}>
-            <div className='flex mt-3.5 pt-2 border-t flex-col'>
-            Filter catégorie<br></br>
-            comment tu vas
-            </div>
-          </div>
-        </div> */}
           <div className='grid gap-4 grid-cols-1 md:grid-cols-4'>
             {currentProducts?.map((x, index) => (
               <CardProduit key={index} x={x} />

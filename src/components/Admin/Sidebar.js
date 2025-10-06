@@ -18,7 +18,7 @@ import {
 } from 'react-icons/fi';
 import { MdClose, MdOutlineDoubleArrow } from 'react-icons/md';
 import logo from '../../assets/1x/icone blanc.png';
-import { ArrowRight01Icon, Notification01Icon } from 'hugeicons-react';
+import { ArrowRight01Icon, Notification01Icon, ShoppingCart01Icon, ShopSignIcon } from 'hugeicons-react';
 import $ from 'jquery'
 // import { roleChange } from '../../pages/Admin/Dashboard';
 import { File, FileTextIcon, Newspaper, UserIcon } from 'lucide-react';
@@ -52,7 +52,7 @@ function Sidebar({setIsSidebarOpen}) {
         group: '',
         corps: [
           { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
-          { title: 'Acceuil du site', icon: <FiHome size={18} />, path: '/a', children: [] },
+          { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
         ]
       },
       {
@@ -67,26 +67,26 @@ function Sidebar({setIsSidebarOpen}) {
           { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
         ]
       },
-      {
-        group: 'Pages',
-        corps: [
-          { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/admin/ccca-revue', children: [] },
-          { title: 'Actualité', icon: <Newspaper size={18} />, path: '/admin/news', children: [] },
-          // { title: 'Événements', icon: <FiCalendar size={18} />, path: '/admin/events', children: [] },
-          // { title: 'Activité', icon: <FiFlag size={18} />, path: '/admin/activities', children: [] },
-          // { title: 'Services', icon: <FiBriefcase size={18} />, path: '/admin/Services', children: [] },
-          {
-            title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
-              { title: 'Presentation', path: "/admin/à-propos/presentation" },
-              { title: 'Conseil d\'administration', path: "/admin/à-propos/Conseil-d'administration" },
-              // { title: 'Diretion Éxecutive', path: '/admin/ConseilAdministration' },
-              // { title: 'Bureau Afrique', path: '/admin/à-propos/bureau-afrique' },
-              // { title: 'Bureau éxécutive', path: '/admin/ConseilAdministration' },
-              // { title: 'Galérie', path: '/admin/à-propos/galéries' },
-            ]
-          },
-        ]
-      },
+      // {
+      //   group: 'Pages',
+      //   corps: [
+      //     // { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/admin/ccca-revue', children: [] },
+      //     // { title: 'Actualité', icon: <Newspaper size={18} />, path: '/admin/news', children: [] },
+      //     // { title: 'Événements', icon: <FiCalendar size={18} />, path: '/admin/events', children: [] },
+      //     // { title: 'Activité', icon: <FiFlag size={18} />, path: '/admin/activities', children: [] },
+      //     // { title: 'Services', icon: <FiBriefcase size={18} />, path: '/admin/Services', children: [] },
+      //     {
+      //       title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
+      //         { title: 'Presentation', path: "/admin/à-propos/presentation" },
+      //         { title: 'Conseil d\'administration', path: "/admin/à-propos/Conseil-d'administration" },
+      //         // { title: 'Diretion Éxecutive', path: '/admin/ConseilAdministration' },
+      //         // { title: 'Bureau Afrique', path: '/admin/à-propos/bureau-afrique' },
+      //         // { title: 'Bureau éxécutive', path: '/admin/ConseilAdministration' },
+      //         // { title: 'Galérie', path: '/admin/à-propos/galéries' },
+      //       ]
+      //     },
+      //   ]
+      // },
       // {
       //   group: 'Autre',
       //   corps: [
@@ -118,7 +118,7 @@ function Sidebar({setIsSidebarOpen}) {
         group: '',
         corps: [
           { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
-          { title: 'Acceuil du site', icon: <FiHome size={18} />, path: '/a', children: [] },
+          { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
         ]
       },
       {
@@ -153,7 +153,7 @@ function Sidebar({setIsSidebarOpen}) {
         group: '',
         corps: [
           { title: 'Tableau de Bord', icon: <FiHome size={18} />, path: '/admin/tableau-de-bord', children: [] },
-          { title: 'Acceuil du site', icon: <FiHome size={18} />, path: '/a', children: [] },
+          { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
         ]
       },
       {

@@ -38,6 +38,7 @@ import { Toaster } from './components/ui/Toaster';
 import Settings from './pages/Admin/Settings';
 import Profile from './pages/Admin/Profile';
 import NotFoun from './pages/Error/NotFoun';
+import { useAuth } from './context/authContext';
 
 
 function App() {
@@ -61,6 +62,8 @@ function App() {
   //     </Suspense>
   //   );
   // };
+
+  const {userConnected}=useAuth();
 
   return (
     // <Suspense fallback={<Loader />}>
@@ -92,7 +95,7 @@ function App() {
             </Route>
           </Route>
         </Route>
-        {/* {user && */}
+        {userConnected &&
         <Route path="/admin" element={<Layout />}>
           <Route path='tableau-de-bord' element={<Dashboard />} />
           <Route path="produits">
@@ -114,7 +117,7 @@ function App() {
             <Route path="presentation" element={<PresentationAdmin />} />
           </Route>
         </Route>
-        {/* } */}
+       } 
 
       </Routes>
     </>

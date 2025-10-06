@@ -14,11 +14,16 @@ const initialState = {
   error: null,
 }
 
-export const register = createAsyncThunk (
+export const registerApp = createAsyncThunk (
   'auth/register',
-  async (user, thunkAPI) => {
+  async (datas, thunkAPI) => {
     try {
-      return await authService.register (user);
+      const response= await authService.register (datas);
+      if (!response.success) {
+        return thunkAPI.rejectWithValue(response.error);
+      }else{
+        return response;
+      }
     } catch (err) {
       const message =
         (err.response &&
@@ -37,7 +42,7 @@ export const login = createAsyncThunk(
     try {
       const response= await authService.login(payload);
       if (!response.success) {
-        return thunkAPI.rejectWithValue(response.error || "Login failed");
+        return thunkAPI.rejectWithValue(response.error || "Connexion échouée");
       }else{
         return response;
       }
@@ -66,26 +71,26 @@ export const authSlice = createSlice({
       localStorage.removeItem('csrf');
       localStorage.removeItem('user');
     },
+    reset: (state) => {
+      state.usershops=[]
+    }
   },
   extraReducers: builder => {
     builder
-      .addCase (register.pending, state => {
+      .addCase (registerApp.pending, state => {
         state.authStatus = "loading";
       })
-      .addCase (register.fulfilled, (state, action) => {
+      .addCase (registerApp.fulfilled, (state, action) => {
         state.authStatus = "success";
         state.isSuccess = true;
         state.usershops.unshift (action.payload.result);
       })
-      .addCase (register.rejected, (state, action) => {
+      .addCase (registerApp.rejected, (state, action) => {
         state.authStatus = "success";
         state.error = action.payload || action.error.message || "Erreur de connexion";
-        state.message = action.payload.message;
       })
       .addCase(login.pending, (state) => {
-        state.authStatus = "error";
-        state.statusR=false;
-        state.error = null;
+        state.authStatus = "loading";
       })
       .addCase(login.fulfilled, (state, action) => {
         state.authStatus = "success";
@@ -116,5 +121,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, reset } = authSlice.actions;
 export default authSlice.reducer;

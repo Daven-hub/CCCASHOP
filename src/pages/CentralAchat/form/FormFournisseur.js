@@ -1,37 +1,71 @@
 // MultiStepForm.js
 import React, { useState } from "react";
-import StepWizard from "react-step-wizard";
+// import StepWizard from "react-step-wizard";
 import { Controller, useForm } from "react-hook-form";
-import { MoveLeft, MoveRight, PlusCircle } from "lucide-react";
+import { Loader2, MoveLeft, MoveRight, PlusCircle } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select";
+import { useDispatch } from "react-redux";
+import { registerApp } from "../../../store/slices/auth.slice";
+import { useToast } from "../../../hook/use-toast";
 
 function Step1({ compte, nextStep, setFormData, formData }) {
-      const { register, handleSubmit, control, formState: { errors } } = useForm({
-            defaultValues: { ...formData, role: compte },
+      const { register, handleSubmit, control, formState: { errors },reset } = useForm({
+            defaultValues: { ...formData, role: compte, username: formData?.nom },
       });
+
+      const [loading, setLoading] = useState(false)
+
+      const dispatch = useDispatch()
+      const { toast } = useToast();
 
       const [image, setImage] = useState(null);
 
       const handleChange = (e) => {
-            const file = e.target.files[0];
+            const file = e.target?.files[0];
             if (file) {
                   setImage(URL.createObjectURL(file));
-                  setFormData(prev => ({ ...prev, logo: e.target.files }));
             }
       };
 
-      const onSubmit = (data) => {
-            setFormData({ ...formData, ...data });
-            nextStep();
+      const onSubmit = async (data) => {
+            setLoading(true)
+            try {
+                  const { status, ...safeData } = data;
+                  const datas = { ...safeData, username: safeData?.nom }
+                  const datamodel = new FormData();
+                  for (const key in datas) {
+                        if (key === 'profile') {
+                              if (datas.profile && datas.profile.length > 0) {
+                                    datamodel.append('profile', datas?.profile?.[0]);
+                              }
+                        } else if (datas[key] !== undefined && datas[key] !== null) {
+                              datamodel.append(key, datas[key]);
+                        }
+                  }
+                  await dispatch(registerApp(datamodel)).unwrap();
+                  toast({
+                        title: "Enregistrement éffectué",
+                  });
+                  reset()
+            } catch (error) {
+                  console.log("error", error)
+                  toast({
+                        title: "Enregistrement échoué",
+                        description: error?.toString(),
+                        variant: "destructive",
+                  });
+            } finally {
+                  setLoading(false)
+            }
+
+            // await setFormData({ ...formData, ...data });
+            // console.log("data", data)
+            // nextStep();
       };
 
       return (
             <div className="flex form-f flex-col gap-8">
-                  <div className="flex items-center justify-between gap-4">
-                        <h2 className="text-4xl font-bold">Renseigner vos informations principale</h2>
-                        <NavLink className={"text-[.85rem] text-gray-600 hover:underline transition-all duration-300 mt-1"} to={"/centrale_achats/login"} >J'ai déja un compte</NavLink>
-                  </div>
                   <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[1.28rem] p-0 rounded-[5px]">
                         <div className='grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-6 items-center'>
                               <div className='flex flex-col gap-3.5 md:gap-[1.35rem]'>
@@ -50,26 +84,21 @@ function Step1({ compte, nextStep, setFormData, formData }) {
                                           <input
                                                 className='border rounded-[5px] p-2'
                                                 type='text'
-                                                {...register("companyName", { required: "Nom obligatoire" })}
+                                                {...register("nom", { required: "Nom obligatoire" })}
                                           />
-                                          {errors.companyName && <p className="text-red-500 text-sm">{errors.companyName.message}</p>}
+                                          {errors.nom && <p className="text-red-500 text-sm">{errors.nom.message}</p>}
                                     </div>
 
                                     <div className='flex relative flex-col gap-1'>
-                                          <label>Adresse du siège social</label>
-                                          {/* <input
-                                                className='border rounded-[5px] p-2'
-                                                type='text'
-                                                {...register("headOffice")}
-                                          /> */}
+                                          <label>Statut</label>
                                           <Controller
                                                 name="status"
                                                 control={control}
                                                 rules={{ required: "Le statut est obligatoire" }}
                                                 render={({ field, fieldState }) => (
                                                       <div className="">
-                                                            <Select className="p-[.65rem]" value={field.value} onValueChange={field.onChange}>
-                                                                  <SelectTrigger>
+                                                            <Select value={field.value} onValueChange={field.onChange}>
+                                                                  <SelectTrigger >
                                                                         <SelectValue placeholder="Choisir un statut" />
                                                                   </SelectTrigger>
                                                                   <SelectContent>
@@ -99,8 +128,11 @@ function Step1({ compte, nextStep, setFormData, formData }) {
                                                 id="upload"
                                                 accept="image/*"
                                                 className="hidden"
-                                                {...register("logo")}
-                                                onChange={handleChange}
+                                                {...register("profile")}
+                                                onChange={(e) => {
+                                                      register("profile").onChange(e);
+                                                      handleChange(e);
+                                                }}
                                           />
                                           <label
                                                 htmlFor="upload"
@@ -122,26 +154,6 @@ function Step1({ compte, nextStep, setFormData, formData }) {
 
                         <div className='grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-6 items-center'>
                               <div className='flex relative flex-col gap-1'>
-                                    <label>Pays / zone géographique</label>
-                                    <input
-                                          className='border rounded-[5px] p-2'
-                                          type='text'
-                                          {...register("country")}
-                                    />
-                              </div>
-                              <div className='flex relative flex-col gap-1'>
-                                    <label>Téléphone</label>
-                                    <input
-                                          className='border rounded-[5px] p-2'
-                                          type='text'
-                                          {...register("phone", { required: "Téléphone obligatoire" })}
-                                    />
-                                    {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
-                              </div>
-                        </div>
-
-                        <div className='grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-6 items-center'>
-                              <div className='flex relative flex-col gap-1'>
                                     <label>Email</label>
                                     <input
                                           className='border rounded-[5px] p-2'
@@ -154,16 +166,40 @@ function Step1({ compte, nextStep, setFormData, formData }) {
                                     {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                               </div>
                               <div className='flex relative flex-col gap-1'>
-                                    <label>Site web</label>
+                                    <label>Adresse du siège social</label>
                                     <input
                                           className='border rounded-[5px] p-2'
                                           type='text'
-                                          {...register("website")}
+                                          {...register("adresse", { required: "Adresse requis" })}
                                     />
                               </div>
                         </div>
 
                         <div className='grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-6 items-center'>
+                              <div className='flex relative flex-col gap-1'>
+                                    <label>Pays / zone géographique</label>
+                                    <input
+                                          className='border rounded-[5px] p-2'
+                                          type='text'
+                                          {...register("pays", { required: true })}
+                                    />
+                              </div>
+                              <div className='flex relative flex-col gap-1'>
+                                    <label>Téléphone</label>
+                                    <input
+                                          className='border rounded-[5px] p-2'
+                                          type='text'
+                                          {...register("tel", {
+                                                required: "Téléphone obligatoire", pattern: {
+                                                      value: /^[0-9]+$/, message: "Le numéro doit contenir uniquement des chiffres",
+                                                }
+                                          })}
+                                    />
+                                    {errors.tel && <p className="text-red-500 text-sm">{errors.tel.message}</p>}
+                              </div>
+                        </div>
+
+                        {/* <div className='grid grid-cols-1 sm:grid-cols-2 gap-3.5 md:gap-6 items-center'>
                               <div className='flex relative flex-col gap-1'>
                                     <label>Monnaie utilisée</label>
                                     <input
@@ -173,19 +209,24 @@ function Step1({ compte, nextStep, setFormData, formData }) {
                                     />
                               </div>
                               <div className='flex relative flex-col gap-1'>
-                                    <label>Adresse du siège social</label>
+                                    <label>Site web</label>
                                     <input
                                           className='border rounded-[5px] p-2'
                                           type='text'
-                                          {...register("deliveryZone")}
+                                          {...register("website")}
                                     />
                               </div>
-                        </div>
+                        </div> */}
                         <button
                               type="submit"
-                              className="bg-primary flex items-center w-fit font-semibold gap-2.5 text-white px-4 py-2 rounded text-[.9rem] mt-5"
+                              className="bg-primary flex items-center w-fit font-medium gap-2.5 text-white px-7 py-2.5 rounded text-[.9rem] mt-5"
                         >
-                              Suivant <MoveRight strokeWidth={1} />
+                              {loading ? (
+                                    <Loader2 className="animate-spin h-5 w-5 text-white" />
+                              ) : (
+                                    "Enregistrer"
+                              )}
+                              {/* <MoveRight strokeWidth={1} /> */}
                         </button>
                   </form>
             </div>
@@ -397,14 +438,19 @@ export default function FormFournisseur({ compte }) {
       const [formData, setFormData] = useState({});
       const [currentStep, setCurrentStep] = useState(1);
 
-      console.log(formData)
+      // console.log(formData)
       return (
-            <div className="w-full py-5 z-0">
-                  <StepWizard onStepChange={(stats) => setCurrentStep(stats.activeStep)}>
+            <div className="w-full flex flex-col gap-8 py-5 z-0">
+                  <div className="flex items-center justify-between gap-4">
+                        <h2 className="text-4xl font-bold">Renseigner vos informations principales</h2>
+                        <NavLink className={"text-[.85rem] text-gray-600 hover:underline transition-all duration-300 mt-1"} to={"/login"} >J'ai déja un compte</NavLink>
+                  </div>
+                  {/* <StepWizard onStepChange={(stats) => setCurrentStep(stats.activeStep)}>
                         <Step1 setFormData={setFormData} compte={compte} formData={formData} />
                         <Step2 setFormData={setFormData} formData={formData} />
                         <Step3 formData={formData} />
-                  </StepWizard>
+                  </StepWizard> */}
+                  <Step1 setFormData={setFormData} compte={compte} formData={formData} />
             </div>
       );
 }

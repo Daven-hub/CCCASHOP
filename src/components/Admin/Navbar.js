@@ -1,13 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Menu01Icon } from 'hugeicons-react';
-import { BaseUrl } from '../../config';
-import * as Avatar from "@radix-ui/react-avatar";
 import { FlagIcon } from "react-flag-kit";
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
-import { FiLogOut, FiSettings } from 'react-icons/fi';
-import { useAuth } from '../../context/authContext';
-import { FaUserAlt } from 'react-icons/fa';
 import UserMenu from '../UserMenu';
 
 export const getFlag = (lang) => {
@@ -46,7 +40,7 @@ function Navbar({ toggleSidebar }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
  
-  const { userConnected,handleLogout } = useAuth();
+  // const { userConnected,handleLogout } = useAuth();
 
   return (
     <nav className="w-full sticky top-0 bg-white shadow-md z-[1] shadow-slate-100 flex items-center justify-between px-6 max-md:px-[4%] py-3 max-md:py-2.5 border-b">

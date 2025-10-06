@@ -4,7 +4,7 @@ import { CardFournisseur, CardProduit } from '..'
 import data from "../../../datas/produits.json"
 import datas from "../../../datas/fournisseur.json"
 import { NavLink } from 'react-router-dom'
-import { CheckListIcon, MoveRightIcon } from 'hugeicons-react'
+// import { CheckListIcon, MoveRightIcon } from 'hugeicons-react'
 import { paddingH } from '../../../components/Navbar/CentraleAchat/Headers'
 import { FaCheck } from 'react-icons/fa'
 import { MoveRight } from 'lucide-react'
@@ -25,7 +25,7 @@ function Commerce() {
             <div className='flex flex-col'>
                   <HeadersBottom />
                   <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col`}>
-                        <PresentationLabel titre={"Produits populair"} Component={<NavLink className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline" to={"#"}>Listes des produits <MoveRight size={14} /></NavLink>} />
+                        <PresentationLabel titre={"Produits en vedette"} Component={<NavLink className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline" to={"#"}>Listes des produits <MoveRight size={14} /></NavLink>} />
                         <div className='grid gap-5 grid-cols-1 md:grid-cols-5'>
                               {data?.slice(0, 10)?.map((x, index) => (
                                     <CardProduit key={index} x={x} />

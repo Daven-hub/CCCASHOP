@@ -1,6 +1,7 @@
 [
       {
         "id": "FOURX11",
+        "couvert": "/fournisseur/couvert.jpg",
         "image": "/fournisseur/gpf.png",
         "nom": "Franchise IT",
         "forme":"SARL",
@@ -18,6 +19,7 @@
       },
       {
         "id": "FOURX12",
+        "couvert": "/fournisseur/couvert.jpg",
         "image": "/fournisseur/logo.png",
         "nom": "Franchise Conseil Sarl",
         "forme":"SAS",
@@ -36,6 +38,7 @@
       ,
       {
         "id": "FOURX13",
+        "couvert": "/fournisseur/couvert.jpg",
         "image": "/fournisseur/mentorat.PNG",
         "nom": "NGK Entreprise",
         "forme":"SAS",
@@ -53,6 +56,7 @@
       },
       {
         "id": "FOURX14",
+        "couvert": "/fournisseur/couvert.jpg",
         "image": "/fournisseur/shall.jpg",
         "nom": "Franchise IT",
         "forme":"SARL",
@@ -70,12 +74,13 @@
       },
       {
         "id": "FOURX15",
+        "couvert": "/fournisseur/couvert.jpg",
         "image": "/fournisseur/sicaf.jpg",
         "nom": "Franchise Conseil Sarl",
         "forme":"SAS",
         "domaine":"Immigration",
         "matricul": 20956,
-        "adresse":"Akwa",
+        "adresse":"Bonamoussadi",
         "pays":"Cameroun",
         "email":"info@fcc.com",
         "telephone":"+237690657905",
@@ -87,6 +92,7 @@
       },
       {
         "id": "FOURX16",
+        "couvert": "/fournisseur/couvert.jpg",
         "image": "/fournisseur/fga.svg",
         "nom": "NGK Entreprise",
         "forme":"SAS",

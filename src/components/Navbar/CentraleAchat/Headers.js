@@ -42,6 +42,7 @@ function Headers() {
                               <span className='flex items-center font-normal gap-1.5'><FaEnvelope />info@cc-ca.ca</span>
                         </div>
                         <div className='flex items-center gap-4'>
+                              <NavLink to={"/enregistrement"} className="pr-5 text-[.8rem] border-r border-gray-300">Créer un compte</NavLink>
                               <select className='bg-transparent text-[.8rem] font-bold outline-0'>
                                     <option>USD</option>
                                     <option>EURO</option>
@@ -78,14 +79,14 @@ function Headers() {
                                                             // alt={userConnected?.username}
                                                             />
                                                             <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-secondary text-sm font-semibold text-white" delayMs={600}>
-                                                                  10
+                                                                  00
                                                             </Avatar.Fallback>
                                                       </Avatar.Root>
                                                 </div>
                                                 <FavouriteIcon strokeWidth={1} size={38} />
                                                 {/* Favoris */}
                                           </NavLink>
-                                          <NavLink to="/cart" className='flex relative items-center font-bold text-[.85rem] gap-2.5                                                                            '>
+                                          <NavLink to="/cart" className='flex relative items-center font-bold text-[.85rem] gap-1.5                                                                            '>
                                                 <div className="absolute -top-[0.3rem] -left-2 leading-0">
                                                       <Avatar.Root className="AvatarRoot w-6 h-4 inline-flex  object-cover object-top rounded-full items-center justify-center overflow-hidden align-middle">
                                                             <Avatar.Image
@@ -94,7 +95,7 @@ function Headers() {
                                                             // alt={userConnected?.username}
                                                             />
                                                             <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-secondary text-sm font-semibold text-white" delayMs={600}>
-                                                                  10
+                                                                  00
                                                             </Avatar.Fallback>
                                                       </Avatar.Root>
                                                 </div>

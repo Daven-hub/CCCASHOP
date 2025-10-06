@@ -2,6 +2,7 @@ import axios from './api';
 
 const register = async userData => {
   const response = await axios.post ('/auth?action=register', userData);
+  // console.log(response)
   return response.data;
 };
 

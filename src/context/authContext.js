@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../store/slices/user.slice";
 import { logout } from "../store/slices/auth.slice";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
   const { usershop } = useSelector((state) => state.auth);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const detail = useMemo(() => {
       return usershop ;
@@ -31,7 +31,9 @@ export const AuthProvider = ({ children }) => {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/")
+    // navigate("/")
+    // window.location.href = "/";
+    window.location.replace("/");
   };
 
   return (
