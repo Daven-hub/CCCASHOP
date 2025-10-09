@@ -32,7 +32,7 @@ function Headers() {
       const { userConnected } = useAuth();
       return (
             <>
-                  <div className={`bg-primary flex items-center border-b border-white/10 text-white text-[.92rem] px-[${paddingH}] justify-between py-2`}>
+                  <div className={`bg-primary flex items-center text-white text-[.92rem] px-[${paddingH}] justify-between py-2.5`}>
                         <div className='flex items-center gap-4'>
                               <ul className='flex items-center gap-3.5 pr-5 border-r border-gray-300'>
                                     <li><FaFacebookF /></li>
@@ -55,54 +55,40 @@ function Headers() {
                         </div>
                   </div>
                   {/* navigation */}
-                  <div className={`flex bg-primary items-center gap-8 py-[1.8rem] px-[${paddingH}]`}>
-                        <NavLink to={"/"} className="flex items-center gap-2 w-[25%]">
+                  <div className={`flex bg-primary border-y border-white/5 items-center gap-8 py-[1.9rem] px-[${paddingH}]`}>
+                        <NavLink to={"/"} className="flex items-center gap-2 w-[22%]">
                               <img loading="lazy" src={logo} width={40} height={40} alt="logo_ccca" />
                               <div className="flex flex-col text-white font-medium text-[1.1rem] leading-[1.35rem]">
                                     <span>Chambre de Commerce</span>
                                     <span>Canada Afrique</span>
                               </div>
                         </NavLink>
-                        <div className='flex items-center justify-between gap-4 w-[75%]'>
-                              <div className='bg-white rounded-[6px] overflow-hidden flex flex-row-reverse w-[55%]'>
-                                    <label className='py-2.5 flex items-center justify-center px-3 bg-secondary' htmlFor='search'><Search01Icon className='text-white' strokeWidth={2} size={20} /></label>
-                                    <input placeholder='Rechercher un produit, pournisseur, acheteur ...' className='py-3.5 px-3.5 w-full text-[.8rem] outline-0 placeholder:text-gray-400' id='search' type='text' />
+                        <div className='flex items-center justify-between gap-4 w-[78%]'>
+                              <div className='bg-white rounded-[6px] p-1 overflow-hidden flex flex-row-reverse w-[55%]'>
+                                    <label className='flex items-center justify-center px-2.5 bg-secondary rounded-r-[6px]' htmlFor='search'><Search01Icon className='text-white' strokeWidth={2} size={20} /></label>
+                                    <input placeholder='Rechercher un produit, pournisseur, acheteur ...' className='py-2 bg-transparent px-1.5 w-full text-[.9rem] outline-0 font-light placeholder:text-gray-400' id='search' type='text' />
                               </div>
                               <div className='flex gap-4 text-white items-center'>
                                     <div className='flex items-center gap-6'>
                                           <NavLink to="/favoris" className='flex relative items-center font-bold text-[.85rem] gap-2'>
-                                                <div className="absolute -top-[0.3rem] -left-2 leading-0">
-                                                      <Avatar.Root className="AvatarRoot w-6 h-4 inline-flex  object-cover object-top rounded-full items-center justify-center overflow-hidden align-middle">
-                                                            <Avatar.Image
-                                                                  className="AvatarImage"
-                                                            // src={BaseUrl + "" + userConnected?.profile}
-                                                            // alt={userConnected?.username}
-                                                            />
-                                                            <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-secondary text-sm font-semibold text-white" delayMs={600}>
-                                                                  00
-                                                            </Avatar.Fallback>
-                                                      </Avatar.Root>
+                                                <span className="absolute text-[.95rem] flex justify-center items-center top-[0rem] bg-secondary py-0.5 px-1.5 leading-[1] rounded-[50px] -left-1.5 leading-0">
+                                                      0
+                                                </span>
+                                                <div className="p-3 flex justify-center item-center rounded-full bg-gray-100/20">
+                                                      <FavouriteIcon strokeWidth={2} size={20} />
                                                 </div>
-                                                <FavouriteIcon strokeWidth={1} size={38} />
                                                 {/* Favoris */}
                                           </NavLink>
-                                          <NavLink to="/cart" className='flex relative items-center font-bold text-[.85rem] gap-1.5                                                                            '>
-                                                <div className="absolute -top-[0.3rem] -left-2 leading-0">
-                                                      <Avatar.Root className="AvatarRoot w-6 h-4 inline-flex  object-cover object-top rounded-full items-center justify-center overflow-hidden align-middle">
-                                                            <Avatar.Image
-                                                                  className="AvatarImage"
-                                                            // src={BaseUrl + "" + userConnected?.profile}
-                                                            // alt={userConnected?.username}
-                                                            />
-                                                            <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-secondary text-sm font-semibold text-white" delayMs={600}>
-                                                                  00
-                                                            </Avatar.Fallback>
-                                                      </Avatar.Root>
+                                          <NavLink to="/cart" className='flex relative items-center font-bold text-[.85rem] gap-2                                                                            '>
+                                                <span className="absolute text-[.95rem] flex justify-center items-center top-[0rem] bg-secondary py-0.5 px-1.5 leading-[1] rounded-[50px] -left-1.5 leading-0">
+                                                      0
+                                                </span>
+                                                <div className="p-3 flex justify-center item-center rounded-full bg-gray-100/20">
+                                                      <ShoppingCart01Icon strokeWidth={2} size={20} />
                                                 </div>
-                                                <ShoppingCart01Icon strokeWidth={1} size={38} />
-                                                <div className='flex flex-col gap-1 mt-[.15rem] justify-end'>
-                                                      <span className='text-white/85 text-[.75rem] leading-[1] font-light'>Mon panier</span>
-                                                      <span className='text-white/60 leading-[1] text-[.93rem]'>$00.0</span>
+                                                <div className='flex flex-col gap-1.5 leading-[1] mt-[.15rem] justify-end'>
+                                                      <span className='text-white/50 text-[.7rem] font-light'>Mon panier</span>
+                                                      <span className='text-white/75 text-[.90rem]'>$00.0</span>
                                                 </div>
                                           </NavLink>
                                     </div>

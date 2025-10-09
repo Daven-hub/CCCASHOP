@@ -1,8 +1,8 @@
 [
       {
         "id": "FOURX11",
-        "couvert": "/fournisseur/couvert.jpg",
-        "image": "/fournisseur/gpf.png",
+        "couvert": "/images/fournisseur/couvert.jpg",
+        "image": "/images/fournisseur/gpf.png",
         "nom": "Franchise IT",
         "forme":"SARL",
         "domaine":"Informatique",
@@ -19,8 +19,8 @@
       },
       {
         "id": "FOURX12",
-        "couvert": "/fournisseur/couvert.jpg",
-        "image": "/fournisseur/logo.png",
+        "couvert": "/images/fournisseur/couvert.jpg",
+        "image": "/images/fournisseur/logo.png",
         "nom": "Franchise Conseil Sarl",
         "forme":"SAS",
         "domaine":"Immigration",
@@ -38,8 +38,8 @@
       ,
       {
         "id": "FOURX13",
-        "couvert": "/fournisseur/couvert.jpg",
-        "image": "/fournisseur/mentorat.PNG",
+        "couvert": "/images/fournisseur/couvert.jpg",
+        "image": "/images/fournisseur/mentorat.PNG",
         "nom": "NGK Entreprise",
         "forme":"SAS",
         "domaine":"Immigration",
@@ -56,8 +56,8 @@
       },
       {
         "id": "FOURX14",
-        "couvert": "/fournisseur/couvert.jpg",
-        "image": "/fournisseur/shall.jpg",
+        "couvert": "/images/fournisseur/couvert.jpg",
+        "image": "/images/fournisseur/shall.jpg",
         "nom": "Franchise IT",
         "forme":"SARL",
         "domaine":"Informatique",
@@ -74,8 +74,8 @@
       },
       {
         "id": "FOURX15",
-        "couvert": "/fournisseur/couvert.jpg",
-        "image": "/fournisseur/sicaf.jpg",
+        "couvert": "/images/fournisseur/couvert.jpg",
+        "image": "/images/fournisseur/sicaf.jpg",
         "nom": "Franchise Conseil Sarl",
         "forme":"SAS",
         "domaine":"Immigration",
@@ -92,8 +92,8 @@
       },
       {
         "id": "FOURX16",
-        "couvert": "/fournisseur/couvert.jpg",
-        "image": "/fournisseur/fga.svg",
+        "couvert": "/images/fournisseur/couvert.jpg",
+        "image": "/images/fournisseur/fga.svg",
         "nom": "NGK Entreprise",
         "forme":"SAS",
         "domaine":"Immigration",

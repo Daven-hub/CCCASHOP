@@ -33,11 +33,21 @@ function Commerce() {
                         </div>
                   </div>
                   <div className={`grid grid-cols-1 pt-4 pb-8 md:grid-cols-2 gap-8 px-[${paddingH}]`}>
-                        <div className='h-[250px] border relative overflow-hidden rounded-[6px]'>
-                              <img src={"/produits/bann3.jpg"} className='absolute object-cover object-right left-0 top-0 w-full h-full' alt='ccca_top_product' />
+                        <div className='h-[210px] border relative overflow-hidden rounded-[6px]'>
+                              <img src={"/images/produits/bann3.jpg"} className='absolute object-cover object-right left-0 top-0 w-full h-full' alt='ccca_top_product' />
+                              <div className='absolute px-8 flex flex-col left-[43%] top-1/2 -translate-y-1/2'>
+                                   <h1 className='text-yellow-700 text-[2rem] font-semibold'>Gateau madeleine</h1>
+                                   <span className='text-[.98rem] text-gray-700'>Un moelleux fondant pour une pause douce et réconfortante. Redécouvrez</span>
+                                   <div className='mt-1 text-[1rem] font-bold'>Voir plus</div>
+                              </div>
                         </div>
-                        <div className='rounded-[6px] border overflow-hidden h-[250px] relative bg-red-600'>
-                              <img src={"/produits/banb1.jpg"} className='absolute object-right left-0 top-0 w-full h-full' alt='ccca_top_product' />
+                        <div className='rounded-[6px] border overflow-hidden h-[210px] relative bg-red-600'>
+                              <img src={"/images/produits/banb1.jpg"} className='absolute object-right left-0 top-0 w-full h-full' alt='ccca_top_product' />
+                              <div className='absolute w-[50%] px-8 flex flex-col left-0 top-1/2 -translate-y-1/2'>
+                                   <h1 className='text-primary/80 text-[1.8rem] font-semibold'>Laptops</h1>
+                                   <span className='text-[.98rem] text-gray-700'>Un moelleux fondant pour une pause douce et réconfortante.</span>
+                                   <div className='mt-1 text-[1rem] font-bold'>Voir plus</div>
+                              </div>
                         </div>
                   </div>
                   <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col`}>

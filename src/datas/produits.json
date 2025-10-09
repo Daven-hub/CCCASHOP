@@ -1,7 +1,7 @@
 [
       {
         "id": "CTRX11",
-        "image": "/produits/p1.png",
+        "image": "/images/produits/p1.png",
         "titre": "Tomate Bio",
         "fournisseur": "FOURX11",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -17,7 +17,7 @@
       },
       {
         "id": "CTRX12",
-        "image": "/produits/p2.png",
+        "image": "/images/produits/p2.png",
         "titre": "Pomme",
         "fournisseur": "FOURX11",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -33,7 +33,7 @@
       },
       {
         "id": "CTRX13",
-        "image": "/produits/p3.png",
+        "image": "/images/produits/p3.png",
         "titre": "Carrote de Djombe",
         "fournisseur": "FOURX11",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -49,7 +49,7 @@
       },
       {
         "id": "CTRX14",
-        "image": "/produits/p4.png",
+        "image": "/images/produits/p4.png",
         "titre": "Cacao penja",
         "fournisseur": "FOURX12",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -65,7 +65,7 @@
       },
       {
         "id": "CTRX15",
-        "image": "/produits/p4.png",
+        "image": "/images/produits/p4.png",
         "titre": "Tomatoes",
         "fournisseur": "FOURX12",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -81,7 +81,7 @@
       },
       {
         "id": "CTRX16",
-        "image": "/produits/p11.png",
+        "image": "/images/produits/p11.png",
         "titre": "Carrote",
         "fournisseur": "FOURX13",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -98,7 +98,7 @@
       ,
       {
         "id": "CTRX17",
-        "image": "/produits/p12.png",
+        "image": "/images/produits/p12.png",
         "titre": "Cacao Mbanga",
         "fournisseur": "FOURX13",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -114,7 +114,7 @@
       },
       {
         "id": "CTRX18",
-        "image": "/produits/p22.png",
+        "image": "/images/produits/p22.png",
         "titre": "Carrote de Melong",
         "fournisseur": "FOURX11",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -130,7 +130,7 @@
       },
       {
         "id": "CTRX19",
-        "image": "/produits/p44.png",
+        "image": "/images/produits/p44.png",
         "titre": "Carrote de Melong",
         "fournisseur": "FOURX11",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",
@@ -146,7 +146,7 @@
       },
       {
         "id": "CTRX20",
-        "image": "/produits/p44.png",
+        "image": "/images/produits/p44.png",
         "titre": "Carrote de Melong",
         "fournisseur": "FOURX11",
         "descrip": "Tomates cerises biologiques cultivées sans pesticides, récoltées à maturité parfaite",

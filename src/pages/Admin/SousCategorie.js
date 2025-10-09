@@ -13,7 +13,7 @@ function SousCategorie() {
       <div className='flex justify-between items-center'>
         <h1 className='flex items-center text-primary md:text-[1.7rem] font-bold gap-2.5'><FiTag /> Sous catégories </h1>
         <div className="flex gap-42 items-center">
-          <button className='py-2.5 px-6 mr-3 flex items-center gap-1.5 text-[.85rem] rounded-[7px] border border-primary bg-gray-200 font-semibold text-primary'><FaFilePdf /> Télécharger en pdf</button>
+          <button className='py-2.5 px-6 mr-3 flex items-center gap-1.5 text-[.85rem] rounded-[7px] border border-primary bg-white font-semibold text-primary'><FaFilePdf /> Télécharger en pdf</button>
           <button className='py-2.5 px-6 flex items-center gap-1.5 text-[.85rem] rounded-[7px] bg-primary font-semibold text-white'><FaPlus stroke={.5} /> Nouvelle sous-catégorie</button>
         </div>
       </div>

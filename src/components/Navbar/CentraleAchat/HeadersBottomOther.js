@@ -11,10 +11,10 @@ function HeadersBottomOther() {
                   <div className="w-[25%]">
                         <div className='bg-white group hover:cursor-pointer relative rounded-t-[6px] text-black/75 flex items-center justify-between font-semibold'>
                               <div className='text-[.9rem] w-full relative z-[2] rounded-t-[6px] justify-between py-3.5 px-5 border border-gray-90 flex font-bold items-center gap-3.5'><span className="flex items-center gap-4"><Menu01Icon strokeWidth={2} size={21} /> Toutes les Catégories</span> <ArrowDown01Icon size={22} /></div>
-                              <ul className='group-hover:block z-[1] transition-all duration-500 absolute md:hidden top-[calc(100%)] rounded-b-[6px] w-full bg-white left-0 flex text-gray-800 border-x border-b border-t-0 text-[.85rem] flex-col'>
+                              <ul className='group-hover:block z-[1] transition-all duration-500 absolute md:hidden top-[calc(100%)] rounded-b-[6px] w-full bg-white left-0 flex text-primary/70 border-x border-b border-t-0 text-[.85rem] flex-col'>
                                     {categories?.map((item, ind) =>
-                                          <li key={ind}><NavLink className="py-3 flex items-center gap-5 hover:bg-gray-50 border-b font-semibold px-5" to={item.value}><item.icon className="w-5 h-5 text-primary/80" />{item.label}</NavLink></li>
-                                    )}
+                                                                                    <li key={ind}><NavLink className="py-3 flex items-center gap-5 hover:bg-gray-50 border-b font-medium px-5" to={item.value}><item.icon className="w-5 h-5 text-primary/70" />{item.label}</NavLink></li>
+                                                                              )}
                               </ul>
                         </div>
                   </div>
