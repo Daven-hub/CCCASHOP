@@ -80,12 +80,12 @@ function Cart() {
 
                   <div className={`flex px-[${paddingH}] gap-8 py-12 md:py-12`}>
 
-                        <div className='w-[18%] rounded-[7px] sticky top-[15px] h-[650px]'>
+                        {/* <div className='w-[18%] rounded-[7px] sticky top-[15px] h-[650px]'>
                               <SideShop />
-                        </div>
+                        </div> */}
 
 
-                        <div className='w-[82%] flex overflow-hidden flex-col gap-6'>
+                        <div className='w-[82%] flex overflow-hidden flex-col gap-6 mx-auto'>
 
                               <div className={`flex gap-5  py-12 md:py-16 flex-col`}>
                                     <PresentationLabel titre={"MON PANIER"} Component={""} />
