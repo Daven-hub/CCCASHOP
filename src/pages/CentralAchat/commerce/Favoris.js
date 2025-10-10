@@ -127,7 +127,7 @@ function Favoris() {
                         </div>
                         <div className='w-[82%] flex overflow-hidden flex-col gap-6'>
 
-                              <div className={`flex gap-5  py-12 md:py-16 flex-col`}>
+                              <div className={`flex gap-5 flex-col`}>
                                     <PresentationLabel titre={"MES FAVORIS"} Component={""} />
                               </div>
                               <div className='grid gap-4 grid-cols-1 md:grid-cols-4'>

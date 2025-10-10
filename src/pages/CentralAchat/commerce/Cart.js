@@ -78,7 +78,7 @@ function Cart() {
                         <Breadcrumb data={bread} />
                   </div>
 
-                  <div className={`flex px-[${paddingH}] gap-8 py-12 md:py-12`}>
+                  <div className={`flex px-[${paddingH}] gap-8 `}>
 
                         {/* <div className='w-[18%] rounded-[7px] sticky top-[15px] h-[650px]'>
                               <SideShop />
