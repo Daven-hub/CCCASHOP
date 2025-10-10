@@ -54,7 +54,7 @@ function Vendeurs() {
                 produits.map((species, index) => (
                   <TableRow className="hover:bg-primary/10 cursor-pointer" key={index}>
                     <TableCell className="font-medium">{species?.id}</TableCell>
-                    <TableCell><img className='w-12 h-12 object-cover rounded-[50px]' src={species?.image} alt={species?.id} /></TableCell>
+                    <TableCell><img className='w-12 h-12 object-contain rounded-[50px]' src={species?.image} alt={species?.id} /></TableCell>
                     <TableCell className="hidden sm:table-cell">{species?.titre}</TableCell>
                     <TableCell className="hidden md:table-cell">Jus de Fruit</TableCell>
                     <TableCell className="hidden md:table-cell">{species?.qte+" "+species?.meter}</TableCell>

@@ -26,7 +26,7 @@ function Commerce() {
                   <HeadersBottom />
                   <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col`}>
                         <PresentationLabel titre={"Produits en vedette"} Component={<NavLink className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline" to={"#"}>Listes des produits <MoveRight size={14} /></NavLink>} />
-                        <div className='grid gap-5 grid-cols-1 md:grid-cols-5'>
+                        <div className='grid gap-4 grid-cols-1 md:grid-cols-5'>
                               {data?.slice(0, 10)?.map((x, index) => (
                                     <CardProduit key={index} x={x} />
                               ))}
@@ -52,7 +52,7 @@ function Commerce() {
                   </div>
                   <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col`}>
                         <PresentationLabel titre={"Articles recherchés par les acheteurs"} Component={<NavLink className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline" to={"#"}>Listes des produits <MoveRight size={15} /></NavLink>} />
-                        <div className='grid gap-5 grid-cols-1 md:grid-cols-5'>
+                        <div className='grid gap-4 grid-cols-1 md:grid-cols-5'>
                               {data?.slice(0, 5)?.map((x, index) => (
                                     <CardProduit key={index} x={x} />
                               ))}
@@ -78,7 +78,7 @@ function Commerce() {
                   </div>
                   <div className={`flex gap-5 px-[${paddingH}] py-12 md:py-16 flex-col`}>
                         <PresentationLabel titre={"Commander par fournisseur"} Component={""} />
-                        <div className='grid grid-cols-1 gap-5 md:grid-cols-6'>
+                        <div className='grid grid-cols-1 gap-4 md:grid-cols-6'>
                               {datas?.slice(0, 6)?.map((item, ind) =>
                                     <NavLink to={"/fournisseurs/" + item?.id} className='border shadow-sm aspect-video rounded-[6px] flex items-center justify-center p-1 ' key={ind}>
                                           <img className='w-[90%] rounded-[6px] object-contain h-[90%]' src={item?.image} alt={item?.nom} />
