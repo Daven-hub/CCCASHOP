@@ -70,6 +70,8 @@ function Sidebar({setIsSidebarOpen}) {
           { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
           { title: 'Acheteurs', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
           { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
+          { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
+          { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
         ]
       },
       // {
