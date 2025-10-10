@@ -127,6 +127,8 @@ function Sidebar({setIsSidebarOpen}) {
           { title: 'Catégories', icon: <FiTag size={18} />, path: '/admin/categories', children: [] },
           { title: 'Sous catégories', icon: <FiTag size={18} />, path: '/admin/sous-categories', children: [] },
           { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
+          { title: 'Attributs', icon: <FiPackage size={18} />, path: '/admin/attributs', children: [] },
+          { title: 'Stock', icon: <FiPackage size={18} />, path: '/admin/stock-produits', children: [] },
           // { title: 'Offres', icon: <FiBook size={18}/>, path: '/Admin/ccca-revue',children:[] },
         ]
       },

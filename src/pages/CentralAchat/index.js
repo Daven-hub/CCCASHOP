@@ -6,48 +6,56 @@ import data from "../../datas/produits.json"
 import datac from "../../datas/fournisseur.json"
 import { ArrowRightDoubleIcon, ArrowRight04Icon, StarIcon, UserAccountIcon, Bitcoin02Icon, Building01Icon, Location01Icon, Mail01Icon, SecurityValidationIcon, ZapIcon, UserMultiple02Icon, Globe02Icon, Award04Icon, HeadphonesIcon, Building06Icon, ShoppingCart01Icon, Bitcoin04Icon, Building04Icon, StarHalfIcon, FavouriteIcon, EyeIcon } from 'hugeicons-react';
 // import moment from 'moment';
-import { ArrowRight02Icon, MoveRightIcon } from 'hugeicons-react';
+import { ArrowRight02Icon } from 'hugeicons-react';
 // import acheteurs from "../../datas/Acheteur.json"
 
+// export const CardFournisseur = ({ item }) => {
+//       return (
+//             <div className='px-3.5 md:px-4 py-4 flex flex-col gap-4 rounded-[6px] border'>
+//                   <div className='flex gap-3 items-center'>
+//                         <img className='w-[62px] border h-[62px] p-1 object-contain rounded-[50px] flex-shrink-0' src={item?.image} alt={item?.nom} />
+//                         <div className='flex flex-col'>
+//                               <h3 className='capitalize leading-[1.3] text-[1.02rem] font-bold text-primary'>{item?.nom}</h3>
+//                               <span className='text-gray-600 capitalize font-semibold text-[.85rem]'>{item?.forme}</span>
+//                         </div>
+//                   </div>
+//                   <div className='flex flex-col font-semibold gap-1'>
+//                         <span className='flex capitalize text-[.85rem] items-center gap-2 text-gray-700'> <Building01Icon size={18} /> {item?.domaine}</span>
+//                         <span className='flex capitalize text-[.85rem] items-center gap-2 text-gray-700'> <Location01Icon size={18} />{item?.adresse + ", " + item?.pays}</span>
+//                         {/* <span> <UserBlock01Icon size={20}/></span> */}
+//                   </div>
+//                   {/* <div className='bg-green-100 px-4 py-2.5'>
+//                         <p className='text-green-900 font-semibold text-[.9rem]'>Volume d'achat</p>
+//                         <span className='font-bold'>{item?.volume}</span>
+//                   </div> */}
+//                   <p className='text-[.85rem] text-gray-600 font-medium'>{item?.descrip}</p>
+//                   <div className='flex flex-col gap-1.5'>
+//                         <span className='text-[.8rem] font-medium text-gray-800'>Catégories recherchées :</span>
+//                         <ul className='flex items-center gap-1.5'>
+//                               {item?.categ?.map((x, indo) =>
+//                                     <li key={indo} className='py-0.5 px-3 text-secondary/90 text-[.7rem] font-bold rounded-[50px] bg-secondary/10'>{x}</li>
+//                               )}
+//                         </ul>
+//                   </div>
+//                   <div className='flex items-center gap-3'>
+//                         <NavLink to={"/centrale_achat/fournisseurs/" + item?.id} className='w-[85%] text-[.9rem] text-white/70 flex justify-center items-center p-2 bg-primary/60 rounded-[6px]'>
+//                               Détails
+//                         </NavLink>
+//                         <div className='w-[15%] cursor-pointer border flex items-center justify-center p-2 rounded-[6px]'>
+//                               <Mail01Icon strokeWidth={2} size={20} />
+//                         </div>
+//                   </div>
+//             </div>
+//       )
+// }
 export const CardFournisseur = ({ item }) => {
       return (
             <div className='px-3.5 md:px-4 py-4 flex flex-col gap-4 rounded-[6px] border'>
-                  <div className='flex gap-3 items-center'>
-                        <img className='w-[62px] border h-[62px] p-1 object-contain rounded-[50px] flex-shrink-0' src={item?.image} alt={item?.nom} />
-                        <div className='flex flex-col'>
-                              <h3 className='capitalize leading-[1.3] text-[1.02rem] font-bold text-primary'>{item?.nom}</h3>
-                              <span className='text-gray-600 capitalize font-semibold text-[.85rem]'>{item?.forme}</span>
-                        </div>
-                  </div>
-                  <div className='flex flex-col font-semibold gap-1'>
-                        <span className='flex capitalize text-[.85rem] items-center gap-2 text-gray-700'> <Building01Icon size={18} /> {item?.domaine}</span>
-                        <span className='flex capitalize text-[.85rem] items-center gap-2 text-gray-700'> <Location01Icon size={18} />{item?.adresse + ", " + item?.pays}</span>
-                        {/* <span> <UserBlock01Icon size={20}/></span> */}
-                  </div>
-                  {/* <div className='bg-green-100 px-4 py-2.5'>
-                        <p className='text-green-900 font-semibold text-[.9rem]'>Volume d'achat</p>
-                        <span className='font-bold'>{item?.volume}</span>
-                  </div> */}
-                  <p className='text-[.85rem] text-gray-600 font-medium'>{item?.descrip}</p>
-                  <div className='flex flex-col gap-1.5'>
-                        <span className='text-[.8rem] font-medium text-gray-800'>Catégories recherchées :</span>
-                        <ul className='flex items-center gap-1.5'>
-                              {item?.categ?.map((x, indo) =>
-                                    <li key={indo} className='py-0.5 px-3 text-secondary/90 text-[.7rem] font-bold rounded-[50px] bg-secondary/10'>{x}</li>
-                              )}
-                        </ul>
-                  </div>
-                  <div className='flex items-center gap-3'>
-                        <NavLink to={"/centrale_achat/fournisseurs/" + item?.id} className='w-[85%] text-[.9rem] text-white/70 flex justify-center items-center p-2 bg-primary/60 rounded-[6px]'>
-                              Détails
-                        </NavLink>
-                        <div className='w-[15%] cursor-pointer border flex items-center justify-center p-2 rounded-[6px]'>
-                              <Mail01Icon strokeWidth={2} size={20} />
-                        </div>
-                  </div>
+                  
             </div>
       )
 }
+
 export const CardAcheteur = ({ item }) => {
       return (
             <div className='px-5 md:px-7 py-5 flex flex-col gap-4 rounded-[6px] border'>

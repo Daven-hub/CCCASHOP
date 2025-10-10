@@ -66,7 +66,7 @@ export default function DashAdmin() {
   return (
     // <div className="flex flex-col flex-1 bg-gray-100">
     <> 
-    <h2 className="m-0 text-[1.5rem] font-semibold text-primary mb-4">Dashboard</h2>
+    <h2 className="m-0 text-[1.7rem] font-semibold text-primary mb-4">Tableau de bord</h2>
     <div className="flex w-full flex-col gap-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {/* Cards for metrics in French */}

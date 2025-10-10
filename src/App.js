@@ -39,6 +39,9 @@ import Settings from './pages/Admin/Settings';
 import Profile from './pages/Admin/Profile';
 import NotFoun from './pages/Error/NotFoun';
 import { useAuth } from './context/authContext';
+import Attribute from './pages/Admin/Attribute';
+import AttributeValue from './pages/Admin/AttributeValue';
+import StockProduits from './pages/Admin/StockProduits';
 
 
 function App() {
@@ -102,6 +105,11 @@ function App() {
             <Route index element={<Product />} />
           </Route>
           <Route path='profile' element={<Profile />} />
+          <Route path='attributs/'>
+            <Route index element={<Attribute />} />
+            <Route path='value/:id' element={<AttributeValue />} />
+          </Route>
+          <Route path='stock-produits' element={<StockProduits />} />
           <Route path='categories' element={<Categorie />} />
           <Route path='parametres' element={<Settings />} />
           <Route path='sous-categories' element={<SousCategorie />} />
