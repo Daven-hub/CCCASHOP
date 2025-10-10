@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
 import Breadcrumb from '../../../components/Breadcumb'
-import SideShop from '../../../components/SideShop'
 import Annimated from '../../../components/Annimated'
 import { paddingH } from '../../../components/Navbar/CentraleAchat/Headers'
 import { useTranslation } from 'react-i18next'
 import PresentationLabel from '../../../components/PresentationLabel'
-import data from "../../../datas/produits.json";
-import { ArrowRightDoubleIcon, ArrowRight04Icon, StarIcon, UserAccountIcon, Bitcoin02Icon, Building01Icon, Location01Icon, Mail01Icon, SecurityValidationIcon, ZapIcon, UserMultiple02Icon, Globe02Icon, Award04Icon, HeadphonesIcon, Building06Icon, ShoppingCart01Icon, Bitcoin04Icon, Building04Icon, StarHalfIcon, FavouriteIcon, EyeIcon } from 'hugeicons-react';
-import { NavLink } from 'react-router-dom'
+import data from "../../../datas/produits.json"
 import datac from "../../../datas/fournisseur.json"
-import { Eye, Heart } from 'lucide-react'
-// import HeadersBottomOther from '../../../components/Navbar/CentraleAchat/HeadersBottomOther'
+import { NavLink } from 'react-router-dom'
+import { StarIcon, StarHalfIcon, ShoppingCart01Icon } from 'hugeicons-react'
+import { Eye, Heart, MoveRight, } from 'lucide-react'
 
-const CardProduit = ({ x }) => {
-
+const CardProduit = ({ x, isFavori, onToggleFavori }) => {
       const getImageFourn = (z) => {
             return datac.find((y) => y?.id === z)?.image;
       };
@@ -28,13 +25,15 @@ const CardProduit = ({ x }) => {
                         />
 
                         <div className='flex absolute right-2 top-2.5 text-secondary/65 flex-col gap-2 transform transition-transform duration-300 translate-x-[120%] group-hover:translate-x-0'>
-
-                              <div className='p-1 w-fit cursor-pointer rounded-full hover:text-primary/65 bg-gray-100 flex justify-center items-center'>
+                              <div
+                                    onClick={() => onToggleFavori(x.id)}
+                                    className='p-1 w-fit cursor-pointer rounded-full hover:text-primary/65 bg-gray-100 flex justify-center items-center transition'
+                              >
                                     <Heart
                                           size={20}
                                           strokeWidth={2}
-                                          className='text-red-600'
-                                          fill='#E30713'
+                                          className={isFavori ? 'text-red-600' : 'text-gray-400'}
+                                          fill={isFavori ? '#E30713' : 'none'}
                                     />
                               </div>
 
@@ -73,15 +72,15 @@ const CardProduit = ({ x }) => {
                         </div>
 
                         <div className='absolute right-0.5 bottom-[36%] w-[60px] group-hover:opacity-100 opacity-40 h-[40px] p-0.5'>
-                              <img className='object-contain w-full h-full' src={getImageFourn(x.fournisseur)} alt="Dr Prese" />
+                              <img className='object-contain w-full h-full' src={getImageFourn(x.fournisseur)} alt="fournisseur" />
                         </div>
 
                         <button className="relative w-full mt-1.5 rounded-[6px] border text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 py-2 font-semibold px-1 overflow-hidden group">
                               <span className="absolute left-0 top-0 h-full w-0 bg-primary/10 
-                            transition-all duration-500 ease-out group-hover:w-full"></span>
+            transition-all duration-500 ease-out group-hover:w-full"></span>
 
                               <span className="relative z-10 flex items-center gap-2.5 
-                            transition-colors duration-500 group-hover:text-primary/90">
+            transition-colors duration-500 group-hover:text-primary/90">
                                     <ShoppingCart01Icon
                                           strokeWidth={2}
                                           size={19}
@@ -102,46 +101,61 @@ function Favoris() {
             { label: t("accueille"), path: "/" },
             { label: "Favoris", path: "/favoris" },
       ];
+
+      const [favoris, setFavoris] = useState(data.map(p => p.id));
       const [currentPage, setCurrentPage] = useState(1);
       const itemsPerPage = 25;
       const startIndex = (currentPage - 1) * itemsPerPage;
-      const currentProducts = data.slice(
-            startIndex,
-            startIndex + itemsPerPage
-      );
+      const currentProducts = data.slice(startIndex, startIndex + itemsPerPage);
+
+      const toggleFavori = (id) => {
+            setFavoris((prev) =>
+                  prev.includes(id)
+                        ? prev.filter((f) => f !== id)
+                        : [...prev, id]
+            );
+      };
+
       return (
-
-            // <div className='flex px-[8%] py-8'>
-            //       Favoris
-            // </div>
-
             <Annimated className="bg-white">
                   <div className="px-[5%] py-[1.5rem] bg-gray-100">
                         <Breadcrumb data={bread} />
                   </div>
 
-                  <div className={`flex px-[${paddingH}] gap-8 py-12 md:py-12`}>
+                  <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col`}>
+                        <PresentationLabel
+                              titre={"MES FAVORIS"}
+                              Component={
+                                    <NavLink
+                                          className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline"
+                                          to={"#"}
+                                    >
+                                          Liste des produits <MoveRight size={14} />
+                                    </NavLink>
+                              }
+                        />
 
-                        <div className='w-[18%] rounded-[7px] sticky top-[15px] h-[650px]'>
-                              <SideShop />
-                        </div>
-                        <div className='w-[82%] flex overflow-hidden flex-col gap-6'>
-
-                              <div className={`flex gap-5 flex-col`}>
-                                    <PresentationLabel titre={"MES FAVORIS"} Component={""} />
-                              </div>
-                              <div className='grid gap-4 grid-cols-1 md:grid-cols-4'>
-                                    {currentProducts?.map((x, index) => (
-                                          <CardProduit key={index} x={x} />
+                        <div className='grid gap-5 grid-cols-1 md:grid-cols-5'>
+                              {currentProducts
+                                    .filter((x) => favoris.includes(x.id))
+                                    .map((x, index) => (
+                                          <CardProduit
+                                                key={index}
+                                                x={x}
+                                                isFavori={favoris.includes(x.id)}
+                                                onToggleFavori={toggleFavori}
+                                          />
                                     ))}
-                              </div>
+
+                              {favoris.length === 0 && (
+                                    <div className="col-span-full text-center text-gray-500 py-8 font-medium">
+                                          Aucun favori pour le moment
+                                    </div>
+                              )}
                         </div>
                   </div>
-
-
             </Annimated>
-
-      )
+      );
 }
 
-export default Favoris
+export default Favoris;
