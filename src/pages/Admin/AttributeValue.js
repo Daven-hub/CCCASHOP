@@ -13,7 +13,7 @@ import CreateValeur from '../../components/Admin/Dahboard/Valeurs/CreateValeur'
 function AttributeValue() {
 
     const [openCreate, setOpenCreate] = useState(false);
-    const handleCreateAttribute = (data) => {
+    const handleCreateValue = (data) => {
         //
     };
 
@@ -101,7 +101,7 @@ function AttributeValue() {
             <CreateValeur
                 open={openCreate}
                 setOpen={setOpenCreate}
-                onCreate={handleCreateAttribute}
+                onCreate={handleCreateValue}
             />
         </div>
     )
