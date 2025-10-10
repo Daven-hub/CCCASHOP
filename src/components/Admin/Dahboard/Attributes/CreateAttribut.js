@@ -16,7 +16,7 @@ function CreateAttribute({ open, setOpen, onCreate }) {
     return (
         <AlertDialog.Root open={open} onOpenChange={setOpen}>
             <AlertDialog.Portal>
-                <AlertDialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" />
+                <AlertDialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50" />
 
                 <AlertDialog.Content className="fixed z-50 bg-white rounded-[10px] shadow-lg w-[90%] md:w-[420px] p-6 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
                     <AlertDialog.Title className="text-[1.3rem] font-bold text-primary mb-4">
