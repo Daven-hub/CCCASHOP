@@ -23,16 +23,16 @@ export const liensHeader = [
             label: "Acceuil",
             link: "/"
       },
-      // {
-      //       label: "Achats",
-      //       link: "/shop"
-      // },
+      {
+            label: "Achats",
+            link: "/shop"
+      },
       {
             label: "Produits",
             link: "/produits"
       },
       {
-            label: "Fournisseurs",
+            label: "fournisseurs",
             link: "/fournisseurs"
       },
       {

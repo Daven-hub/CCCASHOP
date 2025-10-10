@@ -7,7 +7,7 @@ import datac from "../../datas/fournisseur.json"
 import { ArrowRightDoubleIcon, ArrowRight04Icon, StarIcon, UserAccountIcon, Bitcoin02Icon, Building01Icon, Location01Icon, Mail01Icon, SecurityValidationIcon, ZapIcon, UserMultiple02Icon, Globe02Icon, Award04Icon, HeadphonesIcon, Building06Icon, ShoppingCart01Icon, Bitcoin04Icon, Building04Icon, StarHalfIcon, FavouriteIcon, EyeIcon } from 'hugeicons-react';
 // import moment from 'moment';
 import { ArrowRight02Icon, MoveRightIcon } from 'hugeicons-react';
-import acheteurs from "../../datas/Acheteur.json"
+// import acheteurs from "../../datas/Acheteur.json"
 
 export const CardFournisseur = ({ item }) => {
       return (

@@ -94,7 +94,7 @@ function Headers() {
                                     </div>
                                     <div className='pl-4 border-l border-white/30'>
                                           {!userConnected ? <NavLink className="flex text-[.8rem] items-center gap-1.5" to={"/login"}><UserCircle strokeWidth={1} size={40} />
-                                                Login
+                                                Mon Compte
                                           </NavLink> :
                                                 <UserMenu isAdmin={false} />
                                           }

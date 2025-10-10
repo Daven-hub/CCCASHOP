@@ -8,18 +8,6 @@ import produits from "../../datas/produits.json"
 
 function Product() {
 
-  const paginatedSpecies = [
-    {
-      uuid: "1234",
-      scienticname: "hhfhh",
-      origin: "iduf"
-    },
-    {
-      uuid: "1234",
-      scienticname: "hhfhh",
-      origin: "iduf"
-    }
-  ]
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex justify-between items-center'>
