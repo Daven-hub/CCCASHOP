@@ -685,6 +685,14 @@ select::after{
 	left: 0;
 	bottom: -28%;
   }
+
+  .nav-login a{
+	color:rgba(0,0,0,.3)
+  }
+
+  .nav-login a.active{
+	color:rgba(0,0,0,.85)
+  }
   
 
 

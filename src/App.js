@@ -78,7 +78,7 @@ function App() {
           <Route Component={LayoutOtherPage} >
             <Route path="*" Component={NotFoun} />
             <Route path='favoris/' Component={Favoris} />
-            <Route path='login/' Component={LoginShop} />
+            <Route path='mon-compte/:id' Component={LoginShop} />
             <Route path='enregistrement/'>
               <Route index Component={Enregistrement} />
               <Route path=':id' Component={TypeEnregistrement} />
