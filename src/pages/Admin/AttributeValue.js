@@ -8,7 +8,7 @@ import produits from "../../datas/produits.json"
 import { useNavigate, useParams } from 'react-router-dom'
 import { MoveLeftIcon } from 'hugeicons-react'
 import { MoveLeft } from 'lucide-react'
-import CreateValeur from '../../components/Admin/Dahboard/Valeurs/CreateValeur'
+import CreateValeur from '../../components/Admin/Dahboard/Valeurs/CreateValeurForm'
 
 function AttributeValue() {
 

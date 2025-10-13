@@ -5,7 +5,7 @@ import { FaChevronDown, FaEdit, FaFilePdf, FaPlus, FaTrash } from 'react-icons/f
 import { Button } from '../../components/ui/Button'
 import { FiPackage, FiTag } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
-import CreateCategorie from '../../components/Admin/Dahboard/Categories/CreateCategorie'
+import CreateCategorie from '../../components/Admin/Dahboard/Categories/CreateCategorieForm'
 
 function Categorie() {
 

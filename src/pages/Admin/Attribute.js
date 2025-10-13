@@ -6,7 +6,7 @@ import { Button } from '../../components/ui/Button'
 import { FiPackage, FiTag } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
 import { useNavigate } from 'react-router-dom'
-import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttribut'
+import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttributForm'
 
 function Attribute() {
   const [openCreate, setOpenCreate] = useState(false);

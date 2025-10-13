@@ -5,7 +5,7 @@ import { FaChevronDown, FaEdit, FaFilePdf, FaPlus, FaTrash } from 'react-icons/f
 import { Button } from '../../components/ui/Button'
 import { FiTag } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
-import CreateSousCategorie from '../../components/Admin/Dahboard/SousCategories/CreateSousCategorie'
+import CreateSousCategorie from '../../components/Admin/Dahboard/SousCategories/CreateSousCategorieForm'
 
 function SousCategorie() {
   const [openCreate, setOpenCreate] = useState(false);
