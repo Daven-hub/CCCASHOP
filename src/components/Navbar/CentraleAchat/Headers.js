@@ -42,7 +42,7 @@ function Headers() {
                               <span className='flex items-center font-normal gap-1.5'><FaEnvelope />info@cc-ca.ca</span>
                         </div>
                         <div className='flex items-center gap-4'>
-                              <NavLink to={"/mon-compte"} className="pr-5 text-[.8rem] border-r border-gray-300">Mon compte</NavLink>
+                              <NavLink to={"/mon-compte/connexion"} className="pr-5 text-[.8rem] border-r border-gray-300">Mon compte</NavLink>
                               <select className='bg-transparent text-[.8rem] font-bold outline-0'>
                                     <option>USD</option>
                                     <option>EURO</option>
@@ -93,7 +93,7 @@ function Headers() {
                                           </NavLink>
                                     </div>
                                     <div className='pl-4 border-l border-white/30'>
-                                          {!userConnected ? <NavLink className="flex text-[.8rem] items-center gap-1.5" to={"/mon-compte"}><UserCircle strokeWidth={1} size={40} />
+                                          {!userConnected ? <NavLink className="flex text-[.8rem] items-center gap-1.5" to={"/mon-compte/connexion"}><UserCircle strokeWidth={1} size={40} />
                                                 Mon Compte
                                           </NavLink> :
                                                 <UserMenu isAdmin={false} />

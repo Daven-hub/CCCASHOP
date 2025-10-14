@@ -9,6 +9,7 @@ const initialState = {
   token: localStorage.getItem("token") || null,
   csrf: localStorage.getItem("csrf") || null,
   usershops:[],
+  vendeur:[],
   authStatus: "ndle",
   statusR:false,
   error: null,
@@ -19,6 +20,28 @@ export const registerApp = createAsyncThunk (
   async (datas, thunkAPI) => {
     try {
       const response= await authService.register (datas);
+      if (!response.success) {
+        return thunkAPI.rejectWithValue(response.error);
+      }else{
+        return response;
+      }
+    } catch (err) {
+      const message =
+        (err.response &&
+          err.response.data &&
+          err.response.data.message) ||
+        err.message ||
+        err.toString ();
+      return thunkAPI.rejectWithValue (message);
+    }
+  }
+);
+
+export const registerAppShop = createAsyncThunk (
+  'auth/registerShop',
+  async (datas, thunkAPI) => {
+    try {
+      const response= await authService.registerShop (datas);
       if (!response.success) {
         return thunkAPI.rejectWithValue(response.error);
       }else{
@@ -65,6 +88,7 @@ export const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.user = null;
+      state.vendeur=null;
       state.token = null;
       state.csrf = null;
       localStorage.removeItem('token');
@@ -89,6 +113,19 @@ export const authSlice = createSlice({
         state.authStatus = "success";
         state.error = action.payload || action.error.message || "Erreur de connexion";
       })
+      .addCase (registerAppShop.pending, state => {
+        state.authStatus = "loading";
+      })
+      .addCase (registerAppShop.fulfilled, (state, action) => {
+        state.authStatus = "success";
+        state.isSuccess = true;
+        state.usershops.unshift (action.payload.result);
+        state.vendeur.unshift (action.payload.vendeur);
+      })
+      .addCase (registerAppShop.rejected, (state, action) => {
+        state.authStatus = "success";
+        state.error = action.payload || action.error.message || "Erreur de connexion";
+      })
       .addCase(login.pending, (state) => {
         state.authStatus = "loading";
       })
@@ -100,19 +137,6 @@ export const authSlice = createSlice({
         localStorage.setItem('token', action.payload.token);
         localStorage.setItem('csrf', action.payload.csrf);
         localStorage.setItem('user', JSON.stringify(action.payload.user));
-        // if (action.payload && action.payload.token && action.payload.user) {
-        //   state.usershop = action.payload.user;
-        //   state.token = action.payload.token;
-        //   state.csrf = action.payload.csrf;
-      
-        //   localStorage.setItem("token", action.payload.token);
-        //   localStorage.setItem("csrf", action.payload.csrf);
-        //   localStorage.setItem("user", JSON.stringify(action.payload.user));
-        // } else {
-
-        //   state.authStatus = "error";
-        //   state.error = action.payload?.error || "Réponse invalide du serveur";
-        // }
       })
       .addCase(login.rejected, (state, action) => {
         state.authStatus = "error";

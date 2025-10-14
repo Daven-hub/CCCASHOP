@@ -2,7 +2,7 @@ import  { useEffect } from "react";
 import EventList from "../EventList";
 import { Calendar02Icon, GraduateMaleIcon, NewReleasesIcon, NewsIcon } from "hugeicons-react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllEvenement } from "../../../store/slices/evenements.slice";
+// import { getAllEvenement } from "../../../store/slices/evenements.slice";
 // import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../Components/table";
 // import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../Components/dropdown-menu";
 // import { FaChevronDown, FaEdit, FaTrash } from "react-icons/fa";
@@ -45,16 +45,16 @@ export default function DashCustomer() {
   ]
 
   const dispatch = useDispatch();
-  const { Evenements } = useSelector((state) => state.evenements);
-  useEffect(() => {
-    dispatch(getAllEvenement());
-  }, [dispatch]);
+  // const { Evenements } = useSelector((state) => state.evenements);
+  // useEffect(() => {
+  //   dispatch(getAllEvenement());
+  // }, [dispatch]);
  
   
   return (
     // <div className="flex flex-col flex-1 bg-gray-100">
     <> 
-    <h2 className="m-0 text-[1.5rem] font-semibold text-primary mb-4">Dashboard customer</h2>
+    <h2 className="m-0 text-[1.5rem] font-semibold text-primary mb-4">Tableau de Bord</h2>
     <div className="flex w-full flex-col gap-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {/* Cards for metrics in French */}
@@ -73,7 +73,7 @@ export default function DashCustomer() {
       <div className="flex w-full  max-md:flex-col gap-6">
         <div className="w-[60%] max-md:w-full flex flex-col gap-4 bg-white p-6 rounded-md">
           <span className="text-[1rem] font-semibold">Liste des évenements</span>
-          <EventList event={Evenements}/>
+          {/* <EventList event={Evenements}/> */}
         </div> 
         <div className="w-[40%] max-md:w-full py-8 bg-white px-4 rounded-md shadow">
         {/* <Table>

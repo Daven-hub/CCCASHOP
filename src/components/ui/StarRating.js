@@ -12,7 +12,7 @@ const StarRating = ({ rating }) => {
             key={index}
             style={{
               color: starNumber <= rating ? 'gold' : 'lightgray',
-              fontSize: '24px',
+              fontSize: '20px',
               cursor: 'pointer',
             }}
           >

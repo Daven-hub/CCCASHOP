@@ -10,14 +10,16 @@ function FormRegister ({
   controle,
   loading,
   connexion,
-  errorLog
+  errorLog,
+  setUserEditedUsername
 }) {
   let datas = watchE()
+  const password = watchE('password')
 //   console.log('watchE', datas)
 
   return (
     <form onSubmit={onSubmit} className='flex text-[.9rem] flex-col gap-4'>
-      <div className='flex flex-col gap-0.5'>
+      <div className='flex relative flex-col gap-0.5'>
         <input
           type='text'
           className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
@@ -32,33 +34,34 @@ function FormRegister ({
           </p>
         )}
       </div>
-      <div className='flex flex-col gap-0.5'>
+      <div className='flex relative flex-col gap-0.5'>
         <input
           type='password'
           className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
           placeholder='Password *'
-          {...connexion('password', { required: true })}
+          {...connexion('password', { required: true, minLength: { value: 6 } })}
         />
         {errorLog.email && (
           <p className='text-[.7rem] text-red-600'>
-            Vous deviez renseigner le champs password
+            Vous deviez renseigner le champs
           </p>
         )}
       </div>
-      <div className='flex flex-col gap-0.5'>
+      <div className='flex relative flex-col gap-0.5'>
         <input
           type='password'
           className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
           placeholder='Confimer le mot de passe *'
-          {...connexion('confimPass', { required: true })}
+          {...connexion('confimPass', { required: true, validate: (v) =>
+              v === password || "Les mots de passe ne correspondent pas",})}
         />
-        {errorLog.email && (
+        {errorLog.confimPass && (
           <p className='text-[.7rem] text-red-600'>
-            Vous deviez renseigner le champs password
+            {errorLog.confimPass.message}
           </p>
         )}
       </div>
-      <div className='flex flex-col gap-0.5'>
+      <div className='flex relative flex-col gap-0.5'>
         <input
           type='text'
           className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
@@ -71,7 +74,7 @@ function FormRegister ({
           <p className='text-[.7rem] text-red-600'>{errorLog.nom.message}</p>
         )}
       </div>
-      <div className='flex flex-col gap-0.5'>
+      <div className='flex relative flex-col gap-0.5'>
         <input
           type='text'
           className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
@@ -84,10 +87,25 @@ function FormRegister ({
           </p>
         )}
       </div>
-      <div className='flex flex-col gap-0.5'>
+      <div className='flex relative flex-col gap-0.5'>
+        <input
+          type='text'
+          className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
+          placeholder="Nom d'utilisateur *"
+          {...connexion('username', { required: false })}
+          onChange={() => setUserEditedUsername(true)}
+        />
+        {errorLog.username && (
+          <p className='text-[.7rem] text-red-600'>
+            Vous deviez renseigner le champs password
+          </p>
+        )}
+      </div>
+      <div className='flex relative flex-col gap-0.5'>
         <input
           type='file'
           className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
+          accept="image/*"
           placeholder='profile *'
           {...connexion('profile', { required: false })}
         />
@@ -99,33 +117,33 @@ function FormRegister ({
       </div>
       {datas?.role === 'fournisseur' && (
         <>
-          <div className='flex flex-col gap-0.5'>
+          <div className='flex relative flex-col gap-0.5'>
             <input
               type='text'
               className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
               placeholder='Nom de la boutique *'
-              {...connexion('shop_name', {
+              {...connexion('shopname', {
                 required: 'Vous deviez renseigner le champs password'
               })}
             />
-            {errorLog.shop_name && (
+            {errorLog.shopname && (
               <p className='text-[.7rem] text-red-600'>
-                {errorLog.shop_name.message}
+                {errorLog.shopname.message}
               </p>
             )}
           </div>
-          <div className='flex flex-col gap-0.5'>
+          <div className='flex relative flex-col gap-0.5'>
             <input
               type='text'
               className='flex border w-full px-3 py-3 rounded-[5px] outline-0'
               placeholder='Telephone du vendeur *'
-              {...connexion('shop_tel', {
+              {...connexion('shoptel', {
                 required: 'Vous deviez renseigner le champs password'
               })}
             />
-            {errorLog.shop_tel && (
+            {errorLog.shoptel && (
               <p className='text-[.7rem] text-red-600'>
-                {errorLog.shop_tel.message}
+                {errorLog.shoptel.message}
               </p>
             )}
           </div>

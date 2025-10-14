@@ -63,52 +63,23 @@ function Sidebar({setIsSidebarOpen}) {
       {
         group: "Centrale d'achat",
         corps: [
-          { title: 'Catégories', icon: <FiTag size={18} />, path: '/admin/categories', children: [] },
-          { title: 'Sous catégories', icon: <FiTag size={18} />, path: '/admin/sous-categories', children: [] },
+          { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
+          // { title: 'Sous catégories', icon: <FiTag size={18} />, path: '/admin/sous-categories', children: [] },
           { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
           { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
-          { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
+          // { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
           { title: 'Acheteurs', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
           { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
-          { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
-          { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
+          // { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
+          // { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
         ]
       },
-      // {
-      //   group: 'Pages',
-      //   corps: [
-      //     // { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/admin/ccca-revue', children: [] },
-      //     // { title: 'Actualité', icon: <Newspaper size={18} />, path: '/admin/news', children: [] },
-      //     // { title: 'Événements', icon: <FiCalendar size={18} />, path: '/admin/events', children: [] },
-      //     // { title: 'Activité', icon: <FiFlag size={18} />, path: '/admin/activities', children: [] },
-      //     // { title: 'Services', icon: <FiBriefcase size={18} />, path: '/admin/Services', children: [] },
-      //     {
-      //       title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
-      //         { title: 'Presentation', path: "/admin/à-propos/presentation" },
-      //         { title: 'Conseil d\'administration', path: "/admin/à-propos/Conseil-d'administration" },
-      //         // { title: 'Diretion Éxecutive', path: '/admin/ConseilAdministration' },
-      //         // { title: 'Bureau Afrique', path: '/admin/à-propos/bureau-afrique' },
-      //         // { title: 'Bureau éxécutive', path: '/admin/ConseilAdministration' },
-      //         // { title: 'Galérie', path: '/admin/à-propos/galéries' },
-      //       ]
-      //     },
-      //   ]
-      // },
-      // {
-      //   group: 'Autre',
-      //   corps: [
-      //     { title: 'Utilisateurs', icon: <FiUsers size={18} />, path: '/Admin/Utilisateurs', children: [] },
-      //     { title: 'Parténaires', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-      //     { title: 'Membership', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-      //     { title: 'Publicité', icon: <FiUsers size={18} />, path: '/Admin/publicite', children: [] },
-      //     { title: 'Communiqué', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-      //   ]
-      // },
       {
         group: 'Autre',
         corps: [
           { title: 'Rapports', icon: <FileTextIcon size={18} />, path: '/Admin/Utilisateurs', children: [] },
           { title: 'Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+          { title: 'Email Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/email', children: [] },
         ]
       },
       {

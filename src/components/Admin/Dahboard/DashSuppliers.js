@@ -8,6 +8,7 @@ import { FiClipboard, FiDollarSign, FiPackage, FiUsers } from "react-icons/fi";
 import moment from "moment";
 import { FaExchangeAlt } from "react-icons/fa";
 import { useAuth } from "../../../context/authContext";
+import { useToast } from "../../../hook/use-toast";
 // import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../Components/table";
 // import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../Components/dropdown-menu";
 // import { FaChevronDown, FaEdit, FaTrash } from "react-icons/fa";
@@ -176,14 +177,26 @@ export default function DashSuppliers() {
     },
   });
 
+  const { toast } = useToast();
+
   const {userConnected}=useAuth()
+
+   useEffect(() => {
+        if(userConnected?.status===0){
+          toast({
+            title: "Restriction",
+            description: "Veuillez patienter l'approbation de l'admininistrateur afin de debuter dans votre espace",
+            variant: "warning",
+          });
+        }
+  }, [userConnected?.status])
 
   return (
     (<div className="flex flex-col gap-6 ">
       <div className="flex flex-col md:flex-row gap-6">
         <div className="flex w-full md:w-2/3 flex-col gap-5">
           <div className="flex flex-col px-6 pt-4 pb-16 rounded-[7px] shadow-sm border border-opacity-10 bg-white">
-            <h2 className="m-0 text-[1.3rem] md:text-[1.55rem] capitalize font-bold text-primary mb-3">Bienvenue {userConnected?.nom}</h2>
+            <h2 className="m-0 text-[1.3rem] md:text-[1.55rem] capitalize font-bold text-primary mb-3">Bienvenue {userConnected?.username ?userConnected?.username: userConnected?.prenom+' '+userConnected?.nom}</h2>
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2">
             {data?.map((x, index) =>

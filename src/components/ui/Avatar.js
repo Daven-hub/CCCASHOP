@@ -1,0 +1,42 @@
+import React, { forwardRef } from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
+
+// Petite fonction utilitaire pour fusionner les classes sans `cn`
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const Avatar = forwardRef(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Root
+    ref={ref}
+    className={classNames(
+      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
+      className
+    )}
+    {...props}
+  />
+));
+Avatar.displayName = "Avatar";
+
+const AvatarImage = forwardRef(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Image
+    ref={ref}
+    className={classNames("aspect-square h-full w-full", className)}
+    {...props}
+  />
+));
+AvatarImage.displayName = "AvatarImage";
+
+const AvatarFallback = forwardRef(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Fallback
+    ref={ref}
+    className={classNames(
+      "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      className
+    )}
+    {...props}
+  />
+));
+AvatarFallback.displayName = "AvatarFallback";
+
+export { Avatar, AvatarImage, AvatarFallback };

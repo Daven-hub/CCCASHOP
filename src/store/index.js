@@ -1,17 +1,19 @@
 import {configureStore} from '@reduxjs/toolkit';
 import authReducer from './slices/auth.slice';
 import usersReducer from './slices/user.slice';
-import RevueReducer from './slices/revue.slice';
+import vendeurReducer from './slices/vendeur.slice';
+// import RevueReducer from './slices/revue.slice';
 import ActualiteReducer from './slices/actualites.slice';
-import EvenementsReducer from './slices/evenements.slice';
+// import EvenementsReducer from './slices/evenements.slice';
 
 export const store = configureStore ({
   reducer: {
     auth: authReducer,
     users: usersReducer,
-    revue: RevueReducer,
+    vendeur: vendeurReducer,
+    // revue: RevueReducer,
     actualites: ActualiteReducer,
-    evenements: EvenementsReducer,
+    // evenements: EvenementsReducer,
   },
   devTools: true,
 });

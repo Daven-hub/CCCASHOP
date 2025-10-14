@@ -21,6 +21,7 @@ function UserMenu({isAdmin}) {
       }, []);
 
       const { userConnected, handleLogout } = useAuth();
+      // console.log('userConnected',userConnected)
       return (
             <div ref={popoverRef} className='flex relative items-center font-bold text-[.75rem] gap-2'>
                   <div onClick={() => setOpen(!open)} className='cursor-pointer flex items-center gap-1.5'>
@@ -28,14 +29,14 @@ function UserMenu({isAdmin}) {
                               <Avatar.Image
                                     className="AvatarImage"
                                     src={BaseUrl + "" + userConnected?.profile}
-                                    alt={userConnected?.username}
+                                    alt={userConnected?.username ?userConnected?.username: userConnected?.nom}
                               />
                               <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-gray-100 text-sm font-semibold text-gray-800" delayMs={600}>
                                     {userConnected?.username?.charAt(0)?.toUpperCase()}
                               </Avatar.Fallback>
                         </Avatar.Root>
                         {!isAdmin && <div className='flex flex-col leading-[1.3]'>
-                              <span className='text-white/85 text-[.9rem] capitalize font-semibold'>{userConnected?.username}</span>
+                              <span className='text-white/85 text-[.9rem] capitalize font-semibold'>{userConnected?.username ?userConnected?.username: userConnected?.prenom+' '+userConnected?.nom}</span>
                               <span className='text-white/70 capitalize font-light text-[.7rem]'>{userConnected?.role}</span>
                         </div>}
                   </div>
@@ -43,7 +44,7 @@ function UserMenu({isAdmin}) {
                   {open && (
                         <div className="absolute top-full right-0 overflow-hidden mt-2 w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-20">
                               <div className="px-4 space-y-0.5 py-3 border-b">
-                                    <p className="text-sm text-primary capitalize font-semibold">{userConnected?.username}</p>
+                                    <p className="text-sm text-primary capitalize font-semibold">{userConnected?.username ?userConnected?.username: userConnected?.prenom+' '+userConnected?.nom}</p>
                                     <p className="text-xs font-normal text-gray-400">{userConnected?.email}</p>
                               </div>
                               <ul className="py-1 text-sm font-medium text-gray-500">
