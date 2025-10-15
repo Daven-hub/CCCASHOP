@@ -13,11 +13,11 @@ function ModalDelete({ open, setOpen, onConfirm, itemName = "cet élément" }) {
 
     return (
         <div
-            className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm "
             onClick={() => setOpen(false)}
         >
             <div
-                className="bg-white w-[90%] md:w-[420px] rounded-[12px] shadow-lg p-6 animate-fadeIn"
+                className="bg-white w-[90%] md:w-[420px] rounded-[12px] shadow-lg p-6 animate-fadeIn "
                 onClick={(e) => e.stopPropagation()}
             >
                 <h2 className="text-[1.3rem] font-bold text-red-600 mb-3 text-center">
