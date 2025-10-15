@@ -9,10 +9,17 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { MoveLeftIcon } from 'hugeicons-react'
 import { MoveLeft } from 'lucide-react'
 import CreateValeur from '../../components/Admin/Dahboard/Valeurs/CreateValeurForm'
+import ModalDelete from '../../components/Admin/Dahboard/ModalDelete'
 
 function AttributeValue() {
 
     const [openCreate, setOpenCreate] = useState(false);
+    const [openCreat, setOpenCreat] = useState(false);
+    const [selectedItemName, setSelectedItemName] = useState("");
+    const handleDelete = (productName) => {
+        setSelectedItemName(productName);
+        setOpenCreat(true);
+    };
     const handleCreateValue = (data) => {
         //
     };
@@ -81,7 +88,8 @@ function AttributeValue() {
                                                             </DropdownMenuItem>
                                                             <DropdownMenuItem
                                                                 className="text-red-600"
-                                                            // onClick={() => handleDelete(species.id)}
+                                                                // onClick={() => handleDelete(species.id)}
+                                                                onClick={() => handleDelete(species?.titre)}
                                                             >
                                                                 <FaTrash className="mr-2 h-4 w-4" />
                                                                 Supprimer
@@ -102,6 +110,10 @@ function AttributeValue() {
                 open={openCreate}
                 setOpen={setOpenCreate}
                 onCreate={handleCreateValue}
+            />
+            <ModalDelete open={openCreat}
+                setOpen={setOpenCreat}
+                itemName={selectedItemName}
             />
         </div>
     )

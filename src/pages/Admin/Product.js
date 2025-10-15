@@ -6,9 +6,17 @@ import { Button } from '../../components/ui/Button'
 import { FiPackage } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
 import CreateProduct from '../../components/Admin/Dahboard/Product/CreateProctuctForm'
+import ModaleDelete from '../../components/Admin/Dahboard/ModalDelete'
 
 function Product() {
   const [openCreate, setOpenCreate] = useState(false);
+  const [openCreat, setOpenCreat] = useState(false);
+  const [selectedItemName, setSelectedItemName] = useState("");
+  const handleDelete = (productName) => {
+    setSelectedItemName(productName);
+    setOpenCreat(true);
+  };
+
   const handleCreateProduct = (data) => {
     //
   };
@@ -83,7 +91,8 @@ function Product() {
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             className="text-destructive"
-                          // onClick={() => handleDelete(species.id)}
+                            // onClick={() => handleDelete(species.id)}
+                            onClick={() => handleDelete(species?.titre)}
                           >
                             <FaTrash className="mr-2 h-4 w-4" />
                             delete
@@ -102,6 +111,10 @@ function Product() {
         open={openCreate}
         setOpen={setOpenCreate}
         onCreate={handleCreateProduct}
+      />
+      <ModaleDelete open={openCreat}
+        setOpen={setOpenCreat}
+        itemName={selectedItemName}
       />
     </div>
   )

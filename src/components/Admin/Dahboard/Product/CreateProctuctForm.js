@@ -40,22 +40,29 @@ function CreateProduct({ open, setOpen }) {
                 <AlertDialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" />
                 <AlertDialog.Content
                     className="fixed z-50 bg-white rounded-3xl shadow-2xl w-[95%] max-w-5xl p-8 
-                     top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                     border border-gray-100 max-h-[90vh] overflow-y-auto"
+          top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+          border border-gray-100 max-h-[90vh] overflow-y-auto"
                 >
+                    <AlertDialog.Title asChild>
+                        <div className="flex justify-between items-center mb-6">
+                            <h1 className="text-2xl font-bold text-gray-800">
+                                Créer un nouveau produit
+                            </h1>
+                            <button
+                                type="button"
+                                onClick={() => setOpen(false)}
+                                className="text-gray-500 hover:text-red-500 transition"
+                            >
+                                <X className="w-6 h-6" />
+                            </button>
+                        </div>
+                    </AlertDialog.Title>
 
-                    <div className="flex justify-between items-center mb-6">
-                        <h1 className="text-2xl font-bold text-gray-800">
-                            Créer un nouveau produit
-                        </h1>
-                        <button
-                            type="button"
-                            onClick={() => setOpen(false)}
-                            className="text-gray-500 hover:text-red-500 transition"
-                        >
-                            <X className="w-6 h-6" />
-                        </button>
-                    </div>
+                    <AlertDialog.Description asChild>
+                        <p className="text-gray-500 mb-6 text-sm">
+                            Remplissez les informations nécessaires pour ajouter un nouveau produit à votre catalogue.
+                        </p>
+                    </AlertDialog.Description>
 
                     <form className="space-y-8">
                         <ProductInfoSection form={form} handleChange={handleChange} />
@@ -71,7 +78,6 @@ function CreateProduct({ open, setOpen }) {
                             setAttributes={setAttributes}
                         />
 
-                        {/* FOOTER */}
                         <div className="flex justify-end gap-3 mt-8">
                             <AlertDialog.Cancel asChild>
                                 <button
