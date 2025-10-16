@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Breadcrumb from '../../../components/Breadcumb'
 import Annimated from '../../../components/Annimated'
 import { paddingH } from '../../../components/Navbar/CentraleAchat/Headers'
@@ -8,7 +8,8 @@ import data from "../../../datas/produits.json"
 import datac from "../../../datas/fournisseur.json"
 import { NavLink } from 'react-router-dom'
 import { StarIcon, StarHalfIcon, ShoppingCart01Icon } from 'hugeicons-react'
-import { Eye, Heart, MoveRight, } from 'lucide-react'
+import { Eye, Heart, MoveRight, Trash2 } from 'lucide-react'
+
 
 const CardProduit = ({ x, isFavori, onToggleFavori }) => {
       const getImageFourn = (z) => {
@@ -19,7 +20,7 @@ const CardProduit = ({ x, isFavori, onToggleFavori }) => {
             <div className='group border p-2 border-gray-200 overflow-hidden bg-white rounded-[5px]'>
                   <div className='relative h-[200px] md:h-[265px] overflow-hidden p-6 bg-primary/5'>
                         <img
-                              className='absolute group-hover:scale-[.75] duration-500 transition-all scale-[.65] rounded-t-[5px] overflow-hidden left-0 top-0 w-full h-full object-contain'
+                              className='absolute group-hover:scale-[.75] duration-500 transition-all scale-[.65] rounded-t-[5px] left-0 top-0 w-full h-full object-contain'
                               src={x.image}
                               alt='item'
                         />
@@ -76,16 +77,9 @@ const CardProduit = ({ x, isFavori, onToggleFavori }) => {
                         </div>
 
                         <button className="relative w-full mt-1.5 rounded-[6px] border text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 py-2 font-semibold px-1 overflow-hidden group">
-                              <span className="absolute left-0 top-0 h-full w-0 bg-primary/10 
-            transition-all duration-500 ease-out group-hover:w-full"></span>
-
-                              <span className="relative z-10 flex items-center gap-2.5 
-            transition-colors duration-500 group-hover:text-primary/90">
-                                    <ShoppingCart01Icon
-                                          strokeWidth={2}
-                                          size={19}
-                                          className="transition-colors duration-500 group-hover:text-primary/90"
-                                    />
+                              <span className="absolute left-0 top-0 h-full w-0 bg-primary/10 transition-all duration-500 ease-out group-hover:w-full"></span>
+                              <span className="relative z-10 flex items-center gap-2.5 transition-colors duration-500 group-hover:text-primary/90">
+                                    <ShoppingCart01Icon strokeWidth={2} size={19} className="transition-colors duration-500 group-hover:text-primary/90" />
                                     Ajouter au panier
                               </span>
                         </button>
@@ -102,19 +96,41 @@ function Favoris() {
             { label: "Favoris", path: "/favoris" },
       ];
 
-      const [favoris, setFavoris] = useState(data.map(p => p.id));
+      const [favoris, setFavoris] = useState([]);
       const [currentPage, setCurrentPage] = useState(1);
       const itemsPerPage = 25;
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const currentProducts = data.slice(startIndex, startIndex + itemsPerPage);
+
+      useEffect(() => {
+            const stored = JSON.parse(localStorage.getItem("favoris") || "[]");
+
+            if (stored.length === 0) {
+                  const firstFour = data.slice(0, 4).map((p) => p.id);
+                  setFavoris(firstFour);
+                  localStorage.setItem("favoris", JSON.stringify(firstFour));
+            } else {
+                  setFavoris(stored);
+            }
+      }, []);
+
+      useEffect(() => {
+            localStorage.setItem("favoris", JSON.stringify(favoris));
+      }, [favoris]);
 
       const toggleFavori = (id) => {
             setFavoris((prev) =>
-                  prev.includes(id)
-                        ? prev.filter((f) => f !== id)
-                        : [...prev, id]
+                  prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
             );
       };
+
+      const clearFavoris = () => {
+            setFavoris([]);
+            localStorage.removeItem("favoris");
+      };
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const currentProducts = data.slice(startIndex, startIndex + itemsPerPage);
+      const favorisProduits = currentProducts.filter((x) => favoris.includes(x.id));
+      const totalPages = Math.ceil(favoris.length / itemsPerPage);
 
       return (
             <Annimated className="bg-white">
@@ -123,36 +139,68 @@ function Favoris() {
                   </div>
 
                   <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col`}>
-                        <PresentationLabel
-                              titre={"MES FAVORIS"}
-                              Component={
-                                    <NavLink
-                                          className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline"
-                                          to={"#"}
+                        <div className='flex justify-between items-center flex-wrap gap-3'>
+                              <PresentationLabel
+                                    titre={`MES FAVORIS (${favoris.length})`}
+                                    Component={
+                                          <NavLink
+                                                className="text-[.8rem] flex items-center gap-2 text-black/70 font-semibold hover:underline"
+                                                to={"#"}
+                                          >
+                                                Liste des produits <MoveRight size={14} />
+                                          </NavLink>
+                                    }
+                              />
+
+                              {favoris.length > 0 && (
+                                    <button
+                                          onClick={clearFavoris}
+                                          className="flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700 transition"
                                     >
-                                          Liste des produits <MoveRight size={14} />
-                                    </NavLink>
-                              }
-                        />
+                                          Vider la liste
+                                    </button>
+                              )}
+                        </div>           
 
                         <div className='grid gap-5 grid-cols-1 md:grid-cols-5'>
-                              {currentProducts
-                                    .filter((x) => favoris.includes(x.id))
-                                    .map((x, index) => (
-                                          <CardProduit
-                                                key={index}
-                                                x={x}
-                                                isFavori={favoris.includes(x.id)}
-                                                onToggleFavori={toggleFavori}
-                                          />
-                                    ))}
+                              {favorisProduits.map((x) => (
+                                    <CardProduit
+                                          key={x.id}
+                                          x={x}
+                                          isFavori={favoris.includes(x.id)}
+                                          onToggleFavori={toggleFavori}
+                                    />
+                              ))}
 
                               {favoris.length === 0 && (
-                                    <div className="col-span-full text-center text-gray-500 py-8 font-medium">
-                                          Aucun favori pour le moment
+                                    <div className="col-span-full text-center text-gray-500 py-10 font-medium">
+                                          <p className='mb-2'>Aucun favori pour le moment.</p>
+                                          <NavLink
+                                                to="/produits"
+                                                className="text-primary font-semibold hover:underline"
+                                          >
+                                                Découvrir nos produits
+                                          </NavLink>
                                     </div>
                               )}
                         </div>
+
+                        {favoris.length > itemsPerPage && (
+                              <div className="flex justify-center mt-6 gap-2">
+                                    {[...Array(totalPages)].map((_, idx) => (
+                                          <button
+                                                key={idx}
+                                                onClick={() => setCurrentPage(idx + 1)}
+                                                className={`px-3 py-1 rounded-md text-sm font-semibold border ${currentPage === idx + 1
+                                                      ? "bg-primary text-white border-primary"
+                                                      : "bg-white border-gray-300 hover:bg-gray-100"
+                                                      }`}
+                                          >
+                                                {idx + 1}
+                                          </button>
+                                    ))}
+                              </div>
+                        )}
                   </div>
             </Annimated>
       );
