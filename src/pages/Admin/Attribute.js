@@ -7,17 +7,12 @@ import { FiPackage, FiTag } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
 import { useNavigate } from 'react-router-dom'
 import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttribut'
-import { useDispatch, useSelector } from 'react-redux'
-import { useToast } from '../../hook/use-toast'
-import { useForm } from 'react-hook-form'
-import { createAttr, getAllAttrs } from '../../store/slices/attribute.slice.js'
-import LoaderUltra from '../../components/ui/LoaderUltra.js'
-import { getAllSubCateg } from '../../store/slices/sousCategorie.slice'
-import { getAllCateg } from '../../store/slices/categories.slice'
-import { IconRenderer } from '../../lib/IconeRenderer.js'
 
 function Attribute() {
   const [openCreate, setOpenCreate] = useState(false);
+  const handleCreateAttribute = (data) => {
+    //
+  };
 
   const navigate = useNavigate()
   const handleNavigateValue = (id) => {
@@ -180,7 +175,11 @@ function Attribute() {
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             className="text-red-600"
-                          // onClick={() => handleDelete(species.id)}
+                            // onClick={() => handleDelete(species.id)}
+                            onClick={(e) => {
+                              e.stopPropagation(); 
+                              handleDelete(species?.titre);
+                            }}
                           >
                             <FaTrash className="mr-2 h-4 w-4" />
                             Supprimer
@@ -204,6 +203,11 @@ function Attribute() {
         errorLog={errorLog}
         loading={loading}
         subcategories={subcategories}
+      />
+
+      <ModalDelete open={openCreat}
+        setOpen={setOpenCreat}
+        itemName={selectedItemName}
       />
     </div>
   )
