@@ -1,65 +1,61 @@
-import React, { useState } from "react";
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import React, { useState } from 'react'
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle
+} from '../../../ui/dialog'
+import { Loader2 } from 'lucide-react'
+import { Button } from '../../../ui/Button'
 
-function CreateValeur({ open, setOpen, onCreate }) {
-    const [nom, setNom] = useState("");
+function CreateValeur ({
+  open,
+  setOpen,
+  onSubmit,
+  connexion,
+  loading,
+  errorLog,
+  type
+}) {
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild></DialogTrigger>
+      <DialogContent className='max-w-lg'>
+        <DialogHeader>
+          <DialogTitle>Créer une valeur</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={onSubmit} className='space-y-4 text-[.9rem]'>
+          <div className='relative'>
+            <label className='text-sm font-medium text-gray-600'>
+              Valeur de l'attribut
+            </label>
+            <input
+              type={type}
+              className={`mt-1 w-full border rounded-lg px-3 ${type==='text'?'py-2':'h-[40px]'} focus:ring-2 focus:ring-blue-500`}
+              {...connexion('value', { required: 'Ce champs est obligatoire' })}
+            />
+            {errorLog.value && (
+              <p className='text-red-500 text-xs mt-1'>
+                {errorLog.value.message}
+              </p>
+            )}
+          </div>
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onCreate({ nom });
-        setNom("");
-        setOpen(false);
-    };
-
-    return (
-        <AlertDialog.Root open={open} onOpenChange={setOpen}>
-            <AlertDialog.Portal>
-                <AlertDialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50" />
-
-                <AlertDialog.Content className="fixed z-50 bg-white rounded-[10px] shadow-lg w-[90%] md:w-[420px] p-6 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
-                    <AlertDialog.Title className="text-[1.3rem] font-bold text-primary mb-4">
-                        Créer une nouvelle valeur
-                    </AlertDialog.Title>
-
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                        <div className="flex flex-col gap-2">
-                            <label className="text-[.9rem] font-semibold text-gray-700">
-                                Nom de la valeur
-                            </label>
-                            <input
-                                type="text"
-                                value={nom}
-                                onChange={(e) => setNom(e.target.value)}
-                                required
-                                placeholder="Ex : Rouge, Bleu, XL..."
-                                className="border border-gray-300 rounded-[7px] py-2.5 px-4 text-[.9rem] outline-none focus:border-primary"
-                            />
-                        </div>
-
-                        <div className="flex justify-end gap-3 mt-5">
-                            <AlertDialog.Cancel asChild>
-                                <button
-                                    type="button"
-                                    className="px-4 py-2.5 rounded-[7px] border border-gray-300 font-medium text-gray-700 hover:bg-gray-100"
-                                >
-                                    Annuler
-                                </button>
-                            </AlertDialog.Cancel>
-
-                            <AlertDialog.Action asChild>
-                                <button
-                                    type="submit"
-                                    className="px-5 py-2.5 rounded-[7px] bg-primary text-white font-semibold hover:opacity-90"
-                                >
-                                    Créer
-                                </button>
-                            </AlertDialog.Action>
-                        </div>
-                    </form>
-                </AlertDialog.Content>
-            </AlertDialog.Portal>
-        </AlertDialog.Root>
-    );
+          <Button
+            type='submit'
+            className='w-full mt-1.5 flex item-center justify-center text-white'
+          >
+            {loading ? (
+              <Loader2 className='animate-spin h-5 w-5 text-white' />
+            ) : (
+              'Enregistrer'
+            )}
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  )
 }
 
-export default CreateValeur;
+export default CreateValeur

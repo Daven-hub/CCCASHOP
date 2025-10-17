@@ -111,8 +111,8 @@ function Clients() {
   }, [dispatch]);
 
   const vendeurs = users?.filter((x) => x?.role === "acheteur");
-  const vendeurActif = vendeurs?.filter((x) => x?.status === 1)?.length;
-  const vendeurOff = vendeurs?.filter((x) => x?.status === 0)?.length;
+  const vendeurActif = vendeurs?.filter((x) => parseInt(x?.status) === 1)?.length;
+  const vendeurOff = vendeurs?.filter((x) =>parseInt(x?.status) === 0)?.length;
 
   const data = [
     {
@@ -215,7 +215,7 @@ function Clients() {
                       <Avatar>
                         {species?.profile && (
                           <AvatarImage
-                            className="object-cover"
+                            className="object-contain border w-[150px] overflow-hidden"
                             src={BaseUrl + "" + species?.profile}
                           />
                         )}
@@ -239,7 +239,7 @@ function Clients() {
                        {species?.adresse?species?.adresse:'N/A'}
                     </TableCell>
                     <TableCell className="hidden md:table-cell">
-                      {species?.status===1?
+                      {parseInt(species?.status)===1?
                       <div className='badge flex items-center justify-center rounded-[50px] text-[.65rem] font-extrabold bg-green-100 text-green-700'>
                         Active
                       </div>:
@@ -268,10 +268,10 @@ function Clients() {
                         <DropdownMenuContent align="end">
                           <DropdownMenuLabel>action</DropdownMenuLabel>
                           <DropdownMenuSeparator className="bg-black/10" />
-                          <DropdownMenuItem className={`${species?.status===1?'text-red-600':'text-green-600'}`}
-                                                      onClick={()=>handleUpdateStatus(species?.idUsershop,species?.status===0?1:0)}
+                          <DropdownMenuItem className={`${parseInt(species?.status)===1?'text-red-600':'text-green-600'}`}
+                                                      onClick={()=>handleUpdateStatus(species?.idUsershop,parseInt(species?.status)===0?1:0)}
                                                     >
-                                                   {species?.status===0?'Activer':'Desactiver'}
+                                                   {parseInt(species?.status)===0?'Activer':'Desactiver'}
                                                     </DropdownMenuItem>
                           <DropdownMenuItem
                             className="text-destructive"

@@ -6,6 +6,7 @@ import { BaseUrl } from '../config';
 import { useAuth } from '../context/authContext';
 import { MdDashboard } from 'react-icons/md';
 import { FaUserAlt } from 'react-icons/fa';
+import LoaderUltra from './ui/LoaderUltra';
 
 function UserMenu({isAdmin}) {
       const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ function UserMenu({isAdmin}) {
             return () => document.removeEventListener("mousedown", handleClickOutside);
       }, []);
 
-      const { userConnected, handleLogout } = useAuth();
+      const { userConnected, handleLogout,isLoading } = useAuth();
       // console.log('userConnected',userConnected)
       return (
             <div ref={popoverRef} className='flex relative items-center font-bold text-[.75rem] gap-2'>
@@ -29,7 +30,7 @@ function UserMenu({isAdmin}) {
                               <Avatar.Image
                                     className="AvatarImage"
                                     src={BaseUrl + "" + userConnected?.profile}
-                                    alt={userConnected?.username ?userConnected?.username: userConnected?.nom}
+                                    alt={userConnected?.username? userConnected?.username: userConnected?.nom}
                               />
                               <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-gray-100 text-sm font-semibold text-gray-800" delayMs={600}>
                                     {userConnected?.username?.charAt(0)?.toUpperCase()}

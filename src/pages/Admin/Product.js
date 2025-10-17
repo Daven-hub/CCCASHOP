@@ -31,7 +31,7 @@ function Product() {
         </div>
         <div className="rounded-[7px] overflow-hidden bg-white">
           <Table>
-            <TableHeader className="bg-gray-100">
+            <TableHeader className="bg-gray-200">
               <TableRow>
                 <TableHead>uuid</TableHead>
                 <TableHead>Thumbnail</TableHead>
@@ -54,7 +54,7 @@ function Product() {
                 produits.map((species, index) => (
                   <TableRow className="hover:bg-primary/10 cursor-pointer" key={index}>
                     <TableCell className="font-medium">{species?.id}</TableCell>
-                    <TableCell><img className='w-14 h-14 object-contain rounded-[6px]' src={species?.image} alt={species?.id} /></TableCell>
+                    <TableCell><img className='w-12 h-12 object-contain rounded-[6px]' src={species?.image} alt={species?.id} /></TableCell>
                     <TableCell className="hidden sm:table-cell">{species?.titre}</TableCell>
                     <TableCell className="hidden md:table-cell">Jus de Fruit</TableCell>
                     <TableCell className="hidden md:table-cell">{species?.qte+" "+species?.meter}</TableCell>

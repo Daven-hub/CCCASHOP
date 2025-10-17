@@ -43,7 +43,7 @@ function Navbar({ toggleSidebar }) {
   // const { userConnected,handleLogout } = useAuth();
 
   return (
-    <nav className="w-full sticky top-0 bg-white shadow-md z-[1] shadow-slate-100 flex items-center justify-between px-6 max-md:px-[4%] py-3 max-md:py-2.5 border-b">
+    <nav className="w-full sticky top-0 bg-white shadow-sm z-[1] shadow-gray-200 flex items-center justify-between px-6 max-md:px-[4%] py-3 max-md:py-2.5 border-b">
       <div className='flex items-center gap-3 w-[55%]'>
         <div className='cursor-pointer flex-shrink-0 btn-menu'>
           <Menu01Icon size={30} />

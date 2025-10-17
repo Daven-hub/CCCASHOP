@@ -1,24 +1,23 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import userService from "../../services/userService";
-// import authService from '../../services/authService';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import userService from '../../services/categorieService'
 
 const initialState = {
-  users: [],
-  usersId: null,
+  categories: [],
+  categorieId: null,
   // registerSuccess: false,
-  userStatus: "idle",
-  userError: null,
-};
+  categorieStatus: 'idle',
+  categorieError: null
+}
 
-export const updateUser = createAsyncThunk(
-  "user/updatye",
-  async ({ id, datas }, thunkAPI) => {
+export const createCateg = createAsyncThunk(
+  'Categorie/create',
+  async (datas, thunkAPI) => {
     try {
-      const response = await userService.updateUser(id, datas);
+      const response = await userService.createCategorie(datas)
       if (!response.success) {
-        return thunkAPI.rejectWithValue(response.error);
+        return thunkAPI.rejectWithValue(response.error)
       } else {
-        return response;
+        return response
       }
     } catch (error) {
       const message =
@@ -26,135 +25,164 @@ export const updateUser = createAsyncThunk(
           error.response.data &&
           error.response.data.message) ||
         error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
     }
   }
-);
+)
 
-export const getAllUsers = createAsyncThunk(
-  "users/getAlll",
+export const updateCateg = createAsyncThunk(
+  'Categorie/update',
+  async ({ id, datas }, thunkAPI) => {
+    try {
+      const response = await userService.updateCategorie(id, datas)
+      if (!response.success) {
+        return thunkAPI.rejectWithValue(response.error)
+      } else {
+        return response
+      }
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+export const getAllCateg = createAsyncThunk(
+  'categorie/getAlll',
   async (_, thunkAPI) => {
     try {
       // const token = thunkAPI.getState ().auth.user.token;
-      return await userService.getAllUser();
+      return await userService.getAllCategories()
     } catch (error) {
       const message =
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
         error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
     }
   }
-);
+)
 
-export const getUserById = createAsyncThunk(
-  "user/getById",
+export const getCategById = createAsyncThunk(
+  'categorie/getById',
   async (id, thunkAPI) => {
     try {
       // const token = thunkAPI.getState ().auth.user.token;
-      return await userService.getUserId(id);
+      return await userService.getCategorieId(id)
     } catch (error) {
       const message =
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
         error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
     }
   }
-);
+)
 
-export const deleteuser = createAsyncThunk(
-  "users/delete",
+export const deleteCateg = createAsyncThunk(
+  'categorie/delete',
   async (id, thunkAPI) => {
     try {
       // const token = thunkAPI.getState ().auth.user.token;
-      return await userService.deleteUserId(id);
+      return await userService.deleteCategorieId(id)
     } catch (error) {
       const message =
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
         error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
     }
   }
-);
+)
 
-export const userSlice = createSlice({
-  name: "users",
+export const categorieSlice = createSlice({
+  name: 'categorie',
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    reset: state => initialState
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(updateUser.pending, (state) => {
-        state.userStatus = "loading";
+      .addCase(createCateg.pending, state => {
+        state.categorieStatus = 'loading'
       })
-      .addCase(updateUser.fulfilled, (state, action) => {
-        state.userStatus = "success";
-        const updatedUser = action.payload.result;
-        const index = state.users.findIndex(
-          (us) => us?.idUsershop === updatedUser?.idUsershop
-        );
+      .addCase(createCateg.fulfilled, (state, action) => {
+        state.categorieStatus = 'success'
+        state.categories.unshift(action.payload.result)
+      })
+      .addCase(createCateg.rejected, (state, action) => {
+        state.categorieStatus = 'success'
+        state.categorieError = action.payload || action.error.message || 'Erreur de connexion'
+      })
+      .addCase(updateCateg.pending, state => {
+        state.categorieStatus = 'loading'
+      })
+      .addCase(updateCateg.fulfilled, (state, action) => {
+        state.categorieStatus = 'success'
+        const updated = action.payload.result
+        const index = state.categories.findIndex(
+          us => us?.idcategorie === updated?.idcategorie
+        )
         if (index !== -1) {
-          const existingUser = state.users[index];
-          state.users[index] = {
-            ...existingUser,
-            ...updatedUser,
-            created_at: existingUser.created_at,
-          };
+          const existing = state.categories[index]
+          state.categories[index] = {
+            ...existing,
+            ...updated
+          }
         }
       })
-      .addCase(updateUser.rejected, (state, action) => {
-        state.userStatus = "error";
-        state.userError = action.payload || "Modification échouée";
+      .addCase(updateCateg.rejected, (state, action) => {
+        state.categorieStatus = 'error'
+        state.categorieError = action.payload?.error || 'Modification échouée'
       })
-      .addCase(getAllUsers.pending, (state) => {
-        state.userStatus = "loading";
+      .addCase(getAllCateg.pending, state => {
+        state.categorieStatus = 'loading'
       })
-      .addCase(getAllUsers.fulfilled, (state, action) => {
-        state.userStatus = "success";
-        state.users = action.payload;
+      .addCase(getAllCateg.fulfilled, (state, action) => {
+        state.categorieStatus = 'success'
+        state.categories = action.payload
       })
-      .addCase(getAllUsers.rejected, (state, action) => {
-        state.userStatus = "error";
-        state.userError =
-          action.payload || "Impossible de charger les utilisateurs";
+      .addCase(getAllCateg.rejected, (state, action) => {
+        state.categorieStatus = 'error'
+        state.categorieError = action.payload 
       })
-      .addCase(getUserById.pending, (state) => {
-        state.userStatus = "loading";
+      .addCase(getCategById.pending, state => {
+        state.categorieStatus = 'loading'
       })
-      .addCase(getUserById.fulfilled, (state, action) => {
-        state.userStatus = "success";
-        state.usersId = action.payload;
+      .addCase(getCategById.fulfilled, (state, action) => {
+        state.categorieStatus = 'success'
+        state.categorieId = action.payload
       })
-      .addCase(getUserById.rejected, (state, action) => {
-        state.userStatus = "error";
-        state.userError =
-          action.payload || "Impossible de charger l'utilisateur";
+      .addCase(getCategById.rejected, (state, action) => {
+        state.categorieStatus = 'error'
+        state.categorieError =
+          action.payload || "Impossible de charger la catégorie"
       })
-      .addCase(deleteuser.pending, (state) => {
-        state.userStatus = "loading";
+      .addCase(deleteCateg.pending, state => {
+        state.categorieStatus = 'loading'
       })
-      .addCase(deleteuser.fulfilled, (state, action) => {
-        state.userStatus = "success";
-        state.users = state.users.filter(
-          (post) => post.id !== action.payload.id
-        );
+      .addCase(deleteCateg.fulfilled, (state, action) => {
+        state.categorieStatus = 'success'
+        state.categories = state.categories.filter(post => post.idcategorie !== action.payload.id)
       })
-      .addCase(deleteuser.rejected, (state, action) => {
-        state.userStatus = "error";
-        state.userError = action.payload || "Suppression échouée";
-      });
-  },
-});
+      .addCase(deleteCateg.rejected, (state, action) => {
+        state.categorieStatus = 'error'
+        state.categorieError = action.payload || 'Suppression échouée'
+      })
+  }
+})
 
-export const { reset } = userSlice.actions;
-export default userSlice.reducer;
+export const { reset } = categorieSlice.actions
+export default categorieSlice.reducer

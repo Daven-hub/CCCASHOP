@@ -102,7 +102,7 @@ export function FournisseurStats({data}) {
 }
 
 
-function Vendeurs () {
+function FournisseurAdmin () {
   const dispatch = useDispatch()
   const [loading,setLoading]=useState(false)
   const { vendeurs } = useSelector(state => state.vendeur)
@@ -143,9 +143,9 @@ function Vendeurs () {
         }
   }
 
-  const vendeurActif= vendeurs?.filter((x)=>x?.status===1)?.length
-  const vendeurOff= vendeurs?.filter((x)=>x?.status===0)?.length
-  const vendeurWarning= vendeurs?.filter((x)=>x?.status===-1)?.length
+  const vendeurActif= vendeurs?.filter((x)=>parseInt(x?.status)===1)?.length
+  const vendeurOff= vendeurs?.filter((x)=>parseInt(x?.status)===0)?.length
+  const vendeurWarning= vendeurs?.filter((x)=>parseInt(x?.status)===-1)?.length
 
   const data = [
   {
@@ -178,6 +178,7 @@ function Vendeurs () {
   },
 ];
 
+console.log(vendeurs)
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex justify-between items-center'>
@@ -262,12 +263,12 @@ function Vendeurs () {
                     </TableCell>
                   
                     <TableCell className='hidden capitalize md:table-cell'>
-                      {species?.status===1?
-                      <div className='badge flex items-center justify-center rounded-[50px] text-[.65rem] font-extrabold bg-green-100 text-green-700'>
-                        Active
+                      {parseInt(species?.status)===1?
+                      <div className='badge flex px-2.5 uppercase items-center justify-center rounded-[50px] text-[.6rem] font-extrabold bg-green-100 text-green-700'>
+                        Activer
                       </div>:
-                      <div className='badge flex items-center justify-center rounded-[50px] text-[.65rem] font-extrabold bg-red-100 text-red-700'>
-                        desactiver
+                      <div className='badge flex px-2.5 uppercase items-center justify-center rounded-[50px] text-[.6rem] font-extrabold bg-red-100 text-red-700'>
+                        Desactiver
                       </div>}
                     </TableCell>
                     <TableCell className='hidden md:table-cell'>
@@ -290,11 +291,11 @@ function Vendeurs () {
                             Actions
                           </DropdownMenuLabel>
                           <DropdownMenuSeparator className='bg-black/10' />
-                          <DropdownMenuItem className={`${species?.status===1?'text-red-600':'text-green-600'}`}
-                            onClick={()=>handleUpdateStatus(species?.id,species?.status===0?1:0)}
+                          <DropdownMenuItem className={`${parseInt(species?.status)===1?'text-red-600':'text-green-600'}`}
+                            onClick={()=>handleUpdateStatus(species?.id,parseInt(species?.status)===0?1:0)}
                           >
                             {/* <FaEdit className='mr-2 h-4 w-4' /> */}
-                            {species?.status===0?'Activer':'Desactiver'}
+                            {parseInt(species?.status)===0?'Activer':'Desactiver'}
                           </DropdownMenuItem>
                           {/* <DropdownMenuItem>
                             <FaEdit className='mr-2 h-4 w-4' />
@@ -321,4 +322,4 @@ function Vendeurs () {
   )
 }
 
-export default Vendeurs
+export default FournisseurAdmin

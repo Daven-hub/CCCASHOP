@@ -1,10 +1,10 @@
 import axios from './api';
 // import { BaseUrl } from '../config';
 
-const API_URL = '/categories/';
+const API_URL = '/attribute/';
 
 // Register user
-const getAllCategories = async () => {
+const getAllAttributes = async () => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -14,7 +14,7 @@ const getAllCategories = async () => {
   return response.data;
 };
 
-const createCategorie = async (userData) => {
+const createAttribute = async (userData) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ const createCategorie = async (userData) => {
   return response.data;
 };
 
-const updateCategorie = async (id,userData) => {
+const updateAttribute = async (id,userData) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ const updateCategorie = async (id,userData) => {
 };
 
 // Login user
-const getCategorieId = async (id) => {
+const getAttributeId = async (id) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ const getCategorieId = async (id) => {
   return response.data;
 };
 
-const deleteCategorieId = async (id) => {
+const deleteAttributeId = async (id) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -57,12 +57,12 @@ const deleteCategorieId = async (id) => {
 
 
 
-const categorieService = {
-    createCategorie,
-  getAllCategories,
-  getCategorieId,
-  updateCategorie,
-  deleteCategorieId
+const attributeService = {
+    createAttribute,
+  getAllAttributes,
+  getAttributeId,
+  updateAttribute,
+  deleteAttributeId
 };
 
-export default categorieService;
+export default attributeService;

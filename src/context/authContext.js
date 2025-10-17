@@ -1,10 +1,9 @@
 // AuthContext.js
-import { createContext, useContext, useEffect, useMemo } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../store/slices/user.slice";
-import { logout } from "../store/slices/auth.slice";
+import { logout} from "../store/slices/auth.slice";
 import { getAllVendor } from "../store/slices/vendeur.slice";
-// import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
@@ -13,15 +12,28 @@ export const AuthProvider = ({ children }) => {
   const { users } = useSelector((state) => state.users);
   const { usershop } = useSelector((state) => state.auth);
   const { vendeurs } = useSelector((state) => state.vendeur);
-  // const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true);
+  const [duration, setDuration] = useState(0);
 
   const detail = useMemo(() => {
       return usershop ;
     }, [usershop]);
 
   useEffect(() => {
-    dispatch(getAllUsers());
-    dispatch(getAllVendor());
+    const fetchData = async () => {
+      const start = performance.now();
+
+      await Promise.all([dispatch(getAllUsers()), dispatch(getAllVendor())]);
+
+      const end = performance.now();
+      const elapsed = end - start;
+      setDuration(elapsed);
+
+      const delay = Math.max(500, elapsed);
+      setTimeout(() => setIsLoading(false), delay);
+    };
+
+    fetchData();
   }, [dispatch]);
 
   const userConnected = useMemo(() => {
@@ -43,16 +55,20 @@ export const AuthProvider = ({ children }) => {
     }
   }, [users, vendeurs, detail]);
  
+  const refreshUser = async () => {
+  await Promise.all([
+    dispatch(getAllUsers()),
+    dispatch(getAllVendor())
+  ]);
+};
 
-  const handleLogout = () => {
-    dispatch(logout());
-    // navigate("/")
-    // window.location.href = "/";
+  const handleLogout = async () => {
+    await dispatch(logout());
     window.location.replace("/");
   };
 
   return (
-    <AuthContext.Provider value={{ userConnected, handleLogout }}>
+    <AuthContext.Provider value={{ userConnected, handleLogout,isLoading, duration,refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

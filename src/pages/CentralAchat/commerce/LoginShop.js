@@ -30,7 +30,7 @@ function LoginShop() {
   const [loading, setIsLoading] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const { userConnected } = useAuth();
+  const { userConnected,refreshUser } = useAuth();
   const { toast } = useToast();
   const roles = [
     {
@@ -46,16 +46,6 @@ function LoginShop() {
   //       { label: t("accueille"), path: "/a" },
   //       { label: "Login Shop", path: "/login" }
   // ];
-
-  // useEffect(() => {
-  //       if(usershop?.role==="admin"){
-  //             console.log("admin")
-  //       }else if(usershop?.role==="fournisseur"){
-  //             console.log("hey fournisseur")
-  //       }else if(usershop?.role==="acheteur"){
-  //             console.log("How are you?")
-  //       }
-  // }, [usershop?.role])
 
   useEffect(() => {
     if (userConnected) {
@@ -135,8 +125,8 @@ function LoginShop() {
       }
       toast({
         title: "Enregistrement reussie",
-        description: "Bienvenue",
       });
+      refreshUser()
       navigate("/mon-compte/connexion");
     } catch (error) {
       toast({
@@ -193,13 +183,13 @@ function LoginShop() {
   return (
     <div className="flex flex-col">
       {/* <BreadShop data={bread} /> */}
-      <div className="px-[33%] bg-gray-200 py-12 md:py-14">
-        <div className="bg-white flex flex-col gap-10 px-10 py-12 rounded-[6px] border">
-          <ul className="grid nav-login grid-cols-2 gap-2 text-[1.7rem] font-semibold">
+      <div className="px-[32%] bg-gray-200 py-12 md:py-14">
+        <div className="bg-white shadow flex flex-col gap-10 px-12 py-12 rounded-[6px] border">
+          <ul className="grid nav-login grid-cols-2 gap-4 text-[1.4rem] font-semibold">
             {liensNav?.map((x, ind) => (
               <li key={ind}>
                 <NavLink
-                  className="w-full py-2 capitalize flex items-center justify-center"
+                  className="w-full border-2 rounded-[6px] py-2 capitalize flex items-center justify-center"
                   to={"/mon-compte/" + x.lien}
                 >
                   {x.label}

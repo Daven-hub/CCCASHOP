@@ -28,6 +28,7 @@ import $ from 'jquery'
 // import { roleChange } from '../../pages/Admin/Dashboard';
 import { File, FileTextIcon, Newspaper, UserIcon } from 'lucide-react';
 import { FaNewspaper } from 'react-icons/fa';
+import { useAuth } from '../../context/authContext';
 
 function Sidebar({setIsSidebarOpen}) {
 
@@ -46,36 +47,179 @@ function Sidebar({setIsSidebarOpen}) {
     })
   })
 
-  const [menuItems, setMenuItems] = useState([])
+  // const [menuItems, setMenuItems] = useState([])
+  const {userConnected}= useAuth()
 
-  const userFromStorage= localStorage.getItem("user")
-  const detail=JSON.parse(userFromStorage)
+  // useEffect(() => {
+  //   const packAdmin = [
+  //     {
+  //       group: '',
+  //       corps: [
+  //         { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
+  //         { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
+  //       ]
+  //     },
+  //     {
+  //       group: "Centrale d'achat",
+  //       corps: [
+  //         { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
+  //         { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
+  //         { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
+  //         { title: 'Acheteurs', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
+  //         { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
+  //       ]
+  //     },
+  //     {
+  //       group: 'Autre',
+  //       corps: [
+  //         { title: 'Rapports', icon: <FileTextIcon size={18} />, path: '/Admin/Utilisateurs', children: [] },
+  //         { title: 'Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //         { title: 'Email Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/email', children: [] },
+  //       ]
+  //     },
+  //     {
+  //       group: 'Paramétre',
+  //       corps: [
+  //         { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
+  //         { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/parametres', children: [] },
+  //         // { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //       ]
+  //     },
+  //   ];
+  //   const packFournisseur = [
+  //     {
+  //       group: '',
+  //       corps: [
+  //         { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
+  //         { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
+  //       ]
+  //     },
+  //     {
+  //       group: 'Produits',
+  //       corps: [
+  //         { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
+  //         { title: 'Sous catégories', icon: <FiLayers size={18} />, path: '/admin/sous-categories', children: [] },
+  //         { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
+  //         { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
+  //         { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
+  //         // { title: 'Offres', icon: <FiBook size={18}/>, path: '/Admin/ccca-revue',children:[] },
+  //       ]
+  //     },
+  //     {
+  //       group: 'Commandes & Ventes',
+  //       corps: [
+  //         { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
+  //         { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
+  //         { title: 'Mes Clients', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
+  //       ]
+  //     },
+  //     {
+  //       group: 'Paramétre',
+  //       corps: [
+  //         { title: 'Rapport', icon: <FiFileText size={18} />, path: '/admin/rapport', children: [] },
+  //         { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
+  //         { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/admin/parametres', children: [] },
+  //       ]
+  //     },
+  //   ];
+  //   const packCustomer = [
+  //     {
+  //       group: '',
+  //       corps: [
+  //         { title: 'Tableau de Bord', icon: <FiHome size={18} />, path: '/admin/tableau-de-bord', children: [] },
+  //         { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
+  //       ]
+  //     },
+  //     {
+  //       group: 'Pages',
+  //       corps: [
+  //         { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/Admin/ccca-revue', children: [] },
+  //         { title: 'Actualité', icon: <FiFileText size={18} />, path: '/Admin/news', children: [] },
+  //         { title: 'Événements', icon: <FiCalendar size={18} />, path: '/Admin/events', children: [] },
+  //         { title: 'Activité', icon: <FiFlag size={18} />, path: '/Admin/activities', children: [] },
+  //         { title: 'Services', icon: <FiBriefcase size={18} />, path: '/Admin/Services', children: [] },
+  //         {
+  //           title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
+  //             { title: 'Presentation', path: "/Admin/à-propos/presentation" },
+  //             { title: 'Conseil d\'administration', path: "/Admin/à-propos/Conseil-d'administration" },
+  //             { title: 'Diretion Éxecutive', path: '/Admin/ConseilAdministration' },
+  //             { title: 'Bureau Afrique', path: '/Admin/à-propos/bureau-afrique' },
+  //             { title: 'Bureau éxécutive', path: '/Admin/ConseilAdministration' },
+  //             { title: 'Galérie', path: '/Admin/à-propos/galéries' },
+  //           ]
+  //         },
+  //       ]
+  //     },
+  //     // {
+  //     //   group: 'Autre',
+  //     //   corps: [
+  //     //     { title: 'Utilisateurs', icon: <FiUsers size={18} />, path: '/Admin/Utilisateurs', children: [] },
+  //     //     { title: 'Parténaires', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //     //     { title: 'Membership', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //     //     { title: 'Publicité', icon: <FiUsers size={18} />, path: '/Admin/publicite', children: [] },
+  //     //     { title: 'Communiqué', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //     //   ]
+  //     // },
+  //     {
+  //       group: 'Paramétre',
+  //       corps: [
+  //         { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //         { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
+  //       ]
+  //     },
+  //   ];
+  //   if (detail?.role === "admin") {
+  //     setMenuItems(packAdmin)
+  //   } else if (detail?.role === "fournisseur") {
+  //     setMenuItems(packFournisseur)
+  //   } else {
+  //     setMenuItems(packCustomer)
+  //   }
+  // }, [detail?.role])
 
-  useEffect(() => {
-    const packAdmin = [
+  const sideLink = [
       {
         group: '',
+        alowed:['fournisseur','admin','acheteur'],
         corps: [
           { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
           { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
         ]
       },
       {
-        group: "Centrale d'achat",
+        group: 'Produits',
+         alowed:['fournisseur'],
         corps: [
           { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
-          // { title: 'Sous catégories', icon: <FiTag size={18} />, path: '/admin/sous-categories', children: [] },
+          { title: 'Sous catégories', icon: <FiLayers size={18} />, path: '/admin/sous-categories', children: [] },
+          { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
+          { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
+          { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
+        ]
+      },
+      {
+        group: "Centrale d'achat",
+        alowed:['admin'],
+        corps: [
+          { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
           { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
           { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
-          // { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
           { title: 'Acheteurs', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
           { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
-          // { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
-          // { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
+        ]
+      },
+      {
+        group: 'Commandes & Ventes',
+        alowed:['fournisseur'],
+        corps: [
+          { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
+          { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
+          { title: 'Mes Clients', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
         ]
       },
       {
         group: 'Autre',
+        alowed:['fournisseur','admin'],
         corps: [
           { title: 'Rapports', icon: <FileTextIcon size={18} />, path: '/Admin/Utilisateurs', children: [] },
           { title: 'Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/ConseilAdministration', children: [] },
@@ -84,104 +228,14 @@ function Sidebar({setIsSidebarOpen}) {
       },
       {
         group: 'Paramétre',
-        corps: [
-          { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
-          { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/parametres', children: [] },
-          // { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-        ]
-      },
-    ];
-    const packFournisseur = [
-      {
-        group: '',
-        corps: [
-          { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
-          { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
-        ]
-      },
-      {
-        group: 'Produits',
-        corps: [
-          { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
-          { title: 'Sous catégories', icon: <FiLayers size={18} />, path: '/admin/sous-categories', children: [] },
-          { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
-          { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
-          { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
-          // { title: 'Offres', icon: <FiBook size={18}/>, path: '/Admin/ccca-revue',children:[] },
-        ]
-      },
-      {
-        group: 'Commandes & Ventes',
-        corps: [
-          { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
-          { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
-          { title: 'Mes Clients', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
-        ]
-      },
-      {
-        group: 'Paramétre',
+        alowed:['fournisseur','admin'],
         corps: [
           { title: 'Rapport', icon: <FiFileText size={18} />, path: '/admin/rapport', children: [] },
           { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
           { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/admin/parametres', children: [] },
-          // { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/admin/ConseilAdministration', children: [] },
         ]
       },
     ];
-    const packCustomer = [
-      {
-        group: '',
-        corps: [
-          { title: 'Tableau de Bord', icon: <FiHome size={18} />, path: '/admin/tableau-de-bord', children: [] },
-          { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
-        ]
-      },
-      {
-        group: 'Pages',
-        corps: [
-          { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/Admin/ccca-revue', children: [] },
-          { title: 'Actualité', icon: <FiFileText size={18} />, path: '/Admin/news', children: [] },
-          { title: 'Événements', icon: <FiCalendar size={18} />, path: '/Admin/events', children: [] },
-          { title: 'Activité', icon: <FiFlag size={18} />, path: '/Admin/activities', children: [] },
-          { title: 'Services', icon: <FiBriefcase size={18} />, path: '/Admin/Services', children: [] },
-          {
-            title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
-              { title: 'Presentation', path: "/Admin/à-propos/presentation" },
-              { title: 'Conseil d\'administration', path: "/Admin/à-propos/Conseil-d'administration" },
-              { title: 'Diretion Éxecutive', path: '/Admin/ConseilAdministration' },
-              { title: 'Bureau Afrique', path: '/Admin/à-propos/bureau-afrique' },
-              { title: 'Bureau éxécutive', path: '/Admin/ConseilAdministration' },
-              { title: 'Galérie', path: '/Admin/à-propos/galéries' },
-            ]
-          },
-        ]
-      },
-      // {
-      //   group: 'Autre',
-      //   corps: [
-      //     { title: 'Utilisateurs', icon: <FiUsers size={18} />, path: '/Admin/Utilisateurs', children: [] },
-      //     { title: 'Parténaires', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-      //     { title: 'Membership', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-      //     { title: 'Publicité', icon: <FiUsers size={18} />, path: '/Admin/publicite', children: [] },
-      //     { title: 'Communiqué', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-      //   ]
-      // },
-      {
-        group: 'Paramétre',
-        corps: [
-          { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-          { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-        ]
-      },
-    ];
-    if (detail?.role === "admin") {
-      setMenuItems(packAdmin)
-    } else if (detail?.role === "fournisseur") {
-      setMenuItems(packFournisseur)
-    } else {
-      setMenuItems(packCustomer)
-    }
-  }, [detail?.role])
  
   // console.log(detail)
 
@@ -203,7 +257,8 @@ function Sidebar({setIsSidebarOpen}) {
       {/* Sidebar Menu */}
       <div className="px-3 py-3 overflow-y-auto h-[calc(100vh-69px)]">
         <div className="sidebare-admin flex flex-col gap-4">
-          {menuItems?.map((x, indexi) => (
+          {sideLink?.map((x, indexi) => (
+            x.alowed?.includes(userConnected?.role) &&
             <div key={indexi}>
               <p className={`text-[.9rem] font-medium text-white text-opacity-30 mb-1`}>{x.group}</p>
               <div className='flex flex-col gap-0.5'>
@@ -242,21 +297,7 @@ function Sidebar({setIsSidebarOpen}) {
             </div>
           ))}
         </div>
-
-        {/* Account Section
-          <div className="mt-2 space-y-1">
-            {accountItems.map((item, index) => (
-              <button
-                key={index}
-                className={`flex items-center gap-3 w-full px-4 py-4 text-gray-700 transition-all duration-200 hover:bg-gray-200 rounded-md`}
-              >
-                <span className="text-xl">{item.icon}</span>
-                <span className="">{item.title}</span>
-              </button>
-            ))}
-          </div> */}
       </div>
-
     </div>
   );
 }

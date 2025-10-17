@@ -1,19 +1,20 @@
+import { Navigate } from "react-router-dom";
 import DashAdmin from "../../components/Admin/Dahboard/DashAdmin";
 import DashCustomer from "../../components/Admin/Dahboard/DashCustomer";
 // import DashCustomer from "../../components/Admin/Dahboard/DashCustomer";
 import DashSuppliers from "../../components/Admin/Dahboard/DashSuppliers";
+import { useAuth } from "../../context/authContext";
 
 
 export default function Dashboard() {
 
-  const userFromStorage= localStorage.getItem("user")
-  const detail=JSON.parse(userFromStorage)
+  const {userConnected}=useAuth()
 
-  if(detail?.role==="admin"){
+  if(userConnected?.role==="admin"){
     return <DashAdmin />
-  }else if(detail?.role==="fournisseur"){
+  }else if(userConnected?.role==="fournisseur"){
     return <DashSuppliers />
+  }else if(userConnected?.role==="acheteur"){
+    return <DashCustomer />
   }
-    
-  return <DashCustomer />
 }
