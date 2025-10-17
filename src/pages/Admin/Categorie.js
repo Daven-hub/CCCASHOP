@@ -25,7 +25,7 @@ import {
 import { Button } from "../../components/ui/Button";
 import { FiPackage, FiTag } from "react-icons/fi";
 import produits from "../../datas/produits.json";
-import CreateCategorie from "../../components/Admin/Dahboard/Categories/CreateCategorie";
+// import CreateCategorie from "../../components/Admin/Dahboard/Categories/CreateCategorie";
 import { useForm } from "react-hook-form";
 import { createCateg, getAllCateg } from "../../store/slices/categories.slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,6 +38,7 @@ import {
   AvatarImage,
 } from "../../components/ui/Avatar";
 import { IconRenderer } from "../../lib/IconeRenderer";
+import CreateCategorie from "../../components/Admin/Dahboard/Categories/CreateCategorieForm";
 
 function Categorie() {
   const [openCreate, setOpenCreate] = useState(false);

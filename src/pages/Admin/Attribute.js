@@ -6,14 +6,27 @@ import { Button } from '../../components/ui/Button'
 import { FiPackage, FiTag } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
 import { useNavigate } from 'react-router-dom'
-import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttribut'
+// import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttribut'
+import ModalDelete from '../../components/Admin/Dahboard/ModalDelete'
+import { useDispatch, useSelector } from 'react-redux'
+import { useToast } from '../../hook/use-toast'
+import { useForm } from 'react-hook-form'
+import { createAttr, getAllAttrs } from '../../store/slices/attribute.slice.js'
+import LoaderUltra from '../../components/ui/LoaderUltra.js'
+import { getAllSubCateg } from '../../store/slices/sousCategorie.slice'
+import { getAllCateg } from '../../store/slices/categories.slice'
+import { IconRenderer } from '../../lib/IconeRenderer.js'
+import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttributForm.js'
 
 function Attribute() {
   const [openCreate, setOpenCreate] = useState(false);
-  const handleCreateAttribute = (data) => {
-    //
-  };
 
+const [openCreat, setOpenCreat] = useState(false);
+  const [selectedItemName, setSelectedItemName] = useState("");
+  const handleDelete = (productName) => {
+    setSelectedItemName(productName);
+    setOpenCreat(true);
+  };
   const navigate = useNavigate()
   const handleNavigateValue = (id) => {
     navigate('/admin/attributs/value/' + id)
