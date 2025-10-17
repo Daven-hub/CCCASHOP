@@ -6,10 +6,17 @@ import { Button } from '../../components/ui/Button'
 import { FiPackage, FiTag } from 'react-icons/fi';
 import produits from "../../datas/produits.json"
 import { useNavigate } from 'react-router-dom'
-import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttribut'
+import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttributForm'
+import ModalDelete from '../../components/Admin/Dahboard/ModalDelete'
 
 function Attribute() {
   const [openCreate, setOpenCreate] = useState(false);
+  const [openCreat, setOpenCreat] = useState(false);
+  const [selectedItemName, setSelectedItemName] = useState("");
+  const handleDelete = (productName) => {
+    setSelectedItemName(productName);
+    setOpenCreat(true);
+  };
   const handleCreateAttribute = (data) => {
     //
   };
@@ -85,7 +92,11 @@ function Attribute() {
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             className="text-red-600"
-                          // onClick={() => handleDelete(species.id)}
+                            // onClick={() => handleDelete(species.id)}
+                            onClick={(e) => {
+                              e.stopPropagation(); 
+                              handleDelete(species?.titre);
+                            }}
                           >
                             <FaTrash className="mr-2 h-4 w-4" />
                             Supprimer
@@ -104,6 +115,11 @@ function Attribute() {
         open={openCreate}
         setOpen={setOpenCreate}
         onCreate={handleCreateAttribute}
+      />
+
+      <ModalDelete open={openCreat}
+        setOpen={setOpenCreat}
+        itemName={selectedItemName}
       />
     </div>
   )

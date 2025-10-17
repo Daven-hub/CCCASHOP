@@ -78,16 +78,16 @@ function Cart() {
                         <Breadcrumb data={bread} />
                   </div>
 
-                  <div className={`flex px-[${paddingH}] gap-8 `}>
+                  <div className={`flex gap-5 px-[${paddingH}] py-10 md:py-14 flex-col `}>
 
                         {/* <div className='w-[18%] rounded-[7px] sticky top-[15px] h-[650px]'>
                               <SideShop />
                         </div> */}
 
 
-                        <div className='w-[82%] flex overflow-hidden flex-col gap-6 mx-auto'>
+                        <div className='flex gap-5  flex-col'>
 
-                              <div className={`flex gap-5  py-12 md:py-16 flex-col`}>
+                              <div className={`flex gap-5  flex-col`}>
                                     <PresentationLabel titre={"MON PANIER"} Component={""} />
 
                               </div>
