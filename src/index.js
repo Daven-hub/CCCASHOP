@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+// import "react-big-calendar/lib/css/react-big-calendar.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -9,11 +9,7 @@ import { store } from "./store";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./traduction/i18n";
 import { AuthProvider } from "./context/authContext";
-
-// import { ThemeProvider } from "@material-tailwind/react";
-// import { MaterialTailwindControllerProvider } from "./context";
-
-// console.log(window.location)
+import { IntlProvider } from "react-intl";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +18,12 @@ root.render(
       <I18nextProvider i18n={i18n}>
         <BrowserRouter>
           <AuthProvider>
-            <App />
+            <IntlProvider locale="fr" messages={{
+    "UIKit.SelectInput.noOptionsMessageWithoutInputValue": "Aucune option disponible",
+    "UIKit.SelectInput.noOptionsMessageWithInputValue": "Aucun résultat trouvé",
+  }}>
+              <App />
+            </IntlProvider>  
           </AuthProvider>
         </BrowserRouter>
       </I18nextProvider>

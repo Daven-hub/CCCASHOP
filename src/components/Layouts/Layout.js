@@ -59,7 +59,7 @@ function Layout() {
 
       <div className="w-full transition-all duration-500 corps-admin flex flex-col  overflow-y-auto">
         <Navbar />
-        <main className="flex-1 px-6 max-md:px-[4%] py-5 bg-primary/5">
+        <main className="flex-1 px-6 max-md:px-[4%] py-5 bg-gray-100">
           <Outlet />
         </main>
         <FooterAdmin />

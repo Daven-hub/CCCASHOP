@@ -21,7 +21,10 @@ module.exports = {
         lg:'6rem',
         md: '5rem',
         xl:'3.6rem'
-      }
+      },
+       borderColor: {
+        DEFAULT: '#E5E7EB',
+      },
     },
   },
   plugins: [],

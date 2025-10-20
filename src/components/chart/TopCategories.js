@@ -3,10 +3,10 @@ import Chart from "react-apexcharts";
 
 export default function TopCategories() {
   const series = [1200000, 950000, 750000, 500000]; // valeurs par catégorie
-  const labels = ["Electronics", "Fashion", "Home & Kitchen", "Beauty & Personal Care"];
+  const labels = ["Informatique", "Fashion", "Informatiques", "Formation"];
   const colors = ["#F97316", "#FB923C", "#FDBA74", "#FED7AA"]; // couleurs associées
 
-  const total = series.reduce((acc, val) => acc + val, 0); // calcul auto du total
+  const total = series.reduce((acc, val) => acc + val, 0);
 
   const options = {
     chart: {
@@ -41,7 +41,7 @@ export default function TopCategories() {
             show: true,
             total: {
               show: true,
-              label: "Total Sales",
+              label: "Ventes Totales",
               fontSize: "13px",
               color: "#6B7280",
               formatter: () => `$${total}`,

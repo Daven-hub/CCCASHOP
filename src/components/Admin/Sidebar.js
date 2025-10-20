@@ -50,133 +50,6 @@ function Sidebar({setIsSidebarOpen}) {
   // const [menuItems, setMenuItems] = useState([])
   const {userConnected}= useAuth()
 
-  // useEffect(() => {
-  //   const packAdmin = [
-  //     {
-  //       group: '',
-  //       corps: [
-  //         { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
-  //         { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
-  //       ]
-  //     },
-  //     {
-  //       group: "Centrale d'achat",
-  //       corps: [
-  //         { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
-  //         { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
-  //         { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
-  //         { title: 'Acheteurs', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
-  //         { title: 'Fournisseurs', icon: <FiUsers size={18} />, path: '/admin/fournisseurs', children: [] },
-  //       ]
-  //     },
-  //     {
-  //       group: 'Autre',
-  //       corps: [
-  //         { title: 'Rapports', icon: <FileTextIcon size={18} />, path: '/Admin/Utilisateurs', children: [] },
-  //         { title: 'Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //         { title: 'Email Notiffication', icon: <Notification01Icon size={18} />, path: '/Admin/email', children: [] },
-  //       ]
-  //     },
-  //     {
-  //       group: 'Paramétre',
-  //       corps: [
-  //         { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
-  //         { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/parametres', children: [] },
-  //         // { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //       ]
-  //     },
-  //   ];
-  //   const packFournisseur = [
-  //     {
-  //       group: '',
-  //       corps: [
-  //         { title: 'Tableau de Bord', icon: <FiGrid size={18} />, path: '/admin/tableau-de-bord', children: [] },
-  //         { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
-  //       ]
-  //     },
-  //     {
-  //       group: 'Produits',
-  //       corps: [
-  //         { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
-  //         { title: 'Sous catégories', icon: <FiLayers size={18} />, path: '/admin/sous-categories', children: [] },
-  //         { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
-  //         { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },
-  //         { title: 'Stock', icon: <FiArchive size={18} />, path: '/admin/stock-produits', children: [] },
-  //         // { title: 'Offres', icon: <FiBook size={18}/>, path: '/Admin/ccca-revue',children:[] },
-  //       ]
-  //     },
-  //     {
-  //       group: 'Commandes & Ventes',
-  //       corps: [
-  //         { title: 'Commandes', icon: <FiClipboard size={18} />, path: '/admin/commandes', children: [] },
-  //         { title: 'Ventes', icon: <FiDollarSign size={18} />, path: '/admin/ventes', children: [] },
-  //         { title: 'Mes Clients', icon: <FiUsers size={18} />, path: '/admin/acheteurs', children: [] },
-  //       ]
-  //     },
-  //     {
-  //       group: 'Paramétre',
-  //       corps: [
-  //         { title: 'Rapport', icon: <FiFileText size={18} />, path: '/admin/rapport', children: [] },
-  //         { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
-  //         { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/admin/parametres', children: [] },
-  //       ]
-  //     },
-  //   ];
-  //   const packCustomer = [
-  //     {
-  //       group: '',
-  //       corps: [
-  //         { title: 'Tableau de Bord', icon: <FiHome size={18} />, path: '/admin/tableau-de-bord', children: [] },
-  //         { title: 'Continuer les achats', icon: <ShoppingCart01Icon size={18} />, path: '/', children: [] },
-  //       ]
-  //     },
-  //     {
-  //       group: 'Pages',
-  //       corps: [
-  //         { title: 'CCCA Revue', icon: <FiBook size={18} />, path: '/Admin/ccca-revue', children: [] },
-  //         { title: 'Actualité', icon: <FiFileText size={18} />, path: '/Admin/news', children: [] },
-  //         { title: 'Événements', icon: <FiCalendar size={18} />, path: '/Admin/events', children: [] },
-  //         { title: 'Activité', icon: <FiFlag size={18} />, path: '/Admin/activities', children: [] },
-  //         { title: 'Services', icon: <FiBriefcase size={18} />, path: '/Admin/Services', children: [] },
-  //         {
-  //           title: 'À propos', icon: <FiBriefcase size={18} />, path: '#', children: [
-  //             { title: 'Presentation', path: "/Admin/à-propos/presentation" },
-  //             { title: 'Conseil d\'administration', path: "/Admin/à-propos/Conseil-d'administration" },
-  //             { title: 'Diretion Éxecutive', path: '/Admin/ConseilAdministration' },
-  //             { title: 'Bureau Afrique', path: '/Admin/à-propos/bureau-afrique' },
-  //             { title: 'Bureau éxécutive', path: '/Admin/ConseilAdministration' },
-  //             { title: 'Galérie', path: '/Admin/à-propos/galéries' },
-  //           ]
-  //         },
-  //       ]
-  //     },
-  //     // {
-  //     //   group: 'Autre',
-  //     //   corps: [
-  //     //     { title: 'Utilisateurs', icon: <FiUsers size={18} />, path: '/Admin/Utilisateurs', children: [] },
-  //     //     { title: 'Parténaires', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //     //     { title: 'Membership', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //     //     { title: 'Publicité', icon: <FiUsers size={18} />, path: '/Admin/publicite', children: [] },
-  //     //     { title: 'Communiqué', icon: <FiUsers size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //     //   ]
-  //     // },
-  //     {
-  //       group: 'Paramétre',
-  //       corps: [
-  //         { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //         { title: 'Déconnexion', icon: <FiLogOut size={18} />, path: '/Admin/ConseilAdministration', children: [] },
-  //       ]
-  //     },
-  //   ];
-  //   if (detail?.role === "admin") {
-  //     setMenuItems(packAdmin)
-  //   } else if (detail?.role === "fournisseur") {
-  //     setMenuItems(packFournisseur)
-  //   } else {
-  //     setMenuItems(packCustomer)
-  //   }
-  // }, [detail?.role])
-
   const sideLink = [
       {
         group: '',
@@ -190,7 +63,7 @@ function Sidebar({setIsSidebarOpen}) {
         group: 'Produits',
          alowed:['fournisseur'],
         corps: [
-          { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
+          // { title: 'Catégories', icon: <FiFolder size={18} />, path: '/admin/categories', children: [] },
           { title: 'Sous catégories', icon: <FiLayers size={18} />, path: '/admin/sous-categories', children: [] },
           { title: 'Produits', icon: <FiPackage size={18} />, path: '/admin/produits', children: [] },
           { title: 'Attributs', icon: <FiList size={18} />, path: '/admin/attributs', children: [] },

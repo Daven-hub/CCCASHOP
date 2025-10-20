@@ -36,7 +36,6 @@ import { Toaster } from './components/ui/Toaster'
 import Settings from './pages/Admin/Settings'
 import Profile from './pages/Admin/Profile'
 import NotFoun from './pages/Error/NotFoun'
-import { useAuth } from './context/authContext'
 import Attribute from './pages/Admin/Attribute'
 import AttributeValue from './pages/Admin/AttributeValue'
 import StockProduits from './pages/Admin/StockProduits'
@@ -65,10 +64,8 @@ function App() {
   //   );
   // };
 
-  const { userConnected } = useAuth()
 
   return (
-    // <Suspense fallback={<Loader />}>
     <>
       <Toaster />
       <Routes>
@@ -127,7 +124,6 @@ function App() {
         </Route>
       </Routes>
     </>
-    // </Suspense>
   )
 }
 

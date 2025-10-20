@@ -103,29 +103,13 @@ function AttributeValue () {
       }
     }
     fetchData()
-  }, [dispatch])
+  }, [dispatch,id])
 
   if (isLoading) {
     return <LoaderUltra loading={isLoading} duration={loadTime} />
   }
 
-  const GetSubCategorieName = x => {
-    const cat = subcategories?.find(y => y?.idsubcateg === x)
-    return cat?.nom
-  }
 
-  const GetCategorie = ({ x }) => {
-    const subcat = subcategories?.find(y => y?.idsubcateg === x)
-    const cat = categories?.find(y => y.idcategorie === subcat?.idCategorie)
-    return (
-      <div className='flex items-center gap-2'>
-        <IconRenderer iconName={cat?.icon} size={18} />
-        {cat.nom}
-      </div>
-    )
-  }
-
-  //   console.log('attributeValues', attributeValues)
   const valuesAttribute = attributeValues?.filter(
     y => y.idAttribute === attributeId?.idAttribute
   )
@@ -239,7 +223,7 @@ function AttributeValue () {
                         </TableCell>
                         <TableCell className='text-right'>
                           <div className='flex justify-end items-center gap-4'>
-                            <Button className='text-blue-500 p.1.5 hover:bg-blue-200 bg-blue-100'>
+                            <Button className='text-blue-500 p.1.5 hover:bg-blue-200 !bg-blue-100'>
                               <FaEdit className='h-4 w-4' />
                               {/* Modifier */}
                             </Button>

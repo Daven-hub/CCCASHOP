@@ -200,7 +200,7 @@ export default function DashSuppliers() {
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2">
             {data?.map((x, index) =>
-              <div key={index} className={`px-5 relative overflow-hidden pt-4 pb-12 bg-white shadow-sm flex flex-col gap-3.5 rounded-[7px]`}>
+              <div key={index} className={`px-5 relative border overflow-hidden pt-4 pb-12 bg-white shadow-sm flex flex-col gap-3.5 rounded-[7px]`}>
                 <div className={`absolute bottom-0 left-0 w-full h-[.2rem] bg-${x.color} bg-opacity-10`} />
                 <div className={`absolute bottom-0 left-0 w-[${x.symb}] h-[.2rem] bg-${x.color} bg-opacity-75`} />
                 <div className="flex flex-col gap-0.5 w-full relative">
@@ -215,11 +215,11 @@ export default function DashSuppliers() {
             )}
           </div>
         </div>
-        <div className="w-full md:w-1/3 rounded-[7px] overflow-hidden shadow-sm">
+        <div className="w-full h-fit border md:w-1/3 rounded-[7px] overflow-hidden shadow-sm">
           <TopCategories />
         </div>
       </div>
-      <div className="bg-white shadow-sm rounded-[7px] pb-5">
+      <div className="bg-white border rounded-[7px] pb-5">
         <div className="flex w-full py-4 px-3.5 md:px-7 justify-between border-b">
           <h3 className="text-[1rem] md:text-[1.25rem] text-black/75 font-bold">Statistique de ventes</h3>
           <div className="py-1 cursor-pointer bg-gray-50 font-semibold whitespace-nowrap text-gray-600 flex items-center gap-3 px-5 text-[1rem] md:text-[.8rem] border border-black/70 rounded-[50px]">
