@@ -24,7 +24,6 @@ import {
 } from "react-icons/fa";
 import { Button } from "../../components/ui/Button";
 import { FiPackage, FiTag } from "react-icons/fi";
-import produits from "../../datas/produits.json";
 // import CreateCategorie from "../../components/Admin/Dahboard/Categories/CreateCategorie";
 import { useForm } from "react-hook-form";
 import { createCateg, getAllCateg } from "../../store/slices/categories.slice";

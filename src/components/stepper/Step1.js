@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Controller, set, useFieldArray, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useToast } from '../../hook/use-toast'
 import SelectInputWithRef from '../ui/SelectInputWithRef'
+import { MoveRight } from 'lucide-react'
 
 export default function Step1 ({
   nextStep,
@@ -13,7 +14,9 @@ export default function Step1 ({
   register,
   setValue,
   control,
+  reset,
   handleSubmit,
+  unregister,
   watch,
   errors
 }) {
@@ -46,9 +49,8 @@ export default function Step1 ({
     onChange?.(value)
   }
 
-  const onSubmit = async data => {
+   const onSubmit = async data => {
     await setFormData({ ...formData, ...data })
-    console.log('datac', data)
     nextStep()
   }
 
@@ -184,11 +186,12 @@ export default function Step1 ({
 
       <div className='flex justify-end pt-3.5 border-t-2'>
         <button
-          type='submit'
-          className='px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors'
-        >
-          Suivant
-        </button>
+                  type='submit'
+                  className='bg-primary text-white flex items-center gap-2 px-4 py-2 rounded'
+                >
+                  Suivant
+                  <MoveRight />
+                </button>
       </div>
     </form>
   )

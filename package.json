@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@commercetools-uikit/date-range-input": "^20.3.0",
+    "@commercetools-uikit/money-input": "^20.3.0",
     "@commercetools-uikit/select-input": "^20.3.0",
     "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.1.8",
@@ -41,6 +42,7 @@
     "react": "^18.3.1",
     "react-apexcharts": "^1.7.0",
     "react-big-calendar": "^1.15.0",
+    "react-currency-input-field": "^4.0.3",
     "react-datepicker": "^7.5.0",
     "react-dom": "^18.3.1",
     "react-flag-kit": "^1.1.1",

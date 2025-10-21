@@ -18,10 +18,14 @@ export default function CreateProduct ({
   titre = 'Créer un produit',
   open,
   setOpen,
+  formData,
+  setFormData,
   subcategories,
   categories,
   attributeValues,
-  attributes
+  attributes,
+  loading,
+  onSave
 }) {
   const {
     register,
@@ -29,6 +33,8 @@ export default function CreateProduct ({
     control,
     handleSubmit,
     watch,
+    reset,
+    unregister,
     formState: { errors }
   } = useForm({
     defaultValues: {
@@ -39,12 +45,13 @@ export default function CreateProduct ({
     }
   })
 
-  const [formData, setFormData] = useState({})
   const [currentStep, setCurrentStep] = useState(1)
   console.log("formData",formData)
+
+  
    return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className='max-w-4xl block w-full'>
+      <DialogContent className='!max-w-4xl block w-full overflow-hidden'>
         <DialogHeader>
           <DialogTitle>{titre}</DialogTitle>
         </DialogHeader>
@@ -56,6 +63,8 @@ export default function CreateProduct ({
             formData={formData}
             register={register}
             setValue={setValue}
+            reset={reset}
+            unregister={unregister}
             control={control}
             handleSubmit={handleSubmit}
             watch={watch}
@@ -64,17 +73,20 @@ export default function CreateProduct ({
           <Step2
             setFormData={setFormData}
             formData={formData}
-            register={register}
-            setValue={setValue}
-            control={control}
-            handleSubmit={handleSubmit}
             watching={watch}
-            errors={errors}
             subcategories={subcategories}
             attributeValues={attributeValues}
             attributes={attributes}
           />
-          <Step3 formData={formData} />
+          <Step3 
+          formData={formData} 
+           subcategories={subcategories}
+            categories={categories}
+            attributeValues={attributeValues}
+            attributes={attributes}
+            onSave={onSave}
+            loading={loading}
+            />
         </StepWizard>
       </DialogContent>
     </Dialog>

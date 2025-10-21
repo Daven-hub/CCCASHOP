@@ -35,18 +35,25 @@ import { getAllSubCateg } from '../../store/slices/sousCategorie.slice'
 import LoaderUltra from '../../components/ui/LoaderUltra'
 import { getAllAttrs } from '../../store/slices/attribute.slice.js'
 import { getAllAttrValues } from '../../store/slices/attributeValue.slice'
+import { useToast } from '../../hook/use-toast'
+import { createProduitSimple, createProduitVariant } from '../../store/slices/produits.slice.js'
+import { useAuth } from '../../context/authContext.js'
 
 function Product () {
   const [openCreate, setOpenCreate] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [loadTime, setLoadTime] = useState(0)
+  const [formData, setFormData] = useState({})
   const [selectedItemName, setSelectedItemName] = useState('')
-  const dispatch= useDispatch()
+  const dispatch = useDispatch()
+  const { toast } = useToast()
   const { subcategories } = useSelector(state => state.souscategorie)
   const { attributeValues } = useSelector(state => state.attributeValue)
   const { attributes } = useSelector(state => state.attribute)
-    const { categories } = useSelector(state => state.categorie)
+  const { categories } = useSelector(state => state.categorie)
+  const {userConnected}=useAuth()
 
   const handleDelete = productName => {
     setSelectedItemName(productName)
@@ -78,32 +85,71 @@ function Product () {
   ]
 
   useEffect(() => {
-      const fetchData = async () => {
-        setIsLoading(true)
-        const start = performance.now()
-        try {
-          await Promise.all([
-            dispatch(getAllCateg()).unwrap(),
-            dispatch(getAllSubCateg()).unwrap(),
-            dispatch(getAllAttrs()).unwrap(),
-            dispatch(getAllAttrValues()).unwrap()
-          ])
-          const end = performance.now()
-          const duration = end - start
-          setLoadTime(duration.toFixed(0))
-        } catch (error) {
-          console.error('Erreur lors du chargement :', error)
-        } finally {
-          setIsLoading(false)
-        }
+    const fetchData = async () => {
+      setIsLoading(true)
+      const start = performance.now()
+      try {
+        await Promise.all([
+          dispatch(getAllCateg()).unwrap(),
+          dispatch(getAllSubCateg()).unwrap(),
+          dispatch(getAllAttrs()).unwrap(),
+          dispatch(getAllAttrValues()).unwrap()
+        ])
+        const end = performance.now()
+        const duration = end - start
+        setLoadTime(duration.toFixed(0))
+      } catch (error) {
+        console.error('Erreur lors du chargement :', error)
+      } finally {
+        setIsLoading(false)
       }
-      fetchData()
-    }, [dispatch])
-  
-    if (isLoading) {
-      return <LoaderUltra loading={isLoading} duration={loadTime} />
     }
-  
+    fetchData()
+  }, [dispatch])
+
+  if (isLoading) {
+    return <LoaderUltra loading={isLoading} duration={loadTime} />
+  }
+
+  const onSubmit = async () => {
+    setLoading(true)
+    const datas=formData
+    console.log("datas",datas)
+    const datamodel = new FormData()
+    datamodel.append('idVendeur',userConnected?.id);
+    datamodel.append('role',userConnected?.role);
+    for (const key in datas) {
+      if (key === 'profile') {
+        if (datas.profile && datas.profile.length > 0) {
+          datamodel.append('profile', datas?.profile?.[0])
+        }
+      }else if(key==='hasVariation'){
+         datamodel.append('hasVariation', datas?.hasVariation?1:0)
+      } else if (datas[key] !== undefined && datas[key] !== null) {
+        datamodel.append(key, datas[key])
+      }
+    }
+    try {
+      if(datas?.hasVariation){
+        await dispatch(createProduitVariant(datamodel)).unwrap()
+      }else{
+        await dispatch(createProduitSimple(datamodel)).unwrap()
+      }
+    
+      toast({
+        title: 'Enregistrement reussie'
+      })
+      // reset()
+    } catch (error) {
+      toast({
+        title: 'Enregistrement échouée',
+        description: error?.toString(),
+        variant: 'destructive'
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className='flex flex-col gap-6'>
@@ -231,13 +277,17 @@ function Product () {
           </Table>
         </div>
       </div>
-      <CreateProduct 
-        open={openCreate} 
+      <CreateProduct
+        open={openCreate}
         setOpen={setOpenCreate}
         subcategories={subcategories}
         categories={categories}
         attributeValues={attributeValues}
         attributes={attributes}
+        formData={formData}
+        setFormData={setFormData}
+        loading={loading}
+        onSave={onSubmit}
       />
       <ModaleDelete
         open={openDelete}

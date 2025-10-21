@@ -3,6 +3,9 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { PlusIcon, TrashIcon, MoveLeft, MoveRight } from 'lucide-react'
 import useAttributsDisponibles from '../../hook/useAttributeDisponible'
 import SelectInputWithRef from '../ui/SelectInputWithRef'
+import CurrencyInput from 'react-currency-input-field'
+// import CurrencyInput from "react-currency-input-field";
+
 
 const generateSKU = (index, sousCategorie) => {
   const prefix = sousCategorie?.substring(0, 3).toUpperCase() || 'PRD'
@@ -26,6 +29,8 @@ export default function Step2 ({
     control,
     reset,
     setValue,
+    watch,
+    unregister,
     formState: { errors }
   } = useForm({
     defaultValues: formData
@@ -40,6 +45,14 @@ export default function Step2 ({
     attributes,
     attributeValues
   )
+
+  useEffect(() => {
+    if (watch('hasVariation')) {
+       unregister(['pu', 'qte']);
+    } else {
+      unregister(['variations']);
+    }
+  }, [watch, reset]);
 
   const attributsSousCategorie = attributsDisponibles[sousCategorie] || []
 
@@ -97,10 +110,21 @@ export default function Step2 ({
         <div className='flex flex-col gap-3.5'>
           <div>
             <label className='block mb-1 font-medium'>Prix</label>
-            <input
-              type='number'
-              {...register('pu', { required: 'Prix obligatoire' })}
-              className='border rounded px-3 py-2 w-full'
+            <Controller
+              name="pu"
+              control={control}
+              rules={{ required: "Le montant est obligatoire" }}
+              render={({ field }) => (
+                <CurrencyInput
+                  id="input-amount"
+                  placeholder="Entrez un montant"
+                  className='border rounded px-3 py-2 w-full'
+                  prefix="$"
+                  decimalsLimit={2}
+                  value={field.value}
+                  onValueChange={(value) => field.onChange(value)}
+                />
+              )}
             />
             {errors.pu && (
               <p className='text-red-500 text-sm'>{errors.pu.message}</p>

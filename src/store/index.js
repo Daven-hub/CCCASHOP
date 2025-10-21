@@ -6,6 +6,7 @@ import categorieReducer from './slices/categories.slice';
 import sousCategorieReducer from './slices/sousCategorie.slice';
 import attributeReducer from './slices/attribute.slice.js';
 import attributeValueReducer from './slices/attributeValue.slice.js';
+import produitsReducer from './slices/produits.slice.js';
 // import RevueReducer from './slices/revue.slice';
 import ActualiteReducer from './slices/actualites.slice';
 // import EvenementsReducer from './slices/evenements.slice';
@@ -19,6 +20,7 @@ export const store = configureStore ({
     souscategorie: sousCategorieReducer,
     attribute: attributeReducer,
     attributeValue: attributeValueReducer,
+    produit: produitsReducer,
     // revue: RevueReducer,
     actualites: ActualiteReducer,
     // evenements: EvenementsReducer,
