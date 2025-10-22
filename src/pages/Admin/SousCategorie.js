@@ -35,6 +35,7 @@ import {
   getAllSubCateg
 } from '../../store/slices/sousCategorie.slice'
 import { IconRenderer } from '../../lib/IconeRenderer'
+import { getAllProduits } from '../../store/slices/produits.slice'
 
 function SousCategorie () {
   const [openCreate, setOpenCreate] = useState(false)
@@ -42,6 +43,7 @@ function SousCategorie () {
   const [loadTime, setLoadTime] = useState(0)
   const { categories } = useSelector(state => state.categorie)
   const { subcategories } = useSelector(state => state.souscategorie)
+  const { produits } = useSelector(state => state.produit)
   const [isLoading, setIsLoading] = useState(true)
   const dispatch = useDispatch()
   const { toast } = useToast()
@@ -86,7 +88,8 @@ function SousCategorie () {
       try {
         await Promise.all([
           dispatch(getAllCateg()).unwrap(),
-          dispatch(getAllSubCateg()).unwrap()
+          dispatch(getAllSubCateg()).unwrap(),
+          dispatch(getAllProduits()).unwrap()
         ])
         const end = performance.now()
         const duration = end - start
@@ -112,6 +115,12 @@ function SousCategorie () {
         {cat.nom}
       </div>
     )
+  }
+
+  const getTotalProductBySousCategorie=(id)=>{
+    const total = produits?.filter((x)=>x.idsubcateg===id)?.length
+    const nbreFormatted = String(total).padStart(2, "0");
+    return nbreFormatted
   }
 
   return (
@@ -179,7 +188,7 @@ function SousCategorie () {
                       <GetCategorie x={species?.idCategorie} />
                     </TableCell>
                     <TableCell className='hidden md:table-cell'>
-                      (00) produits
+                      ({getTotalProductBySousCategorie(species?.idsubcateg)}) produits
                     </TableCell>
                     <TableCell className='text-right'>
                       <DropdownMenu>
@@ -198,14 +207,14 @@ function SousCategorie () {
                           <DropdownMenuSeparator className='bg-black/10' />
                           <DropdownMenuItem className='text-blue-600'>
                             <FaEdit className='mr-2 h-4 w-4' />
-                            edit
+                            Modifier
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             className='text-red-600'
                             // onClick={() => handleDelete(species.id)}
                           >
                             <FaTrash className='mr-2 h-4 w-4' />
-                            delete
+                            Supprimer
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

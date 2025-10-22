@@ -1,7 +1,5 @@
-import { useState,useEffect } from 'react'
-import { Controller, set, useFieldArray, useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { useToast } from '../../hook/use-toast'
+import { useState } from 'react'
+import { Controller} from 'react-hook-form'
 import SelectInputWithRef from '../ui/SelectInputWithRef'
 import { MoveRight } from 'lucide-react'
 
@@ -20,7 +18,6 @@ export default function Step1 ({
   watch,
   errors
 }) {
-  const hasVariation = watch('hasVariation')
   const [image, setImage] = useState(null)
 
   const handleImageChange = e => {
@@ -172,7 +169,7 @@ export default function Step1 ({
         <div className='flex flex-col'>
           <label>Description</label>
           <textarea
-            {...register('desc')}
+            {...register('description')}
             className='border-2 rounded-[5px] p-2'
             rows={4}
             placeholder='Décris ton produit...'

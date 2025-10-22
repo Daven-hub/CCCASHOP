@@ -7,9 +7,9 @@ import sousCategorieReducer from './slices/sousCategorie.slice';
 import attributeReducer from './slices/attribute.slice.js';
 import attributeValueReducer from './slices/attributeValue.slice.js';
 import produitsReducer from './slices/produits.slice.js';
+import produitsVariantReducer from './slices/produitVariant.slice.js';
 // import RevueReducer from './slices/revue.slice';
 import ActualiteReducer from './slices/actualites.slice';
-// import EvenementsReducer from './slices/evenements.slice';
 
 export const store = configureStore ({
   reducer: {
@@ -21,6 +21,7 @@ export const store = configureStore ({
     attribute: attributeReducer,
     attributeValue: attributeValueReducer,
     produit: produitsReducer,
+    produitVariant: produitsVariantReducer,
     // revue: RevueReducer,
     actualites: ActualiteReducer,
     // evenements: EvenementsReducer,

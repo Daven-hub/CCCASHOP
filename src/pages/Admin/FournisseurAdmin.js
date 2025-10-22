@@ -201,7 +201,7 @@ function FournisseurAdmin () {
           </h1>
           <div className='flex w-[50%] items-center gap-3'>
             <input
-              className='border text-[.87rem] py-2.5 rounded-[7px] outline-0 px-5 w-full md:w-[100%]'
+              className='border-2 text-[.87rem] py-2.5 rounded-[7px] outline-0 px-5 w-full md:w-[100%]'
               type='text'
               placeholder='Recherchez ...'
             />

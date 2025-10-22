@@ -16,7 +16,8 @@ export default function useAttributsDisponibles(resSubcat,resAttr,resValues) {
           attributevalue: valeurs.filter((val) => val.idAttribute === attr.idAttribute).map((y)=>{
             return {
             label:y.value,
-            value:y.idValue
+            value:y.idValue,
+            type:attr?.type
           }}),
         }));
 
@@ -29,7 +30,7 @@ export default function useAttributsDisponibles(resSubcat,resAttr,resValues) {
 
         const mapFinal = sousCatAvecAttributs.reduce((acc, subcat) => {
           acc[subcat.nom] = subcat.attribute.reduce((obj, attr) => {
-            obj[attr.name] = attr.attributevalue.map((val) =>{ return {value:val.value,label:val.label}});
+            obj[attr.name] = attr.attributevalue.map((val) =>{ return {value:val.value,label:val.label,type:val.type}});
             return obj;
           }, {});
           return acc;

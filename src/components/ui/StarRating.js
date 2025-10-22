@@ -1,10 +1,10 @@
 import React from 'react';
 
-const StarRating = ({ rating }) => {
+const StarRating = ({ rating,size='20px' }) => {
   const totalStars = 5;
 
   return (
-    <div style={{ display: 'flex', gap: '4px' }}>
+    <div style={{ display: 'flex', gap: '1px' }}>
       {[...Array(totalStars)].map((_, index) => {
         const starNumber = index + 1;
         return (
@@ -12,7 +12,7 @@ const StarRating = ({ rating }) => {
             key={index}
             style={{
               color: starNumber <= rating ? 'gold' : 'lightgray',
-              fontSize: '20px',
+              fontSize: size,
               cursor: 'pointer',
             }}
           >

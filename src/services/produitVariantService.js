@@ -1,10 +1,10 @@
 import axios from './api';
 // import { BaseUrl } from '../config';
 
-const API_URL = '/produits/';
+const API_URL = '/produitVariants';
 
 // Register user
-const getAllproduits = async () => {
+const getAllProduitVs = async () => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -14,26 +14,17 @@ const getAllproduits = async () => {
   return response.data;
 };
 
-const createProduitS = async (userData) => {
-  // const config = {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // };
-  const response = await axios.post(API_URL+'?action=simple', userData);
-  return response.data;
-};
 const createProduitV = async (userData) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
   //   },
   // };
-  const response = await axios.post(API_URL+'?action=variant', userData);
+  const response = await axios.post(API_URL, userData);
   return response.data;
 };
 
-const updateProduit = async (id,userData) => {
+const updateProduitV = async (id,userData) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -44,7 +35,7 @@ const updateProduit = async (id,userData) => {
 };
 
 // Login user
-const getProduitId = async (id) => {
+const getProduitVId = async (id) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -54,7 +45,7 @@ const getProduitId = async (id) => {
   return response.data;
 };
 
-const deleteProduitId = async (id) => {
+const deleteProduitVId = async (id) => {
   // const config = {
   //   headers: {
   //     Authorization: `Bearer ${token}`,
@@ -66,13 +57,12 @@ const deleteProduitId = async (id) => {
 
 
 
-const produitService = {
-    createProduitS,
+const productvariantService = {
     createProduitV,
-  getAllproduits,
-  getProduitId,
-  updateProduit,
-  deleteProduitId
+  getAllProduitVs,
+  getProduitVId,
+  updateProduitV,
+  deleteProduitVId
 };
 
-export default produitService;
+export default productvariantService;

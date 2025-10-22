@@ -24,8 +24,7 @@ import {
 } from 'react-icons/fa'
 import { Button } from '../../components/ui/Button'
 import { PackageIcon, CheckCircleIcon, XCircleIcon } from 'lucide-react'
-import { FiPackage } from 'react-icons/fi'
-import produits from '../../datas/produits.json'
+import { FiEye, FiPackage } from 'react-icons/fi'
 import CreateProduct from '../../components/Admin/Dahboard/Product/CreateProctuctForm'
 import ModaleDelete from '../../components/Admin/Dahboard/ModalDelete'
 import { ClientStats } from './Clients'
@@ -36,8 +35,11 @@ import LoaderUltra from '../../components/ui/LoaderUltra'
 import { getAllAttrs } from '../../store/slices/attribute.slice.js'
 import { getAllAttrValues } from '../../store/slices/attributeValue.slice'
 import { useToast } from '../../hook/use-toast'
-import { createProduitSimple, createProduitVariant } from '../../store/slices/produits.slice.js'
+import { createProduitSimple, createProduitVariant, getAllProduits } from '../../store/slices/produits.slice.js'
 import { useAuth } from '../../context/authContext.js'
+import { BaseUrl } from '../../config.js'
+import { getAllProduitVariants } from '../../store/slices/produitVariant.slice.js'
+import StarRating from '../../components/ui/StarRating.js'
 
 function Product () {
   const [openCreate, setOpenCreate] = useState(false)
@@ -53,36 +55,14 @@ function Product () {
   const { attributeValues } = useSelector(state => state.attributeValue)
   const { attributes } = useSelector(state => state.attribute)
   const { categories } = useSelector(state => state.categorie)
+  const { produits } = useSelector(state => state.produit)
+  const { produitVariants } = useSelector(state => state.produitVariant)
   const {userConnected}=useAuth()
 
   const handleDelete = productName => {
     setSelectedItemName(productName)
     setOpenDelete(true)
   }
-
-  const data = [
-    {
-      title: 'Tous les produits',
-      nbre: 10,
-      previousNbre: 10,
-      icon: PackageIcon,
-      color: 'bg-blue-600'
-    },
-    {
-      title: 'Produits actifs',
-      nbre: 0,
-      previousNbre: 18,
-      icon: CheckCircleIcon,
-      color: 'bg-green-500'
-    },
-    {
-      title: 'Produits désactivés',
-      nbre: 15,
-      previousNbre: 11,
-      icon: XCircleIcon,
-      color: 'bg-red-500'
-    }
-  ]
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,7 +73,9 @@ function Product () {
           dispatch(getAllCateg()).unwrap(),
           dispatch(getAllSubCateg()).unwrap(),
           dispatch(getAllAttrs()).unwrap(),
-          dispatch(getAllAttrValues()).unwrap()
+          dispatch(getAllAttrValues()).unwrap(),
+          dispatch(getAllProduits()).unwrap(),
+          dispatch(getAllProduitVariants()).unwrap()
         ])
         const end = performance.now()
         const duration = end - start
@@ -107,14 +89,9 @@ function Product () {
     fetchData()
   }, [dispatch])
 
-  if (isLoading) {
-    return <LoaderUltra loading={isLoading} duration={loadTime} />
-  }
-
   const onSubmit = async () => {
     setLoading(true)
     const datas=formData
-    console.log("datas",datas)
     const datamodel = new FormData()
     datamodel.append('idVendeur',userConnected?.id);
     datamodel.append('role',userConnected?.role);
@@ -123,8 +100,8 @@ function Product () {
         if (datas.profile && datas.profile.length > 0) {
           datamodel.append('profile', datas?.profile?.[0])
         }
-      }else if(key==='hasVariation'){
-         datamodel.append('hasVariation', datas?.hasVariation?1:0)
+      }else if(key==='variations'){
+        datamodel.append("variations", JSON.stringify(datas.variations));
       } else if (datas[key] !== undefined && datas[key] !== null) {
         datamodel.append(key, datas[key])
       }
@@ -151,6 +128,63 @@ function Product () {
     }
   }
 
+  const moiVendeur=produits?.filter((x)=>x?.idVendeur===userConnected?.id)
+   const TotalActif=produits?.filter((x)=>x?.idVendeur===userConnected?.id && x.status===1).length
+    const TotalNonActif=produits?.filter((x)=>x?.idVendeur===userConnected?.id && x.status===0).length
+  const total= moiVendeur?.length
+
+    const data = [
+    {
+      title: 'Tous les produits',
+      nbre: total,
+      previousNbre: 10,
+      icon: PackageIcon,
+      color: 'bg-blue-600'
+    },
+    {
+      title: 'Produits actifs',
+      nbre: TotalActif,
+      previousNbre: 18,
+      icon: CheckCircleIcon,
+      color: 'bg-green-500'
+    },
+    {
+      title: 'Produits désactivés',
+      nbre: TotalNonActif,
+      previousNbre: 11,
+      icon: XCircleIcon,
+      color: 'bg-red-500'
+    }
+  ]
+
+   const getTotalVariantSock=(id)=>{
+    const totalPrix = produitVariants?.filter((x)=>x.idProduit===id).reduce((sum, item) => sum + item.qte, 0);
+    return totalPrix
+  }
+   const getPrixVariantSock=(id)=>{
+    const variants = produitVariants?.filter((x)=>x.idProduit===id).map((y)=> y?.pu);
+    const min= Math.min(...variants)
+    const max= Math.max(...variants)
+    let result='$'+min;
+    if(min!==max){
+      result +=' - '+'$'+max
+    }
+    return result
+  }
+
+   const getCategorieName=(id)=>{
+    const result = categories?.find((x)=>x.idcategorie===id);
+    return result?.nom
+  }
+   const getSubcategName=(id)=>{
+    const result = subcategories?.find((x)=>x.idsubcateg===id);
+    return result?.nom
+   }
+
+  if (isLoading) {
+    return <LoaderUltra loading={isLoading} duration={loadTime} />
+  }
+
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex justify-between items-center'>
@@ -169,11 +203,6 @@ function Product () {
           </button>
         </div>
       </div>
-      {/* <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
-        <div className='py-16 bg-white border rounded-[6px] shadow-sm'></div>
-        <div className='py-16 bg-white border rounded-[6px] shadow-sm'></div>
-        <div className='py-16 bg-white border rounded-[6px] shadow-sm'></div>
-      </div> */}
       <ClientStats data={data} />
       <div className='bg-white flex flex-col gap-6 border rounded-[6px] p-7'>
         <div className='flex justify-between items-center gap-4'>
@@ -182,7 +211,7 @@ function Product () {
           </h1>
           <div className='flex w-[50%] items-center gap-3'>
             <input
-              className='border text-[.87rem] py-2.5 rounded-[7px] outline-0 px-5 w-full md:w-[100%]'
+              className='border-2 text-[.87rem] py-2.5 rounded-[7px] outline-0 px-5 w-full md:w-[100%]'
               type='text'
               placeholder='Recherchez ...'
             />
@@ -190,55 +219,69 @@ function Product () {
         </div>
         <div className='rounded-[7px] overflow-hidden bg-white'>
           <Table>
-            <TableHeader className='bg-gray-200'>
+            <TableHeader className='bg-gray-300'>
               <TableRow>
                 <TableHead>uuid</TableHead>
-                <TableHead>Thumbnail</TableHead>
                 <TableHead>Noms</TableHead>
                 <TableHead>Catégorie</TableHead>
-                <TableHead>Quantité</TableHead>
-                <TableHead>Expiration</TableHead>
-                <TableHead>Statut</TableHead>
+                <TableHead>Sous-catégorie</TableHead>
+                <TableHead>Qte</TableHead>
+                <TableHead>Pu</TableHead>
+                <TableHead>Variant?</TableHead>
+                <TableHead>Visible</TableHead>
                 <TableHead className='text-right'>actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {produits.length === 0 ? (
+              {moiVendeur.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={7} className='text-center py-8'>
-                    pas de resultat
+                    Pas de resultat
                   </TableCell>
                 </TableRow>
               ) : (
-                produits.map((species, index) => (
+                moiVendeur?.map((species, index) => (
                   <TableRow
-                    className='hover:bg-primary/10 cursor-pointer'
+                    className='hover:bg-primary/5 capitalize cursor-pointer'
                     key={index}
                   >
-                    <TableCell className='font-medium'>{species?.id}</TableCell>
+                    <TableCell className='font-medium'>{species?.idproduits}</TableCell>
                     <TableCell>
-                      <img
-                        className='w-12 h-12 object-contain rounded-[6px]'
-                        src={species?.image}
-                        alt={species?.id}
-                      />
-                    </TableCell>
-                    <TableCell className='hidden sm:table-cell'>
-                      {species?.titre}
-                    </TableCell>
-                    <TableCell className='hidden md:table-cell'>
-                      Jus de Fruit
-                    </TableCell>
-                    <TableCell className='hidden md:table-cell'>
-                      {species?.qte + ' ' + species?.meter}
-                    </TableCell>
-                    <TableCell className='hidden md:table-cell'>
-                      3mois
-                    </TableCell>
-                    <TableCell className='hidden md:table-cell'>
-                      <div className='badge flex items-center justify-center rounded-[50px] text-[.6rem] font-bold bg-green-100 text-green-900'>
-                        Disponible
+                      <div className='flex items-center gap-3.5'>
+                        <img
+                          className='w-12 h-12 object-contain rounded-[6px]'
+                          src={BaseUrl+''+species?.profile}
+                          alt={species?.idproduits}
+                        />
+                        <div className='flex flex-col'>
+                          <h2 className='text-[.92rem]'>{species?.nom}</h2>
+                          <StarRating rating={0} size='16px'/>
+                        </div>
                       </div>
+                    </TableCell>
+                    <TableCell className='hidden md:table-cell'>
+                      {getCategorieName(species?.idCategorie)}
+                    </TableCell>
+                    <TableCell className='hidden md:table-cell'>
+                      {getSubcategName(species?.idsubcateg)}
+                    </TableCell>
+                    <TableCell className='hidden md:table-cell'>
+                      {species?.hasVariation===0?species?.qte:getTotalVariantSock(species?.idproduits)}
+                    </TableCell>
+                    <TableCell className='hidden md:table-cell'>
+                      {species?.hasVariation===0?'$ '+species?.pu:getPrixVariantSock(species?.idproduits)}
+                    </TableCell>
+                    <TableCell className='hidden md:table-cell'>
+                      {species?.hasVariation===0?'Non':'Oui'}
+                    </TableCell>
+                    <TableCell className='hidden md:table-cell'>
+                      {parseInt(species?.status)===1?
+                      <div className='badge flex px-2.5 uppercase items-center justify-center rounded-[50px] text-[.6rem] font-extrabold bg-green-100 text-green-700'>
+                        Oui
+                      </div>:
+                      <div className='badge flex px-2.5 uppercase items-center justify-center rounded-[50px] text-[.6rem] font-extrabold bg-red-100 text-red-700'>
+                        Non
+                      </div>}
                     </TableCell>
                     <TableCell className='text-right'>
                       <DropdownMenu>
@@ -256,16 +299,24 @@ function Product () {
                           <DropdownMenuLabel>action</DropdownMenuLabel>
                           <DropdownMenuSeparator className='bg-black/10' />
                           <DropdownMenuItem>
+                            <FiEye className='mr-2 h-4 w-4' />
+                            Detail
+                          </DropdownMenuItem>
+                          <DropdownMenuItem className="text-blue-500">
                             <FaEdit className='mr-2 h-4 w-4' />
-                            edit
+                            Modifier
                           </DropdownMenuItem>
                           <DropdownMenuItem
-                            className='text-destructive'
+                            className='text-red-500'
                             // onClick={() => handleDelete(species.id)}
-                            onClick={() => handleDelete(species?.titre)}
+                            onClick={() => handleDelete(species?.nom)}
                           >
                             <FaTrash className='mr-2 h-4 w-4' />
                             delete
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator className='bg-black/10' />
+                          <DropdownMenuItem className={`${species?.status===0?'text-green-500':'text-red-500'}`}>
+                            {species?.status===0?'Visible':'Invisible'}
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

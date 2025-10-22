@@ -1,25 +1,60 @@
-import React, { useEffect } from "react";
-import { Calendar02Icon, GraduateMaleIcon, NewReleasesIcon, NewsIcon } from "hugeicons-react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllEvenement } from "../../../store/slices/evenements.slice";
 import TopCategories from "../../chart/TopCategories";
 import ReactApexChart from "react-apexcharts";
 import { FiClipboard, FiDollarSign, FiPackage, FiUsers } from "react-icons/fi";
 import moment from "moment";
 import { FaExchangeAlt } from "react-icons/fa";
 import { useAuth } from "../../../context/authContext";
+import { getAllCateg } from "../../../store/slices/categories.slice";
+import { getAllProduits } from "../../../store/slices/produits.slice";
 import { useToast } from "../../../hook/use-toast";
-// import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../Components/table";
-// import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../Components/dropdown-menu";
-// import { FaChevronDown, FaEdit, FaTrash } from "react-icons/fa";
-// import { Button } from "@headlessui/react";
+import { getAllUsers } from "../../../store/slices/user.slice";
+import LoaderUltra from "../../ui/LoaderUltra";
+import {formatNumber} from "../../../lib/formatNumber";
 
 export default function DashSuppliers() {
+    const { categories } = useSelector(state => state.categorie)
+    const { produits } = useSelector(state => state.produit)
+    const { users } = useSelector(state => state.users)
+    const {userConnected}=useAuth()
+    const { toast } = useToast();
+    const [loadTime,setLoadTime]=useState(0)
+    const [isLoading,setIsLoading]=useState(false)
+
+  const dispatch=useDispatch();
+  useEffect(() => {
+      const fetchData = async () => {
+        setIsLoading(true)
+        const start = performance.now()
+        try {
+          await Promise.all([
+            dispatch(getAllCateg()).unwrap(),
+            dispatch(getAllProduits()).unwrap(),
+            dispatch(getAllUsers()).unwrap(),
+          ])
+          const end = performance.now()
+          const duration = end - start
+          setLoadTime(duration.toFixed(0))
+        } catch (error) {
+          console.error('Erreur lors du chargement :', error)
+        } finally {
+          setIsLoading(false)
+        }
+      }
+      fetchData()
+    }, [dispatch])
+
+  const moiVendeur=produits?.filter((x)=>x?.idVendeur===userConnected?.id)
+  const totalProduit= moiVendeur?.length
+  const totalClient= users.map((x)=>x.role==='acheteur')?.length
+
+
   const data = [
     {
       title: 'Clients',
       date: '',
-      nbre: '100',
+      nbre: formatNumber(totalClient),
       symb: '65%',
       icon: <FiUsers size={40} />,
       color: 'blue-600'
@@ -43,18 +78,12 @@ export default function DashSuppliers() {
     {
       title: 'Produits',
       date: '',
-      nbre: '27',
+      nbre: formatNumber(totalProduit),
       symb: '50%',
       icon: <FiPackage size={40} />,
       color: 'primary'
     },
   ]
-
-  // const dispatch = useDispatch();
-  // const { Evenements } = useSelector((state) => state.evenements);
-  // useEffect(() => {
-  //   dispatch(getAllEvenement());
-  // }, [dispatch]);
 
   const [state, setState] = React.useState({
     series: [
@@ -177,10 +206,6 @@ export default function DashSuppliers() {
     },
   });
 
-  const { toast } = useToast();
-
-  const {userConnected}=useAuth()
-
    useEffect(() => {
         if(userConnected?.status===0){
           toast({
@@ -190,6 +215,10 @@ export default function DashSuppliers() {
           });
         }
   }, [userConnected?.status])
+
+  if (isLoading) {
+      return <LoaderUltra loading={isLoading} duration={loadTime} />
+    }
 
   return (
     (<div className="flex flex-col gap-6 ">

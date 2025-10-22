@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
-import { Check, Loader2, MoveLeft, MoveRight } from 'lucide-react'
+import { Check, Loader2, MoveLeft } from 'lucide-react'
 import { ScrollArea } from '../ui/scroll_area'
 import {
   Table,
@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow
 } from '../ui/Table'
+import useAttributsDisponibles from '../../hook/useAttributeDisponible'
 export default function Step3 ({
   previousStep,
   formData,
@@ -22,27 +23,43 @@ export default function Step3 ({
 }) {
   const {
     nom,
-    desc,
+    description,
     hasVariation,
     idCategorie,
     idsubcateg,
     tag,
     pu,
     qte,
-    prix,
-    stock,
     profile,
     variations
   } = formData || {}
 
   const imageUrl = profile?.length > 0 ? URL.createObjectURL(profile[0]) : null
-  const handleFinish = () => {
-    console.log('Données envoyées ✅', formData)
-    alert('Formulaire soumis avec succès !')
-  }
+
+  const sousCategorie = subcategories?.find(
+    x => x.idsubcateg === idsubcateg
+  )?.nom
+  const attributsDisponibles = useAttributsDisponibles(
+    subcategories,
+    attributes,
+    attributeValues
+  )
+  const attributsSousCategorie = attributsDisponibles[sousCategorie] || []
 
   const getNameValue = y => {
-    return attributeValues?.find(z => z?.idValue === y).value
+    const attributess = attributsSousCategorie[y.name]?.find(
+      x => x.value === y.value
+    )
+    console.log('attributess', attributess)
+    if (attributess?.type === 'color') {
+      return (
+        <div
+          className='w-4 h-4 rounded-full'
+          style={{ backgroundColor: attributess.label }}
+        />
+      )
+    }
+    return attributess.label
   }
   const getNameCategorie = y => {
     return categories?.find(z => z?.idcategorie === y)?.nom
@@ -51,8 +68,17 @@ export default function Step3 ({
     return subcategories?.find(z => z?.idsubcateg === y)?.nom
   }
 
-  const formatAttributes = attrs =>
-    attrs.map(attr => `${attr.name}: ${getNameValue(attr.value)}`).join(' | ')
+  // const formatAttributes = attrs =>
+  //   attrs.map(attr => `${attr.name}: ${getNameValue(attr)}`).join(' | ')
+
+  const formatAttributes = attrs => {
+    return attrs.map((attr, i) => (
+      <div key={i} className='flex whitespace-nowrap items-center gap-1'>
+        <strong>{attr.name}:</strong> {getNameValue(attr)}
+        {i < attrs.length - 1 && <span className='text-gray-400 mx-1'>|</span>}
+      </div>
+    ))
+  }
 
   return (
     <div className='space-y-2'>
@@ -65,10 +91,9 @@ export default function Step3 ({
           </CardHeader>
           <CardContent className='grid grid-cols-1 md:grid-cols-3 gap-4'>
             {imageUrl && (
-              //   <div className='flex justify-center'>
               <img
                 src={imageUrl}
-                alt='Image du produit'
+                alt={nom}
                 className='w-full aspect-video border-black rounded-xl shadow'
               />
             )}
@@ -97,7 +122,7 @@ export default function Step3 ({
           </CardHeader>
           <CardContent className='w-full gap-4'>
             <textarea
-              value={desc}
+              value={description}
               disabled
               rows={3}
               className='p-4 w-full border rounded-[6px]'
@@ -141,7 +166,11 @@ export default function Step3 ({
                     <TableRow key={i} className='hover:bg-gray-50'>
                       <TableCell>{i + 1}</TableCell>
                       <TableCell>{v.sku}</TableCell>
-                      <TableCell>{formatAttributes(v.attributes)}</TableCell>
+                      <TableCell>
+                        <div className='flex items-center flex-nowrap gap-1'>
+                          {formatAttributes(v.attributes)}
+                        </div>
+                      </TableCell>
                       <TableCell>{v.prix ? `${v.prix}$` : '-'}</TableCell>
                       <TableCell>{v.stock}</TableCell>
                     </TableRow>

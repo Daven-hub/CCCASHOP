@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect,useMemo } from 'react'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { PlusIcon, TrashIcon, MoveLeft, MoveRight } from 'lucide-react'
 import useAttributsDisponibles from '../../hook/useAttributeDisponible'
@@ -7,8 +7,8 @@ import CurrencyInput from 'react-currency-input-field'
 // import CurrencyInput from "react-currency-input-field";
 
 
-const generateSKU = (index, sousCategorie) => {
-  const prefix = sousCategorie?.substring(0, 3).toUpperCase() || 'PRD'
+const generateSKU = (index, sousCategorie, nom) => {
+  const prefix = nom?.substring(0,3).toUpperCase() || sousCategorie?.substring(0, 3).toUpperCase() || 'PRD'
   const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase()
   return `${prefix}-${index + 1}-${randomPart}`
 }
@@ -23,42 +23,38 @@ export default function Step2 ({
   attributes,
   subcategories
 }) {
+
   const {
     register,
     handleSubmit,
     control,
     reset,
-    setValue,
-    watch,
-    unregister,
     formState: { errors }
   } = useForm({
     defaultValues: formData
   })
 
+  useEffect(() => {
+    if (formData) {
+      reset(formData);
+    }
+  }, [formData, reset]);
+
   const sousCategorie = subcategories?.find(
     x => x.idsubcateg === watching('idsubcateg')
   )?.nom
 
+  const nomV = watching()?.nom
   const attributsDisponibles = useAttributsDisponibles(
     subcategories,
     attributes,
     attributeValues
   )
 
-  useEffect(() => {
-    if (watch('hasVariation')) {
-       unregister(['pu', 'qte']);
-    } else {
-      unregister(['variations']);
-    }
-  }, [watch, reset]);
-
-  const attributsSousCategorie = attributsDisponibles[sousCategorie] || []
-
-  const getValueData = x => {
-    return attributsSousCategorie[x] || []
-  }
+  const attributsSousCategorie =useMemo(() => {
+        return attributsDisponibles[sousCategorie] || [] ;
+      }, [attributsDisponibles,sousCategorie]);
+  
 
   const {
     fields: variations,
@@ -71,7 +67,8 @@ export default function Step2 ({
 
   const hasVariation = watching()?.hasVariation
 
-  const onSubmit = data => {
+  const onSubmite = data => {
+    console.log("data",data)
     setFormData({ ...formData, ...data })
     nextStep()
   }
@@ -81,18 +78,18 @@ export default function Step2 ({
       ...prev,
       variations: prev.variations?.map((v, i) => ({
         ...v,
-        sku: v.sku || generateSKU(i, sousCategorie),
+        sku: v.sku || generateSKU(i, sousCategorie,nomV),
         attributes: Object.keys(attributsSousCategorie)?.map(attr => ({
           name: attr,
           value: v.attributes?.find(a => a.name === attr)?.value || ''
         }))
       }))
     }))
-  }, [sousCategorie])
+  }, [sousCategorie,nomV,reset,attributsSousCategorie])
 
   const handleAddVariation = () => {
     const newIndex = variations.length
-    const newSKU = generateSKU(newIndex, sousCategorie)
+    const newSKU = generateSKU(newIndex, sousCategorie, nomV)
     append({
       sku: newSKU,
       prix: '',
@@ -105,7 +102,7 @@ export default function Step2 ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+    <form onSubmit={handleSubmit(onSubmite)} className='space-y-4'>
       {!hasVariation ? (
         <div className='flex flex-col gap-3.5'>
           <div>
