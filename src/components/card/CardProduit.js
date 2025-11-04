@@ -83,7 +83,7 @@ export const CardProduit = ({ x }) => {
     setLoading(true);
     const { idproduits } = produits;
     const cartUnique = carts?.find(
-      (x) => x?.idproduits === idproduits && x?.idUsershop === idConnected
+      (x) => x?.idproduits === idproduits && x?.idUsershop === idConnected && x?.idProduitVariant===idVariant && x?.roleUser===userConnected?.role
     );
     let data;
     if (!cartUnique) {
@@ -179,6 +179,10 @@ export const CardProduit = ({ x }) => {
     return result;
   };
 
+  const handleNavigation=(nom)=>{
+    navigate("/produits/"+Slugify(nom))
+  }
+
   // console.log("favoris",favoris)
   if (isLoading) {
     return <LoaderProduitCard />;
@@ -268,9 +272,10 @@ export const CardProduit = ({ x }) => {
             </span>
           </button>
         ) : (
-          <NavLink
+          <button
             title="Choisir une option"
-            to={"#"}
+            // to={"/produits/"+Slugify(x?.nom)}
+            onClick={()=>handleNavigation(x?.nom)}
             className="relative w-full mt-2.5 rounded-[6px] border text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 py-2 font-semibold px-1 overflow-hidden group"
           >
             <span
@@ -289,7 +294,7 @@ export const CardProduit = ({ x }) => {
               />
               Ajouter au panier
             </span>
-          </NavLink>
+          </button>
         )}
       </div>
     </div>

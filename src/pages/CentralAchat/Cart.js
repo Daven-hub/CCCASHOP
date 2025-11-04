@@ -30,6 +30,7 @@ function Cart() {
   const dispatch = useDispatch();
   const { produits } = useSelector((state) => state.produit);
   const { carts } = useSelector((state) => state.cart);
+  const { produitVariants } = useSelector((state) => state.produitVariant);
   const [loadTime, setLoadTime] = useState(0)
   const { toast } = useToast();
   const { userConnected } = useAuth();
@@ -37,6 +38,8 @@ function Cart() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [selected, setSelected] = useState(0);
+  const [loadingDelete, setLoadingDelete] = useState(false);
 
   const idConnected =
     userConnected?.role === "fournisseur"
@@ -72,9 +75,10 @@ function Cart() {
     );
     return res?.map((y) => ({
       ...y,
+      variation:produitVariants?.find((x)=>x?.idVariant===y?.idProduitVariant),
       produit: produits?.find((z) => z.idproduits === y.idproduits),
     }));
-  }, [carts, produits, idConnected, userConnected?.role]);
+  }, [carts,produitVariants, produits, idConnected, userConnected?.role]);
 
   const handleQuantityChange = async (item, newQte) => {
     if (newQte < 1) return;
@@ -95,8 +99,9 @@ function Cart() {
   };
 
   const handleDelete = async (id) => {
+    setSelected(id)
     try {
-      setLoading(true);
+      setLoadingDelete(true);
       await dispatch(removeCarts(id)).unwrap();
       toast({ title: "Produit supprimé du panier" });
     } catch {
@@ -106,14 +111,15 @@ function Cart() {
         variant: "destructive",
       });
     } finally {
-      setLoading(false);
+      setLoadingDelete(false);
     }
   };
 
-  const totalPanier = monPanier?.reduce(
-    (acc, item) => acc + item.produit?.pu * item.qte,
-    0
-  );
+  // console?.log("monPanier",monPanier)
+  const totalPanier = monPanier?.reduce((acc, item) => {
+  const prixUnitaire = item.variation ? item.variation?.pu : item.produit?.pu;
+  return acc + (prixUnitaire * (item.qte || 1));
+}, 0);
 
   if (isLoading) return <LoaderUltra loading={isLoading} duration={loadTime} />;
 
@@ -179,7 +185,7 @@ function Cart() {
                     </TableCell>
 
                     <TableCell className="font-medium text-gray-700">
-                      ${item.produit?.pu}
+                      ${!item?.variation?item.produit?.pu:item?.variation?.pu}
                     </TableCell>
 
                     <TableCell>
@@ -220,11 +226,11 @@ function Cart() {
                     </TableCell>
 
                     <TableCell className="font-semibold text-gray-900">
-                      ${(item.produit?.pu * item.qte).toFixed(2)}
+                      ${!item?.variation?(item.produit?.pu * item.qte).toFixed(2):(item.variation?.pu * item.qte).toFixed(2)}
                     </TableCell>
 
                     <TableCell className="text-right">
-                      {loading ? (
+                      {loadingDelete && item?.id===selected ? (
                         <Loader2 className="animate-spin w-5 h-5 text-gray-400" />
                       ) : (
                         <FaTrashAlt
