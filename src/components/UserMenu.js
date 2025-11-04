@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { FiLogOut, FiSettings } from 'react-icons/fi';
+import { FiArrowDown, FiLogOut, FiSettings } from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
 import * as Avatar from "@radix-ui/react-avatar";
 import { BaseUrl } from '../config';
 import { useAuth } from '../context/authContext';
 import { MdDashboard } from 'react-icons/md';
 import { FaUserAlt } from 'react-icons/fa';
-import LoaderUltra from './ui/LoaderUltra';
 
 function UserMenu({isAdmin}) {
       const [open, setOpen] = useState(false);
@@ -21,25 +20,25 @@ function UserMenu({isAdmin}) {
             return () => document.removeEventListener("mousedown", handleClickOutside);
       }, []);
 
-      const { userConnected, handleLogout,isLoading } = useAuth();
-      // console.log('userConnected',userConnected)
+      const { userConnected, handleLogout } = useAuth();
       return (
             <div ref={popoverRef} className='flex relative items-center font-bold text-[.75rem] gap-2'>
                   <div onClick={() => setOpen(!open)} className='cursor-pointer flex items-center gap-1.5'>
-                        <Avatar.Root className="AvatarRoot inline-flex w-[42px] h-[42px] object-cover object-top rounded-full items-center justify-center overflow-hidden align-middle">
+                        <div className='flex flex-col leading-[1.3]'>
+                              <span className={`${isAdmin?'text-white/85':'text-primary/85'} text-[.92rem] capitalize font-semibold`}>{userConnected?.username ?userConnected?.username: userConnected?.prenom+' '+userConnected?.nom}</span>
+                              <span className={`${isAdmin?'text-white/70':'text-primary/70'} capitalize font-light text-[.7rem]`}>{userConnected?.role}</span>
+                        </div>
+                        <Avatar.Root className="AvatarRoot inline-flex w-[38px] h-[38px] object-cover object-top rounded-full items-center justify-center overflow-hidden align-middle">
                               <Avatar.Image
-                                    className="AvatarImage"
+                                    className="AvatarImage bg-gray-50 object-cover"
                                     src={BaseUrl + "" + userConnected?.profile}
                                     alt={userConnected?.username? userConnected?.username: userConnected?.nom}
                               />
-                              <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-gray-100 text-sm font-semibold text-gray-800" delayMs={600}>
+                              <Avatar.Fallback className="AvatarFallback flex h-full w-full items-center justify-center bg-gray-100 text-sm font-semibold text-gray-800" delayMs={100}>
                                     {userConnected?.username?.charAt(0)?.toUpperCase()}
                               </Avatar.Fallback>
                         </Avatar.Root>
-                        {!isAdmin && <div className='flex flex-col leading-[1.3]'>
-                              <span className='text-white/85 text-[.9rem] capitalize font-semibold'>{userConnected?.username ?userConnected?.username: userConnected?.prenom+' '+userConnected?.nom}</span>
-                              <span className='text-white/70 capitalize font-light text-[.7rem]'>{userConnected?.role}</span>
-                        </div>}
+                        <FiArrowDown />
                   </div>
                   {/* Popover */}
                   {open && (
@@ -49,7 +48,7 @@ function UserMenu({isAdmin}) {
                                     <p className="text-xs font-normal text-gray-400">{userConnected?.email}</p>
                               </div>
                               <ul className="py-1 text-sm font-medium text-gray-500">
-                                    {!isAdmin && <li>
+                                    {isAdmin && <li>
                                           <NavLink onClick={() => setOpen(false)} to={"/admin/tableau-de-bord"} className="w-full text-left flex items-center gap-2.5 px-4 py-2 hover:bg-gray-100">
                                                 <MdDashboard /> Tableau de bord
                                           </NavLink>

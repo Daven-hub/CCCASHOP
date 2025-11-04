@@ -3,10 +3,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../../components/ui/Dropdown-menu'
 import { FaChevronDown, FaCog, FaEdit, FaFilePdf, FaPlus, FaTrash } from 'react-icons/fa'
 import { Button } from '../../components/ui/Button'
-import { FiPackage, FiTag } from 'react-icons/fi';
-import produits from "../../datas/produits.json"
+import {  FiTag } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom'
-// import CreateAttribute from '../../components/Admin/Dahboard/Attributes/CreateAttribut'
 import ModalDelete from '../../components/Admin/Dahboard/ModalDelete'
 import { useDispatch, useSelector } from 'react-redux'
 import { useToast } from '../../hook/use-toast'
@@ -29,7 +27,7 @@ const [openCreat, setOpenCreat] = useState(false);
   };
   const navigate = useNavigate()
   const handleNavigateValue = (id) => {
-    navigate('/admin/attributs/value/' + id)
+    navigate('/admin/attributs/'+id+'/valeur')
   }
 
   const [loading, setLoading] = useState(false)
@@ -45,9 +43,7 @@ const [openCreat, setOpenCreat] = useState(false);
       register: connexion,
       control,
       handleSubmit,
-      watch: watchSave,
       reset,
-      setValue,
       formState: { errors: errorLog }
     } = useForm({
       defaultValues: {
@@ -77,7 +73,7 @@ const [openCreat, setOpenCreat] = useState(false);
   
     useEffect(() => {
       const fetchData = async () => {
-        setIsLoading(true)
+        // setIsLoading(true)
         const start = performance.now()
         try {
           await Promise.all([
@@ -137,21 +133,21 @@ const [openCreat, setOpenCreat] = useState(false);
         </div>
         <div className="rounded-[7px] overflow-hidden bg-white">
           <Table>
-            <TableHeader className="bg-gray-100">
+            <TableHeader className="bg-gray-200">
               <TableRow>
                 <TableHead>#No</TableHead>
                 <TableHead>Nom</TableHead>
                 <TableHead>Type de valeur</TableHead>
                 <TableHead>Sous catégorie</TableHead>
                 <TableHead>Catégorie</TableHead>
-                <TableHead className="text-right">actions</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {attributes?.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-8">
-                    pas de resultat
+                  <TableCell colSpan={6} className="text-center py-8">
+                    Pas de resultat
                   </TableCell>
                 </TableRow>
               ) : (
@@ -160,7 +156,9 @@ const [openCreat, setOpenCreat] = useState(false);
                     <TableCell className="font-medium">{index+1}</TableCell>
                     <TableCell className="hidden sm:table-cell">{species?.name}</TableCell>
                     <TableCell className="hidden sm:table-cell">
-                      <input type={species?.type} placeholder='ex: 4XL' className='border text-[0.6rem] py-1 px-2 bg-gray-100 w-[60%] h-[30px] rounded-[6px]' disabled/></TableCell>
+                      {species?.type==='text'?<input type={species?.type} placeholder='ex: 4XL' className='border text-[0.6rem] py-1.5 px-2.5 bg-gray-100 w-[60%] h-[30px] rounded-[6px]' disabled/>:
+                      <input type={species?.type} className='border text-[0.6rem] bg-gray-100 w-[60%] h-[30px] rounded-[6px]' disabled/>}
+                    </TableCell>
                     <TableCell className="hidden sm:table-cell">{GetSubCategorieName(species?.idSubcategorie)}</TableCell>
                     <TableCell className="hidden sm:table-cell"><GetCategorie x={species?.idSubcategorie} /></TableCell>
                     <TableCell className="text-right">

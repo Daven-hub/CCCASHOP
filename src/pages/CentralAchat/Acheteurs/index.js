@@ -1,20 +1,19 @@
 import React from 'react'
-import Breadcrumb from '../../components/Breadcumb'
+import Annimated from '../../../components/Annimated';
+import Breadcrumb from '../../../components/Breadcumb';
 import { useTranslation } from 'react-i18next';
-import Annimated from '../../components/Annimated';
-import data from "../../datas/produits.json"
-import { CardProduit } from '.';
+import acheteurs from "../../../datas/Acheteur.json"
+import { CardAcheteur } from '../';
 import { FilterIcon, Search01Icon } from 'hugeicons-react';
 import $ from "jquery"
 
-function Products() {
+function Acheteurs() {
   const { t } = useTranslation()
   const bread = [
     { label: t("accueille"), path: "/a" },
     { label: " Centrale d'achat", path: "/a/centrale_d_achat" },
-    { label: "Liste des produits", path: "/a/centrale_d_achat/produits" },
+    { label: "Liste des Acheteurs", path: "/a/centrale_d_achat/acheteurs" },
   ];
-
   $(function () {
     let toggleValue = false;
   
@@ -36,11 +35,11 @@ function Products() {
   });
   return (
     <Annimated>
-      <div className="px-[5%] py-3 bg-gray-100">
+      <div className="px-[5%] py-[1.5rem] bg-gray-100">
         <Breadcrumb data={bread} />
       </div>
-      <div className='px-[5%] flex overflow-hidden flex-col gap-8 py-12 md:py-12'>
-        <div className='flex flex-col px-4 md:px-5 overflow-hidden border rounded-[7px] py-3.5'>
+      <div className='px-[5%] flex flex-col gap-8 py-12 md:py-12'>
+      <div className='flex flex-col px-4 md:px-5 overflow-hidden border rounded-[7px] py-3.5'>
           <div className='flex gap-5 items-center'>
             <div className='w-[94%] flex border rounded-[7px] overflow-hidden items-center'>
               <label htmlFor='search' className='w-[4.3%] px-5 flex justify-center items-center py-2.5'><Search01Icon size={18} strokeWidth={3} aria-label='name' className='flex-shrink-0 text-gray-600' /></label>
@@ -58,14 +57,15 @@ function Products() {
             </div>
           </div>
         </div>
-        <div className='grid gap-8 grid-cols-1 md:grid-cols-4'>
-          {data?.map((x, index) => (
-            <CardProduit key={index} x={x} />
-          ))}
-        </div>
+      
+      <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
+        {acheteurs?.map((item, ind) =>
+          <CardAcheteur key={ind} item={item} />
+        )}
+      </div>
       </div>
     </Annimated>
   )
 }
 
-export default Products
+export default Acheteurs

@@ -43,13 +43,13 @@ function Navbar({ toggleSidebar }) {
   // const { userConnected,handleLogout } = useAuth();
 
   return (
-    <nav className="w-full sticky top-0 bg-white shadow-sm z-[1] shadow-gray-200 flex items-center justify-between px-6 max-md:px-[4%] py-3 max-md:py-2.5 border-b">
+    <nav className="w-full sticky top-0 bg-white shadow-md z-[1] shadow-gray-100 border-gray-300 flex items-center justify-between px-6 max-md:px-[4%] py-3 max-md:py-2.5 border-b">
       <div className='flex items-center gap-3 w-[55%]'>
         <div className='cursor-pointer flex-shrink-0 btn-menu'>
           <Menu01Icon size={30} />
         </div>
         <input id='recherche'
-          className="bg-gray-100 border text-[.85rem] rounded-full max-md:hidden px-5 w-[65%] py-2.5 focus:outline-none"
+          className="bg-gray-50 border border-black/10 text-[.85rem] rounded-full max-md:hidden px-5 w-[60%] py-2.5 focus:outline-none"
           type="text"
           placeholder="Rechercher ..."
         />
@@ -60,7 +60,7 @@ function Navbar({ toggleSidebar }) {
           {/* <FaChevronDown /> */}
         </div>
         <div className='pl-4 border-l border-gray-200'>
-          <UserMenu isAdmin={true}/>
+          <UserMenu isAdmin={false}/>
         </div>
       </div>
     </nav>

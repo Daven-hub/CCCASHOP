@@ -1,5 +1,5 @@
 import React from 'react'
-import HeadersBottomOther from '../../../components/Navbar/CentraleAchat/HeadersBottomOther'
+import HeadersBottomOther from '../../components/Navbar/CentraleAchat/HeadersBottomOther'
 import { Outlet } from 'react-router-dom'
 
 function LayoutOtherPage() {

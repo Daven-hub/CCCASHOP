@@ -195,7 +195,7 @@ function AttributeValue () {
                 <TableBody>
                   {valuesAttribute?.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={7} className='text-center py-8'>
+                      <TableCell colSpan={3} className='text-center py-8'>
                         Pas de resultat
                       </TableCell>
                     </TableRow>
@@ -223,7 +223,7 @@ function AttributeValue () {
                         </TableCell>
                         <TableCell className='text-right'>
                           <div className='flex justify-end items-center gap-4'>
-                            <Button className='text-blue-500 p.1.5 hover:bg-blue-200 !bg-blue-100'>
+                            <Button className='text-blue-500 p-1.5 hover:bg-blue-200 !bg-blue-100'>
                               <FaEdit className='h-4 w-4' />
                               {/* Modifier */}
                             </Button>

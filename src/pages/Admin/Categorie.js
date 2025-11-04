@@ -91,7 +91,7 @@ function Categorie () {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      // setIsLoading(true)
       const start = performance.now()
       try {
         await Promise.all([

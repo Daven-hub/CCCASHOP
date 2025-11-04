@@ -1,10 +1,11 @@
 import React from 'react'
-import Breadcrumb from '../../components/Breadcumb'
+import Breadcrumb from '../../../components/Breadcumb'
 import { useTranslation } from 'react-i18next';
-import Annimated from '../../components/Annimated';
-import datas from "../../datas/fournisseur.json"
-import { CardFournisseur } from '.';
+import Annimated from '../../../components/Annimated';
+import datas from "../../../datas/fournisseur.json"
+import { CardFournisseur } from '../';
 import { Search01Icon } from 'hugeicons-react';
+import SEO from '../../../components/SEO';
 
 function Fournisseurs() {
   const { t } = useTranslation()
@@ -15,6 +16,7 @@ function Fournisseurs() {
   ];
   return (
     <Annimated>
+      <SEO title={'Fournisseur'} description={'permet au fournisseur de gererr les plateformes'} url={"https://cc-ca.ca/fournisseurs"} image={"/fournisseur.jpg"} />
       <div className="px-[5%] py-[1.5rem] bg-gray-100">
         <Breadcrumb data={bread} />
       </div>

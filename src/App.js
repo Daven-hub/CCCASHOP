@@ -1,30 +1,24 @@
+import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 
-import CccaRevueAdmin from './pages/Admin/CccaRevue'
 import Dashboard from './pages/Admin/Dashboard'
-// import Activities from './pages/Admin/Other/Activities';
-import News from './pages/Admin/Actualite'
-import PresentationAdmin from './pages/Admin/PresentationAdmin'
 import 'jquery/dist/jquery.min.js'
 
 import moment from 'moment'
 import { useTranslation } from 'react-i18next'
-// import Products from './pages/CentralAchat/Products';
 import Fournisseurs from './pages/CentralAchat/Fournisseurs'
 import Acheteurs from './pages/CentralAchat/Acheteurs'
-import Enregistrement from './pages/CentralAchat/Enregistrement'
-import DetailsProduct from './pages/CentralAchat/DetailsProduct'
-import DetailFournisseur from './pages/CentralAchat/DetailFournisseur'
-import DetailsAcheteur from './pages/CentralAchat/DetailsAcheteur'
-import TypeEnregistrement from './pages/CentralAchat/TypeEnregistrement'
-import Commerce from './pages/CentralAchat/commerce'
-import LayoutsCommerce from './pages/CentralAchat/commerce/LayoutsCommerce'
-import Favoris from './pages/CentralAchat/commerce/Favoris'
-import Cart from './pages/CentralAchat/commerce/Cart'
-import LayoutOtherPage from './pages/CentralAchat/commerce/LayoutOtherPage'
-import LoginShop from './pages/CentralAchat/commerce/LoginShop'
-import ProductShop from './pages/CentralAchat/commerce/ProductShop'
+import DetailsProduct from './pages/CentralAchat/Products/DetailsProduct'
+import DetailFournisseur from './pages/CentralAchat/Fournisseurs/DetailFournisseur'
+import DetailsAcheteur from './pages/CentralAchat/Acheteurs/DetailsAcheteur'
+import CentralAchat from './pages/CentralAchat'
+import LayoutsCommerce from './pages/CentralAchat/LayoutsCommerce'
+import Favoris from './pages/CentralAchat/Favoris'
+import Cart from './pages/CentralAchat/Cart'
+import LayoutOtherPage from './pages/CentralAchat/LayoutOtherPage'
+import LoginShop from './pages/CentralAchat/LoginShop'
+import Products from './pages/CentralAchat/Products'
 import Layout from './components/Layouts/Layout'
 import Product from './pages/Admin/Product'
 import Categorie from './pages/Admin/Categorie'
@@ -41,6 +35,7 @@ import AttributeValue from './pages/Admin/AttributeValue'
 import StockProduits from './pages/Admin/StockProduits'
 import FournisseurAdmin from './pages/Admin/FournisseurAdmin'
 import ProtectedRoute from './routes/ProtectedRoutes'
+import LinkProtected from './routes/LinkProtected'
 
 function App() {
   // useEffect(() => {
@@ -56,32 +51,19 @@ function App() {
   const { i18n } = useTranslation()
   moment.locale(i18n.language)
 
-  // const withSuspense = (Component) => {
-  //   return (props) => (
-  //     <Suspense fallback={<Loader />}>
-  //       <Component {...props} />
-  //     </Suspense>
-  //   );
-  // };
-
-
   return (
-    <>
+    <React.Fragment>
       <Toaster />
       <Routes>
         <Route path='/' Component={LayoutsCommerce}>
-          <Route index Component={Commerce} />
+          <Route index Component={CentralAchat} />
           <Route Component={LayoutOtherPage}>
             <Route path='*' Component={NotFoun} />
             <Route path='favoris/' Component={Favoris} />
             <Route path='mon-compte/:id' Component={LoginShop} />
-            <Route path='enregistrement/'>
-              <Route index Component={Enregistrement} />
-              <Route path=':id' Component={TypeEnregistrement} />
-            </Route>
             <Route path='cart/' Component={Cart} />
             <Route path='produits/'>
-              <Route index Component={ProductShop} />
+              <Route index Component={Products} />
               <Route path=':id' Component={DetailsProduct} />
             </Route>
             <Route path='fournisseurs/'>
@@ -97,33 +79,50 @@ function App() {
         <Route element={<ProtectedRoute allowedRoles={['admin','fournisseur','acheteur']} />}>
           <Route path='/admin' element={<Layout />}>
             <Route path='tableau-de-bord' element={<Dashboard />} />
-            <Route path='produits'>
-              <Route index element={<Product />} />
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+              <Route path='produits'>
+                <Route index element={<Product />} />
+              </Route>
             </Route>
-            <Route path='profile' element={<Profile />} />
-            <Route path='attributs/'>
-              <Route index element={<Attribute />} />
-              <Route path='value/:id' element={<AttributeValue />} />
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur','acheteur']} />}>
+              <Route path='profile' element={<Profile />} />
             </Route>
-            <Route path='stock-produits' element={<StockProduits />} />
-            <Route path='categories' element={<Categorie />} />
-            <Route path='parametres' element={<Settings />} />
-            <Route path='sous-categories' element={<SousCategorie />} />
-            <Route path='commandes' element={<Commandes />} />
-            <Route path='ventes' element={<Ventes />} />
-            <Route path='acheteurs' element={<Clients />} />
-            <Route path='fournisseurs' element={<FournisseurAdmin />} />
-            <Route path='ccca-revue' element={<CccaRevueAdmin />} />
-            <Route path='news' element={<News />} />
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+              <Route path='attributs/'>
+                <Route index element={<Attribute />} />
+                <Route path=':id/valeur' element={<AttributeValue />} />
+              </Route>
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+               <Route path='stock-produits' element={<StockProduits />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin']} />}>
+              <Route path='categories' element={<Categorie />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur',"acheteur"]} />}>
+              <Route path='parametres' element={<Settings />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+              <Route path='sous-categories' element={<SousCategorie />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin',"acheteur"]} />}>
+              <Route path='commandes' element={<Commandes />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+              <Route path='ventes' element={<Ventes />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+              <Route path='acheteurs' element={<Clients />} />
+            </Route>
+            <Route element={<LinkProtected allowedRoles={['admin']} />}>
+              <Route path='fournisseurs' element={<FournisseurAdmin />} />
+            </Route>
             <Route path='*' Component={NotFoun} />
             {/* <Route path="activities" element={<Activities />} /> */}
-            <Route path='à-propos'>
-              <Route path='presentation' element={<PresentationAdmin />} />
-            </Route>
           </Route>
         </Route>
       </Routes>
-    </>
+    </React.Fragment>
   )
 }
 

@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Breadcrumb from "../../../components/Breadcumb";
-import { useTranslation } from "react-i18next";
+import Breadcrumb from "../../components/Breadcumb";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { Circle, CircleCheck, Loader2, X } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { Controller, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
 import {
   login,
   registerApp,
   registerAppShop,
-} from "../../../store/slices/auth.slice";
-import { useToast } from "../../../hook/use-toast";
-import { useAuth } from "../../../context/authContext";
-import FormLogin from "../form/FormLogin";
-import FormRegister from "../form/FormRegister";
+} from "../../store/slices/auth.slice";
+import { useToast } from "../../hook/use-toast";
+import { useAuth } from "../../context/authContext";
+import FormLogin from "./form/FormLogin";
+import FormRegister from "./form/FormRegister";
 
 export const BreadShop = ({ data }) => {
   return (
@@ -24,7 +22,6 @@ export const BreadShop = ({ data }) => {
 };
 
 function LoginShop() {
-  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const [loading, setIsLoading] = useState(false);
@@ -55,7 +52,6 @@ function LoginShop() {
 
   const {
     register: connexion,
-    control: controle,
     handleSubmit: handleSubmite,
     watch: watchs,
     formState: { errors: errorLog },

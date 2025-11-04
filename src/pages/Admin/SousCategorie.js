@@ -52,9 +52,7 @@ function SousCategorie () {
     register: connexion,
     control,
     handleSubmit,
-    watch: watchSave,
     reset,
-    setValue,
     formState: { errors: errorLog }
   } = useForm({
     defaultValues: {
@@ -83,7 +81,7 @@ function SousCategorie () {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      // setIsLoading(true)
       const start = performance.now()
       try {
         await Promise.all([
@@ -157,7 +155,7 @@ function SousCategorie () {
         </div>
         <div className='rounded-[7px] overflow-hidden bg-white'>
           <Table>
-            <TableHeader className='bg-gray-100'>
+            <TableHeader className='bg-gray-200'>
               <TableRow>
                 <TableHead>#</TableHead>
                 {/* <TableHead>uuid</TableHead> */}
@@ -170,7 +168,7 @@ function SousCategorie () {
             <TableBody>
               {subcategories?.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className='text-center py-8'>
+                  <TableCell colSpan={5} className='text-center py-8'>
                     Pas de resultat
                   </TableCell>
                 </TableRow>

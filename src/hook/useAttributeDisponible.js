@@ -43,7 +43,7 @@ export default function useAttributsDisponibles(resSubcat,resAttr,resValues) {
     };
 
     fetchData();
-  }, []);
+  }, [resSubcat,resAttr,resValues]);
 
   return attributsDisponibles;
 }

@@ -8,7 +8,6 @@ import {
   DialogTitle,
   DialogFooter
 } from '../../../ui/dialog'
-import { PlusIcon, TrashIcon } from 'lucide-react'
 import StepWizard from 'react-step-wizard'
 import Step1 from '../../../stepper/Step1'
 import Step2 from '../../../stepper/Step2'
@@ -46,8 +45,6 @@ export default function CreateProduct ({
   })
 
   const [currentStep, setCurrentStep] = useState(1)
-  console.log("formData",formData)
-
   
    return (
     <Dialog open={open} onOpenChange={setOpen}>

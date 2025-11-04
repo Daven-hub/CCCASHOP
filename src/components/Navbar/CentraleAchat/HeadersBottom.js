@@ -1,22 +1,60 @@
 import { ArrowDown01Icon, Location01Icon, Menu01Icon } from 'hugeicons-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { paddingH } from './Headers'
 import { NavLink } from 'react-router-dom'
 // import { MdDashboard } from 'react-icons/md'
 import { BookOpen, Cpu, Heart, Home, Leaf, Monitor, Pill, Shirt, ShoppingBag, Sparkles, Video } from 'lucide-react'
-export const categories = [
-      { label: "Informatique", value: "informatique", icon: Cpu },
-      { label: "Agriculture", value: "agriculture", icon: Leaf },
-      { label: "Vidéos", value: "videos", icon: Video },
-      { label: "Formations", value: "formations", icon: BookOpen },
-      { label: "Electronique", value: "electronique", icon: Monitor },
-      { label: "Agro-alimentaire", value: "agro_alimentaire", icon: ShoppingBag },
-      { label: "Pharmacie", value: "pharmacie", icon: Pill },
-      { label: "Médecine", value: "medecine", icon: Heart },
-      { label: "Vêtements", value: "vetements", icon: Shirt },
-      { label: "Bâtiments", value: "batiments", icon: Home },
-      { label: "Cosmétique", value: "cosmetique", icon: Sparkles },
-];
+import { getAllCateg } from '../../../store/slices/categories.slice'
+import { useToast } from '../../../hook/use-toast'
+import { useDispatch, useSelector } from 'react-redux'
+import { IconRenderer } from '../../../lib/IconeRenderer'
+import Slugify from '../../../utils/Slugify'
+
+export const useTouteCategorie = () => {
+  const dispatch = useDispatch();
+  const { toast } = useToast();
+
+  const { categories } = useSelector((state) => state.categorie);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadTime, setLoadTime] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setIsLoading(true);
+      setError(null);
+
+      const start = performance.now();
+
+      try {
+        await dispatch(getAllCateg()).unwrap();
+        const end = performance.now();
+        const duration = end - start;
+        setLoadTime(duration.toFixed(0));
+      } catch (err) {
+        console.error("Erreur lors du chargement des catégories :", err);
+        setError(err?.message || "Erreur de chargement des catégories");
+        toast({
+          title: "Erreur",
+          description: err?.message || "Impossible de charger les catégories.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, [dispatch, toast]);
+
+  return {
+    categories: categories || [],
+    isLoading,
+    loadTime,
+    error,
+  };
+};
 
 export const liensHeader = [
       {
@@ -41,15 +79,19 @@ export const liensHeader = [
       }
 ]
 function HeadersBottom() {
+      const {categories,isLoading}=useTouteCategorie();
       return (
             <>
-                  <div className={`flex items-end gap-8 bg-primary px-[${paddingH}]`}>
+                  <div className={`flex items-end gap-8 bg-primary-dark px-[${paddingH}]`}>
                         <div className="w-[25%]">
                               <div className='bg-white relative rounded-t-[6px] text-black/75 flex items-center justify-between'>
                                     <div className='text-[.9rem] w-full rounded-t-[6px] justify-between py-3.5 px-5 border flex items-center font-semibold gap-3.5'><span className="flex items-center gap-4"><Menu01Icon strokeWidth={2} size={21} /> Toutes les Catégories</span> <ArrowDown01Icon size={22} /></div>
                                     <ul className='absolute top-[calc(100%)] rounded-b-[6px] w-full bg-white left-0 flex border-x border-b border-t-0 text-primary/70 text-[.85rem] flex-col'>
-                                          {categories?.map((item, ind) =>
-                                                <li key={ind}><NavLink className="py-3 flex items-center gap-5 hover:bg-gray-50 border-b font-medium px-5" to={item.value}><item.icon className="w-5 h-5 text-primary/70" />{item.label}</NavLink></li>
+                                          {isLoading && <span className='py-3 flex items-center gap-5 hover:bg-gray-50 border-b font-medium px-5'>Chargement des catégories...</span>}
+                                          {!isLoading && (
+                                                categories?.map((item, ind) =>
+                                                      <li key={ind}><NavLink className="py-3 flex items-center gap-5 hover:bg-gray-50 border-b font-medium px-5" to={Slugify(item.nom)}><IconRenderer iconName={item?.icon} className='w-5 h-5 text-primary/70' /> {item?.nom}</NavLink></li>
+                                                )
                                           )}
                                     </ul>
                               </div>

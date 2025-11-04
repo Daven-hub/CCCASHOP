@@ -1,9 +1,9 @@
 import React from 'react'
-import Annimated from '../../components/Annimated'
-import Breadcrumb from '../../components/Breadcumb'
+import Annimated from '../../../components/Annimated'
+import Breadcrumb from '../../../components/Breadcumb'
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import data from "../../datas/produits.json"
+import data from "../../../datas/produits.json"
 import { Building06Icon, Location01Icon, Mail01Icon, StarIcon, StudentIcon, TelephoneIcon, TruckIcon } from 'hugeicons-react';
 
 function DetailsAcheteur() {

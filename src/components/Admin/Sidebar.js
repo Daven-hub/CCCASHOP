@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-  FiHome,
-  FiBook,
   FiFileText,
-  FiCalendar,
-  FiFlag,
   FiSettings,
   FiUsers,
-  FiBriefcase,
-  FiLogOut,
   FiPackage,
-  FiTag,
   FiClipboard,
   FiDollarSign,
   FiGrid,
-  FiBox,
   FiList,
   FiLayers,
   FiFolder,
@@ -114,13 +106,13 @@ function Sidebar({setIsSidebarOpen}) {
 
   return (
     <div
-      className={`fixed h-[100vh] left-0 side-ccca w-[18.5%] max-md:w-[60%] max-sm:w-[80%] bg-primary shadow-sm transform transition-transform duration-500`}
+      className={`fixed h-[100vh] left-0 side-ccca w-[18%] max-md:w-[60%] max-sm:w-[80%] bg-primary shadow-sm transform transition-transform duration-500`}
     >
       {/* Sidebar Header */}
-      <div className="flex items-center justify-between py-[.95rem] max-md:py-[.85rem] border-b border-white/10 shadow-sm px-[7%]">
+      <div className="flex items-center justify-between py-[.95rem] max-md:py-[.85rem] border-b border-white/20 shadow-sm px-[7%]">
         <div className="flex items-center justify-center max-md:justify-start gap-1.5 w-full">
           <img src={logo} alt="Logo" className="w-[2.2rem] max-md:w-7 max-md:h-7 h-[2rem]" />
-          <div className='flex flex-col font-semibold text-[.85rem] max-md:text-[.8rem] text-white leading-[1.1rem]'>
+          <div className='flex flex-col font-semibold text-[.9rem] max-md:text-[.8rem] text-white leading-[1.1rem]'>
             <span>Chambre de Commerce</span>
             <span>Canada Afrique</span>
           </div>
@@ -128,12 +120,12 @@ function Sidebar({setIsSidebarOpen}) {
         <div className='menu-close hidden cursor-pointer max-md:block'><MdClose size={25} color='white' /></div>
       </div>
       {/* Sidebar Menu */}
-      <div className="px-3 py-3 overflow-y-auto h-[calc(100vh-69px)]">
+      <div className="px-3 py-3 overflow-y-auto sidebb h-[calc(100vh-69px)]">
         <div className="sidebare-admin flex flex-col gap-4">
           {sideLink?.map((x, indexi) => (
             x.alowed?.includes(userConnected?.role) &&
             <div key={indexi}>
-              <p className={`text-[.9rem] font-medium text-white text-opacity-30 mb-1`}>{x.group}</p>
+              <p className={`text-[.85rem] font-medium text-white text-opacity-30 mb-1`}>{x.group}</p>
               <div className='flex flex-col gap-0.5'>
                 {x?.corps.map((item, index) => (
                   item.children.length <= 0 ?

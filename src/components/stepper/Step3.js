@@ -50,7 +50,6 @@ export default function Step3 ({
     const attributess = attributsSousCategorie[y.name]?.find(
       x => x.value === y.value
     )
-    console.log('attributess', attributess)
     if (attributess?.type === 'color') {
       return (
         <div

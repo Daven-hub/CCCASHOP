@@ -1,7 +1,6 @@
 // src/components/Routes/ProtectedRoute.jsx
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../context/authContext";
-import Loader from "../components/ui/Loader";
 import LoaderUltra from "../components/ui/LoaderUltra";
 
 export default function ProtectedRoute({ allowedRoles }) {

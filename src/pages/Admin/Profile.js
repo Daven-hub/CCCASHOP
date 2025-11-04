@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   UserRound,
   Mail,
-  Phone,
-  Building,
-  MapPin,
   Calendar,
   PhoneIcon,
   LocateIcon,
@@ -74,9 +71,9 @@ const Profile = () => {
     formState: { errors: errorsPass },
   } = useForm({
     defaultValues: {
-      password: userConnected?.phone || "",
-      newpass: userConnected?.phone || "",
-      confirmpass: userConnected?.phone || "",
+      password: userConnected?.adresse || "",
+      newpass: userConnected?.email || "",
+      confirmpass: userConnected?.nom || "",
     },
   });
   const dispatch = useDispatch();

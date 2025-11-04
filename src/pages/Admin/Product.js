@@ -44,7 +44,7 @@ import StarRating from '../../components/ui/StarRating.js'
 function Product () {
   const [openCreate, setOpenCreate] = useState(false)
   const [openDelete, setOpenDelete] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [loading, setLoading] = useState(false)
   const [loadTime, setLoadTime] = useState(0)
   const [formData, setFormData] = useState({})
@@ -66,7 +66,7 @@ function Product () {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      // setIsLoading(true)
       const start = performance.now()
       try {
         await Promise.all([
@@ -167,7 +167,7 @@ function Product () {
     const max= Math.max(...variants)
     let result='$'+min;
     if(min!==max){
-      result +=' - '+'$'+max
+      result +=' - $'+max
     }
     return result
   }
@@ -221,7 +221,7 @@ function Product () {
           <Table>
             <TableHeader className='bg-gray-300'>
               <TableRow>
-                <TableHead>uuid</TableHead>
+                <TableHead>#</TableHead>
                 <TableHead>Noms</TableHead>
                 <TableHead>Catégorie</TableHead>
                 <TableHead>Sous-catégorie</TableHead>
@@ -235,7 +235,7 @@ function Product () {
             <TableBody>
               {moiVendeur.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className='text-center py-8'>
+                  <TableCell colSpan={9} className='text-center py-8'>
                     Pas de resultat
                   </TableCell>
                 </TableRow>
@@ -245,7 +245,7 @@ function Product () {
                     className='hover:bg-primary/5 capitalize cursor-pointer'
                     key={index}
                   >
-                    <TableCell className='font-medium'>{species?.idproduits}</TableCell>
+                    <TableCell className='font-medium'>{index+1}</TableCell>
                     <TableCell>
                       <div className='flex items-center gap-3.5'>
                         <img

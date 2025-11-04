@@ -8,8 +8,11 @@ import attributeReducer from './slices/attribute.slice.js';
 import attributeValueReducer from './slices/attributeValue.slice.js';
 import produitsReducer from './slices/produits.slice.js';
 import produitsVariantReducer from './slices/produitVariant.slice.js';
-// import RevueReducer from './slices/revue.slice';
-import ActualiteReducer from './slices/actualites.slice';
+import variantValueReducer from './slices/variantValue.slice.js';
+import favorisReducer from './slices/favoris.slice.js';
+import cartReducer from './slices/cart.slice.js';
+import otherImageReducer from './slices/otherImage.slice.js';
+import infoSupReducer from './slices/infoSup.slice.js';
 
 export const store = configureStore ({
   reducer: {
@@ -22,9 +25,12 @@ export const store = configureStore ({
     attributeValue: attributeValueReducer,
     produit: produitsReducer,
     produitVariant: produitsVariantReducer,
-    // revue: RevueReducer,
-    actualites: ActualiteReducer,
-    // evenements: EvenementsReducer,
+    variantValue: variantValueReducer,
+    favori: favorisReducer,
+    cart: cartReducer,
+    otherImage: otherImageReducer,
+    //pas encore utilisé
+    infoSup: infoSupReducer
   },
   devTools: true,
 });

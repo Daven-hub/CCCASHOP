@@ -1,7 +1,7 @@
 import React from 'react'
-import { Circle, CircleCheck, Loader2, X } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
-import { Controller, useForm } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 
 function FormRegister ({
   onSubmit,
@@ -15,7 +15,6 @@ function FormRegister ({
 }) {
   let datas = watchE()
   const password = watchE('password')
-//   console.log('watchE', datas)
 
   return (
     <form onSubmit={onSubmit} className='flex text-[.9rem] flex-col gap-4'>

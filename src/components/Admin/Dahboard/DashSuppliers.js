@@ -14,18 +14,18 @@ import LoaderUltra from "../../ui/LoaderUltra";
 import {formatNumber} from "../../../lib/formatNumber";
 
 export default function DashSuppliers() {
-    const { categories } = useSelector(state => state.categorie)
+    // const { categories } = useSelector(state => state.categorie)
     const { produits } = useSelector(state => state.produit)
     const { users } = useSelector(state => state.users)
     const {userConnected}=useAuth()
     const { toast } = useToast();
     const [loadTime,setLoadTime]=useState(0)
-    const [isLoading,setIsLoading]=useState(false)
+    const [isLoading,setIsLoading]=useState(true)
 
   const dispatch=useDispatch();
   useEffect(() => {
       const fetchData = async () => {
-        setIsLoading(true)
+        // setIsLoading(true)
         const start = performance.now()
         try {
           await Promise.all([
@@ -85,7 +85,7 @@ export default function DashSuppliers() {
     },
   ]
 
-  const [state, setState] = React.useState({
+  const state={
     series: [
       {
         name: "Ventes",
@@ -204,7 +204,7 @@ export default function DashSuppliers() {
         },
       }
     },
-  });
+  };
 
    useEffect(() => {
         if(userConnected?.status===0){
@@ -214,7 +214,7 @@ export default function DashSuppliers() {
             variant: "warning",
           });
         }
-  }, [userConnected?.status])
+  }, [userConnected?.status,toast])
 
   if (isLoading) {
       return <LoaderUltra loading={isLoading} duration={loadTime} />
@@ -229,7 +229,7 @@ export default function DashSuppliers() {
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2">
             {data?.map((x, index) =>
-              <div key={index} className={`px-5 relative border overflow-hidden pt-4 pb-12 bg-white shadow-sm flex flex-col gap-3.5 rounded-[7px]`}>
+              <div key={index} className={`px-5 z-0 relative border overflow-hidden pt-4 pb-12 bg-white shadow-sm flex flex-col gap-3.5 rounded-[7px]`}>
                 <div className={`absolute bottom-0 left-0 w-full h-[.2rem] bg-${x.color} bg-opacity-10`} />
                 <div className={`absolute bottom-0 left-0 w-[${x.symb}] h-[.2rem] bg-${x.color} bg-opacity-75`} />
                 <div className="flex flex-col gap-0.5 w-full relative">

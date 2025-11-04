@@ -68,7 +68,7 @@ export default function Step2 ({
   const hasVariation = watching()?.hasVariation
 
   const onSubmite = data => {
-    console.log("data",data)
+    // console.log("data",data)
     setFormData({ ...formData, ...data })
     nextStep()
   }

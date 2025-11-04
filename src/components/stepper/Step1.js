@@ -122,16 +122,15 @@ export default function Step1 ({
             />
           </div>
           <div className='flex flex-col'>
-            <label>Tags</label>
+            <label className='flex items-center gap-1.5'>Tags (<mark className='bg-transparent text-[.75rem] leading-[1] text-gray-400 mt-0.5'>
+              Sépare les tags par des virgules
+            </mark>)</label>
             <input
               type='text'
               {...register('tag')}
               placeholder='Ex: vêtements, coton, bio'
               className='border-2 rounded-[5px] p-2'
             />
-            <p className='text-[.6rem] leading-[1] text-gray-400 mt-0.5'>
-              Sépare les tags par des virgules
-            </p>
           </div>
         </div>
         <div className='md:col-span-1 w-full flex flex-col gap-1 h-full'>
@@ -150,7 +149,7 @@ export default function Step1 ({
             />
             <label
               htmlFor='upload'
-              className='w-full relative h-full min-h-[270px] border-2 border-dashed rounded-[6px] flex items-center justify-center cursor-pointer hover:bg-gray-50'
+              className='w-full relative h-full min-h-[255px] border-2 border-dashed rounded-[6px] flex items-center justify-center cursor-pointer hover:bg-gray-50'
             >
               {image ? (
                 <img
