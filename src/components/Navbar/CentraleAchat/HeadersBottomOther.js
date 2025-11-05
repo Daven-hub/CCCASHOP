@@ -23,7 +23,7 @@ import { IconRenderer } from '../../../lib/IconeRenderer'
 function HeadersBottomOther () {
   const { categories, isLoading } = useTouteCategorie()
   return (
-    <div className={`flex gap-8 bg-primary-dark px-[${paddingH}]`}>
+    <div className={`flex gap-8 bg-primary px-[${paddingH}]`}>
       <div className='w-[25%]'>
         <div className='bg-white group hover:cursor-pointer relative rounded-t-[6px] text-black/75 flex items-center justify-between font-semibold'>
           <div className='text-[.9rem] w-full relative z-[2] rounded-t-[6px] justify-between py-3.5 px-5 border border-gray-90 flex font-bold items-center gap-3.5'>

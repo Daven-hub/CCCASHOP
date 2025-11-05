@@ -33,7 +33,7 @@ export const CardProduit = ({ x }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { userConnected } = useAuth();
+  const { userConnected,monaie } = useAuth();
   const idConnected =
     userConnected?.role === "fournisseur"
       ? userConnected?.id
@@ -72,9 +72,9 @@ export const CardProduit = ({ x }) => {
       .map((y) => y?.pu);
     const min = Math.min(...variants);
     const max = Math.max(...variants);
-    let result = "$" + min;
+    let result = monaie + min;
     if (min !== max) {
-      result += " - $" + max;
+      result += " -"+monaie+ max;
     }
     return result;
   };
@@ -189,7 +189,7 @@ export const CardProduit = ({ x }) => {
   }
 
   return (
-    <div className="group border p-2 border-gray-200 overflow-hidden bg-white rounded-[5px]">
+    <div className="group relative border p-2 border-gray-200 overflow-hidden bg-white rounded-[5px]">
       <div className="relative h-[200px] md:h-[265px] overflow-hidden p-6 bg-primary/5">
         <img
           className="absolute group-hover:scale-[.75] duration-500 transition-all scale-[.65] rounded-t-[5px] overflow-hidden left-0 top-0 w-full h-full object-contain"
@@ -214,7 +214,7 @@ export const CardProduit = ({ x }) => {
           </div>
         </div>
       </div>
-      <div className="pb-1.5 pt-2.5 relative px-2 flex flex-col gap-1">
+      <div className="pb-12 pt-2.5 relative px-2 flex flex-col gap-1">
         <NavLink
           to={"/produits/" + Slugify(x?.nom)}
           className="flex items-center"
@@ -227,7 +227,7 @@ export const CardProduit = ({ x }) => {
           <StarRating rating={x.rating} size={11} />
           <span className="text-secondary text-[.9rem] font-bold">
             {x?.hasVariation === 0
-              ? "$" + x?.pu
+              ? monaie + x?.pu
               : getPrixVariantSock(x?.idproduits)}
           </span>
         </div>
@@ -242,20 +242,20 @@ export const CardProduit = ({ x }) => {
           />
         </div>
         {/* <span className='text-[.85rem] text-gray-600 text-ellipsis font-medium flex items-center gap-1'><Building06Icon strokeWidth={2} size={13} /> Franchise IT</span> */}
-        {x?.hasVariation === 0 ? (
-          <button
-            onClick={() => handleAddCart(x, null, 1)}
-            title="Ajouter au panier"
-            className="relative w-full mt-2.5 rounded-[6px] border text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 py-2 font-semibold px-1 overflow-hidden group"
+      </div>
+      <button
+            onClick={() => x?.hasVariation === 0?handleAddCart(x, null, 1):handleNavigation(x?.nom)}
+            title={ x?.hasVariation === 0?"Ajouter au panier":"Choisir une option"}
+            className="absolute bottom-2.5 w-[92%] left-1/2 -translate-x-1/2 rounded-[6px] border border-primary text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 py-2 font-semibold px-1 overflow-hidden group"
           >
             <span
-              className="absolute left-0 top-0 h-full w-0 bg-primary/10 
+              className="absolute left-0 top-0 h-full w-0 bg-primary 
                                                 transition-all duration-500 ease-out group-hover:w-full"
             ></span>
 
             <span
               className="relative z-10 flex items-center gap-2.5 
-                                                transition-colors duration-500 group-hover:text-primary/90"
+                                                transition-colors duration-500 group-hover:text-white/90"
             >
               {loading ? (
                 <Loader2 className="animate-spin h-5 w-5 text-white" />
@@ -264,39 +264,13 @@ export const CardProduit = ({ x }) => {
                   <ShoppingCart01Icon
                     strokeWidth={2}
                     size={19}
-                    className="transition-colors duration-500 group-hover:text-primary/90"
+                    className="transition-colors duration-500 group-hover:text-white/90"
                   />
                   Ajouter au panier
                 </>
               )}
             </span>
-          </button>
-        ) : (
-          <button
-            title="Choisir une option"
-            // to={"/produits/"+Slugify(x?.nom)}
-            onClick={()=>handleNavigation(x?.nom)}
-            className="relative w-full mt-2.5 rounded-[6px] border text-primary/80 text-[.85rem] flex items-center justify-center gap-2.5 py-2 font-semibold px-1 overflow-hidden group"
-          >
-            <span
-              className="absolute left-0 top-0 h-full w-0 bg-primary/10 
-                                                transition-all duration-500 ease-out group-hover:w-full"
-            ></span>
-
-            <span
-              className="relative z-10 flex items-center gap-2.5 
-                                                transition-colors duration-500 group-hover:text-primary/90"
-            >
-              <ShoppingCart01Icon
-                strokeWidth={2}
-                size={19}
-                className="transition-colors duration-500 group-hover:text-primary/90"
-              />
-              Ajouter au panier
-            </span>
-          </button>
-        )}
-      </div>
+          </button> 
     </div>
   );
 };

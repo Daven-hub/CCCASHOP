@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import HeadersBottom from '../../components/Navbar/CentraleAchat/HeadersBottom'
-import data from '../../datas/produits.json'
 import datas from '../../datas/fournisseur.json'
 import { NavLink } from 'react-router-dom'
 import { paddingH } from '../../components/Navbar/CentraleAchat/Headers'
@@ -8,29 +7,20 @@ import { FaCheck } from 'react-icons/fa'
 import { MoveRight } from 'lucide-react'
 import PresentationLabel from '../../components/PresentationLabel'
 import {
-  StarIcon,
   Building01Icon,
   Location01Icon,
   Mail01Icon,
-  ShoppingCart01Icon,
-  StarHalfIcon,
-  FavouriteIcon,
-  EyeIcon
 } from 'hugeicons-react'
-import datac from '../../datas/fournisseur.json'
 import SEO from '../../components/SEO'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllAttrs } from '../../store/slices/attribute.slice.js'
-import { getAllAttrValues } from '../../store/slices/attributeValue.slice'
+// import { getAllAttrs } from '../../store/slices/attribute.slice.js'
+// import { getAllAttrValues } from '../../store/slices/attributeValue.slice'
 import { getAllProduits } from '../../store/slices/produits.slice'
 import { getAllVendor } from '../../store/slices/vendeur.slice'
 import { getAllProduitVariants } from '../../store/slices/produitVariant.slice'
-import { useAuth } from '../../context/authContext.js'
 import LoaderUltra from '../../components/ui/LoaderUltra.js'
-import { BaseUrl } from '../../config.js'
-import { getAllVariantValues } from '../../store/slices/variantValue.slice.js'
-import { AlertTriangle, Layers, Package, ShoppingBag } from 'lucide-react'
+// import { getAllVariantValues } from '../../store/slices/variantValue.slice.js'
 import { useToast } from '../../hook/use-toast.js'
 import { CardProduit } from '../../components/card/CardProduit.js'
 
@@ -129,7 +119,6 @@ function CentralAchat () {
 
   useEffect(() => {
     const fetchData = async () => {
-      // setIsLoading(true)
       const start = performance.now()
       try {
         await Promise.all([

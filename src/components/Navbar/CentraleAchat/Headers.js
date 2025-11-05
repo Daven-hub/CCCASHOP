@@ -79,7 +79,7 @@ function Headers() {
          const totalFavoris=allFavoris?.length
       return (
             <>
-                  <div className={`bg-primary-dark flex items-center text-white text-[.92rem] px-[${paddingH}] justify-between py-2.5`}>
+                  <div className={`bg-primary flex items-center text-white text-[.92rem] px-[${paddingH}] justify-between py-2.5`}>
                         <div className='flex items-center gap-4'>
                               <ul className='flex items-center gap-3.5 pr-5 border-r border-gray-300'>
                                     <li><FaFacebookF /></li>
@@ -102,7 +102,7 @@ function Headers() {
                         </div>
                   </div>
                   {/* navigation */}
-                  <div className={`flex bg-primary-dark border-t-2 border-white/5 items-center gap-8 py-[1.9rem] px-[${paddingH}]`}>
+                  <div className={`flex bg-primary border-t-2 border-white/5 items-center gap-8 py-[1.9rem] px-[${paddingH}]`}>
                         <NavLink to={"/"} className="flex items-center gap-2 w-[22%]">
                               <img loading="lazy" src={logo} width={40} height={40} alt="logo_ccca" />
                               <div className="flex flex-col text-white font-medium text-[1.1rem] leading-[1.35rem]">

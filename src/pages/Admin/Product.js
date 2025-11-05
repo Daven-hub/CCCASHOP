@@ -57,7 +57,7 @@ function Product () {
   const { categories } = useSelector(state => state.categorie)
   const { produits } = useSelector(state => state.produit)
   const { produitVariants } = useSelector(state => state.produitVariant)
-  const {userConnected}=useAuth()
+  const {userConnected,monaie}=useAuth()
 
   const handleDelete = productName => {
     setSelectedItemName(productName)
@@ -165,9 +165,9 @@ function Product () {
     const variants = produitVariants?.filter((x)=>x.idProduit===id).map((y)=> y?.pu);
     const min= Math.min(...variants)
     const max= Math.max(...variants)
-    let result='$'+min;
+    let result=monaie+min;
     if(min!==max){
-      result +=' - $'+max
+      result +=' -'+monaie+max
     }
     return result
   }
@@ -253,9 +253,9 @@ function Product () {
                           src={BaseUrl+''+species?.profile}
                           alt={species?.idproduits}
                         />
-                        <div className='flex flex-col'>
+                        <div className='flex flex-col gap-1.5'>
                           <h2 className='text-[.92rem]'>{species?.nom}</h2>
-                          <StarRating rating={0} size='16px'/>
+                          <StarRating rating={species?.rating} size={12}/>
                         </div>
                       </div>
                     </TableCell>
@@ -269,7 +269,7 @@ function Product () {
                       {species?.hasVariation===0?species?.qte:getTotalVariantSock(species?.idproduits)}
                     </TableCell>
                     <TableCell className='hidden md:table-cell'>
-                      {species?.hasVariation===0?'$ '+species?.pu:getPrixVariantSock(species?.idproduits)}
+                      {species?.hasVariation===0?monaie+' '+species?.pu:getPrixVariantSock(species?.idproduits)}
                     </TableCell>
                     <TableCell className='hidden md:table-cell'>
                       {species?.hasVariation===0?'Non':'Oui'}

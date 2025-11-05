@@ -39,10 +39,6 @@ function LoginShop() {
       lien: "fournisseur",
     },
   ];
-  // const bread = [
-  //       { label: t("accueille"), path: "/a" },
-  //       { label: "Login Shop", path: "/login" }
-  // ];
 
   useEffect(() => {
     if (userConnected) {
@@ -135,17 +131,6 @@ function LoginShop() {
     }
   };
 
-  const liensNav = [
-    {
-      label: "Connexion",
-      lien: "connexion",
-    },
-    {
-      label: "Enregistrement",
-      lien: "enregistrement",
-    },
-  ];
-
   const nom = watchE("nom", "");
   const prenom = watchE("prenom", "");
   const [userEditedUsername, setUserEditedUsername] = useState(false);
@@ -179,20 +164,9 @@ function LoginShop() {
   return (
     <div className="flex flex-col">
       {/* <BreadShop data={bread} /> */}
-      <div className="px-[32%] bg-gray-200 py-12 md:py-14">
-        <div className="bg-white shadow flex flex-col gap-10 px-12 py-12 rounded-[6px] border">
-          <ul className="grid nav-login grid-cols-2 gap-4 text-[1.4rem] font-semibold">
-            {liensNav?.map((x, ind) => (
-              <li key={ind}>
-                <NavLink
-                  className="w-full border-2 rounded-[6px] py-2 capitalize flex items-center justify-center"
-                  to={"/mon-compte/" + x.lien}
-                >
-                  {x.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+      <div className={`${id==='connexion'?'px-[33.5%]':'px-[28%]'} py-12 md:py-14`}>
+        <div className="bg-white shadow shadow-zinc-200 flex flex-col gap-7 px-10 py-12 rounded-[6px] border">
+          <h1 className="text-3xl text-primary font-semibold">{id==='connexion'?'Connexion':'Enregistrement'}</h1>
           {id === "connexion" ? (
             <FormLogin
               onSubmit={handleSubmite(handleLogin)}

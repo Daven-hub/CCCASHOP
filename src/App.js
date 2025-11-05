@@ -36,6 +36,7 @@ import StockProduits from './pages/Admin/StockProduits'
 import FournisseurAdmin from './pages/Admin/FournisseurAdmin'
 import ProtectedRoute from './routes/ProtectedRoutes'
 import LinkProtected from './routes/LinkProtected'
+import WizardContainer from './components/wizardForm/WizardContainer'
 
 function App() {
   // useEffect(() => {
@@ -45,9 +46,6 @@ function App() {
   //     once: true,
   //   });
   // })
-  // const { usershop,token } = useSelector(
-  //   (state) => state.auth
-  // );
   const { i18n } = useTranslation()
   moment.locale(i18n.language)
 
@@ -76,6 +74,7 @@ function App() {
             </Route>
           </Route>
         </Route>
+        <Route path='/wizard' Component={WizardContainer} />
         <Route element={<ProtectedRoute allowedRoles={['admin','fournisseur','acheteur']} />}>
           <Route path='/admin' element={<Layout />}>
             <Route path='tableau-de-bord' element={<Dashboard />} />
@@ -102,7 +101,7 @@ function App() {
             <Route element={<LinkProtected allowedRoles={['admin','fournisseur',"acheteur"]} />}>
               <Route path='parametres' element={<Settings />} />
             </Route>
-            <Route element={<LinkProtected allowedRoles={['admin','fournisseur']} />}>
+            <Route element={<LinkProtected allowedRoles={['fournisseur']} />}>
               <Route path='sous-categories' element={<SousCategorie />} />
             </Route>
             <Route element={<LinkProtected allowedRoles={['admin',"acheteur"]} />}>

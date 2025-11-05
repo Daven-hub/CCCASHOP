@@ -3,9 +3,9 @@ import Breadcrumb from '../../components/Breadcumb'
 import Annimated from '../../components/Annimated'
 import { paddingH } from '../../components/Navbar/CentraleAchat/Headers'
 import { useTranslation } from 'react-i18next'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { StarIcon, StarHalfIcon, ShoppingCart01Icon } from 'hugeicons-react'
-import { Eye, Heart, Loader2, MoveRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import {  ShoppingCart01Icon } from 'hugeicons-react'
+import { Loader2} from 'lucide-react'
 import {
   Table,
   TableBody,
@@ -26,8 +26,7 @@ import { useAuth } from '../../context/authContext'
 import LoaderUltra from '../../components/ui/LoaderUltra'
 import { BaseUrl } from '../../config'
 import StarRating from '../../components/ui/StarRating'
-import { FaTrash, FaTrashAlt } from 'react-icons/fa'
-import { Button } from '../../components/ui/Button'
+import { FaTrashAlt } from 'react-icons/fa'
 import { useToast } from '../../hook/use-toast'
 
 function Favoris () {
@@ -37,7 +36,7 @@ function Favoris () {
     { label: 'Mes Favoris', path: '/favoris' }
   ]
   const dispatch = useDispatch()
-  const { userConnected } = useAuth()
+  const { userConnected,monaie } = useAuth()
   const idConnected=userConnected?.role==='fournisseur'?userConnected?.id:userConnected?.idUsershop;
   const [isLoading, setIsLoading] = useState(true)
   const [loading, setLoading] = useState(false)
@@ -216,7 +215,7 @@ function Favoris () {
                     </TableCell>
                     <TableCell className='table-cell'>
                       {species?.produit?.hasVariation === 0
-                        ? '$' + species?.produit?.pu
+                        ? monaie + species?.produit?.pu
                         : getPrixVariantSock(species?.idProduits)}
                     </TableCell>
                     <TableCell className='table-cell'>

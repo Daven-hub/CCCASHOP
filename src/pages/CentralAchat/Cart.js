@@ -33,7 +33,7 @@ function Cart() {
   const { produitVariants } = useSelector((state) => state.produitVariant);
   const [loadTime, setLoadTime] = useState(0)
   const { toast } = useToast();
-  const { userConnected } = useAuth();
+  const { userConnected,monaie } = useAuth();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -185,7 +185,7 @@ function Cart() {
                     </TableCell>
 
                     <TableCell className="font-medium text-gray-700">
-                      ${!item?.variation?item.produit?.pu:item?.variation?.pu}
+                      {monaie}{!item?.variation?item.produit?.pu:item?.variation?.pu}
                     </TableCell>
 
                     <TableCell>
@@ -226,7 +226,7 @@ function Cart() {
                     </TableCell>
 
                     <TableCell className="font-semibold text-gray-900">
-                      ${!item?.variation?(item.produit?.pu * item.qte).toFixed(2):(item.variation?.pu * item.qte).toFixed(2)}
+                      {monaie}{!item?.variation?(item.produit?.pu * item.qte).toFixed(2):(item.variation?.pu * item.qte).toFixed(2)}
                     </TableCell>
 
                     <TableCell className="text-right">

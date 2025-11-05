@@ -67,8 +67,10 @@ export const AuthProvider = ({ children }) => {
     window.location.replace("/");
   };
 
+  const monaie='$'
+
   return (
-    <AuthContext.Provider value={{ userConnected, handleLogout,isLoading, duration,refreshUser }}>
+    <AuthContext.Provider value={{ userConnected, handleLogout,isLoading, duration,refreshUser,monaie }}>
       {children}
     </AuthContext.Provider>
   );

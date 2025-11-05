@@ -45,7 +45,6 @@ import {
   getAllFavoris,
   removeFavoris,
 } from "../../../store/slices/favoris.slice.js";
-import useAttributsDisponibles from "../../../hook/useAttributeDisponible.js";
 import { getAllVariantValues } from "../../../store/slices/variantValue.slice.js";
 import { createCarts, getAllCarts, updateCarts } from "../../../store/slices/cart.slice.js";
 // import { Button } from "@/components/ui/button";
@@ -60,22 +59,23 @@ const GridePriceWithVariation = ({
   selected,
   handleSelect,
 }) => {
+  const { monaie } = useAuth();
   return (
     <>
       <div className="flex flex-col gap-3">
         {variation?.min !== variation?.max ? (
           <div className="flex text-xl items-center gap-2 text-accent">
             <span className="font-bold">
-              {variation?.min?.toLocaleString()} FCFA
+              {monaie+variation?.min?.toLocaleString()}
             </span>
             -
             <span className="font-bold">
-              {variation?.max?.toLocaleString()} FCFA
+              {monaie+variation?.max?.toLocaleString()}
             </span>
           </div>
         ) : (
           <span className="text-2xl font-bold">
-            {variation?.min?.toLocaleString()} FCFA
+            {monaie+variation?.min?.toLocaleString()}
           </span>
         )}
         <p className="text-gray-700 leading-relaxed">
@@ -106,30 +106,12 @@ const GridePriceWithVariation = ({
               </div>
             </div>
           )})}
-
-          {/* {selectedVariant ? (
-            <div className="mt-4 p-3 border rounded-xl bg-gray-50">
-              <p>
-                <strong>SKU :</strong> {selectedVariant.sku}
-              </p>
-              <p>
-                <strong>Quantité :</strong> {selectedVariant.qte}
-              </p>
-              <p>
-                <strong>Prix :</strong> {selectedVariant.pu} €
-              </p>
-            </div>
-          ) : (
-            Object.keys(selected).length === productAttributes.length && (
-              <p className="mt-4 text-red-500">❌ Aucune combinaison trouvée</p>
-            )
-          )} */}
         </div>
       </div>
       
       <div className='flex flex-col gap-2'>
         <span className='text-2xl font-bold text-accent'>
-          {selectedVariant?.pu? selectedVariant?.pu?.toLocaleString():'00'} FCFA
+         {monaie}{selectedVariant?.pu? selectedVariant?.pu?.toLocaleString():'00'}
         </span>
         <span className='text-sm font-semibld text-gray-500'>
           En stock : {`${selectedVariant?.qte?selectedVariant?.qte+' unités':'indisponible'}`}
@@ -140,10 +122,11 @@ const GridePriceWithVariation = ({
 };
 
 const GridePriceWithOutVariation = ({ detailProduit }) => {
+  const { monaie } = useAuth();
   return (
     <>
       <span className="text-2xl font-bold text-accent">
-        {detailProduit?.pu?.toLocaleString()} FCFA
+        {monaie+detailProduit?.pu?.toLocaleString()}
       </span>
 
       <p className="text-gray-700 leading-relaxed">
@@ -169,7 +152,7 @@ const DetailsProduct = ({ product }) => {
   const [loadingCart, setLoadingCart] = useState(false);
   const [loadTime, setLoadTime] = useState(0);
   const dispatch = useDispatch();
-  const { userConnected } = useAuth();
+  const { userConnected,monaie } = useAuth();
   const idConnected =
     userConnected?.role === "fournisseur"
       ? userConnected?.id

@@ -16,7 +16,8 @@ module.exports = {
       // },
       colors: {
         primary: {
-          DEFAULT: '#1d3557',
+          // DEFAULT: '#1d3557',
+          DEFAULT:"#021d4d",
           light: '#457b9d',
           dark: '#0b223d'
         },
@@ -50,7 +51,7 @@ module.exports = {
       },
       backgroundImage: {
         'soft-gradient':
-          ' radial-gradient(rgb(210, 241, 223, 0.2), rgb(211, 215, 250, 0.2), rgb(186, 216, 244, 0.2))'
+          ' radial-gradient(rgb(210, 241, 223, 0.35), rgb(211, 215, 250, 0.35), rgb(186, 216, 244, 0.35))'
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
