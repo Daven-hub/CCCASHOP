@@ -47,7 +47,8 @@ module.exports = {
         xl: '3.6rem'
       },
       borderColor: {
-        DEFAULT: '#8383852b'
+        // DEFAULT: '#8383852b'
+        DEFAULT:'#D5DFE4',
       },
       backgroundImage: {
         'soft-gradient':

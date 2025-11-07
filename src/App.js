@@ -37,6 +37,7 @@ import FournisseurAdmin from './pages/Admin/FournisseurAdmin'
 import ProtectedRoute from './routes/ProtectedRoutes'
 import LinkProtected from './routes/LinkProtected'
 import WizardContainer from './components/wizardForm/WizardContainer'
+import Generale from './pages/Admin/Settings/Generale'
 
 function App() {
   // useEffect(() => {
@@ -99,7 +100,13 @@ function App() {
               <Route path='categories' element={<Categorie />} />
             </Route>
             <Route element={<LinkProtected allowedRoles={['admin','fournisseur',"acheteur"]} />}>
-              <Route path='parametres' element={<Settings />} />
+              <Route path='parametres/' element={<Settings />} >
+                <Route path='generale' element={<Generale />} />
+                <Route path='mot-de-passe' element={<SousCategorie />} />
+                <Route path='email' element={<SousCategorie />} />
+                {/* <Route path='generale' element={<SousCategorie />} /> */}
+                {/* <Route path='generale' element={<SousCategorie />} /> */}
+              </Route>
             </Route>
             <Route element={<LinkProtected allowedRoles={['fournisseur']} />}>
               <Route path='sous-categories' element={<SousCategorie />} />

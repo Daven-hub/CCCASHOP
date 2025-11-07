@@ -96,7 +96,7 @@ function Sidebar({setIsSidebarOpen}) {
         alowed:['fournisseur','admin'],
         corps: [
           { title: 'Rapport', icon: <FiFileText size={18} />, path: '/admin/rapport', children: [] },
-          { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
+          // { title: 'Profile', icon: <UserIcon size={18} />, path: '/admin/profile', children: [] },
           { title: 'Paramètres', icon: <FiSettings size={18} />, path: '/admin/parametres', children: [] },
         ]
       },

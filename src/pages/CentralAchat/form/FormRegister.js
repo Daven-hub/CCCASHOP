@@ -17,88 +17,94 @@ function FormRegister ({
   const password = watchE('password')
 
   return (
-    <form onSubmit={onSubmit} className='flex text-[.9rem] flex-col gap-3.5'>
-       <div className='flex relative flex-col gap-0.5'>
-        <input
-          type='text'
-          className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
-          placeholder='Nom *'
-          {...connexion('nom', {
-            required: 'Vous deviez renseigner le champs password'
-          })}
-        />
-        {errorLog.nom && (
-          <p className='text-[.7rem] text-red-600'>{errorLog.nom.message}</p>
-        )}
+    <form onSubmit={onSubmit} className='flex text-[.9rem] flex-col gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <div className='flex relative flex-col gap-0.5'>
+          <input
+            type='text'
+            className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
+            placeholder='Nom *'
+            {...connexion('nom', {
+              required: 'Vous deviez renseigner le champs password'
+            })}
+          />
+          {errorLog.nom && (
+            <p className='text-[.7rem] text-red-600'>{errorLog.nom.message}</p>
+          )}
+        </div>
+        <div className='flex relative flex-col gap-0.5'>
+          <input
+            type='text'
+            className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
+            placeholder='prenom *'
+            {...connexion('prenom', { required: false })}
+          />
+          {errorLog.prenom && (
+            <p className='text-[.7rem] text-red-600'>
+              Vous deviez renseigner le champs password
+            </p>
+          )}
+        </div>
       </div>
-      <div className='flex relative flex-col gap-0.5'>
-        <input
-          type='text'
-          className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
-          placeholder='prenom *'
-          {...connexion('prenom', { required: false })}
-        />
-        {errorLog.prenom && (
-          <p className='text-[.7rem] text-red-600'>
-            Vous deviez renseigner le champs password
-          </p>
-        )}
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <div className='flex relative flex-col gap-0.5'>
+          <input
+            type='text'
+            className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
+            placeholder='Email *'
+            {...connexion('email', {
+              required: 'Vous deviez renseigner le champs email'
+            })}
+          />
+          {errorLog.email && (
+            <p className='text-[.7rem] leading-0  text-red-600'>
+              {errorLog.email.message}
+            </p>
+          )}
+        </div>
+        <div className='flex relative flex-col gap-0.5'>
+          <input
+            type='text'
+            className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
+            placeholder="Nom d'utilisateur *"
+            {...connexion('username', { required: false })}
+            onChange={() => setUserEditedUsername(true)}
+          />
+          {errorLog.username && (
+            <p className='text-[.7rem] text-red-600'>
+              Vous deviez renseigner le champs password
+            </p>
+          )}
+        </div>
       </div>
-      <div className='flex relative flex-col gap-0.5'>
-        <input
-          type='text'
-          className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
-          placeholder='Email *'
-          {...connexion('email', {
-            required: 'Vous deviez renseigner le champs email'
-          })}
-        />
-        {errorLog.email && (
-          <p className='text-[.7rem] leading-0  text-red-600'>
-            {errorLog.email.message}
-          </p>
-        )}
-      </div>
-      <div className='flex relative flex-col gap-0.5'>
-        <input
-          type='password'
-          className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
-          placeholder='Password *'
-          {...connexion('password', { required: true, minLength: { value: 6 } })}
-        />
-        {errorLog.email && (
-          <p className='text-[.7rem] text-red-600'>
-            Vous deviez renseigner le champs
-          </p>
-        )}
-      </div>
-      <div className='flex relative flex-col gap-0.5'>
-        <input
-          type='password'
-          className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
-          placeholder='Confimer le mot de passe *'
-          {...connexion('confimPass', { required: true, validate: (v) =>
-              v === password || "Les mots de passe ne correspondent pas",})}
-        />
-        {errorLog.confimPass && (
-          <p className='text-[.7rem] text-red-600'>
-            {errorLog.confimPass.message}
-          </p>
-        )}
-      </div>
-      <div className='flex relative flex-col gap-0.5'>
-        <input
-          type='text'
-          className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
-          placeholder="Nom d'utilisateur *"
-          {...connexion('username', { required: false })}
-          onChange={() => setUserEditedUsername(true)}
-        />
-        {errorLog.username && (
-          <p className='text-[.7rem] text-red-600'>
-            Vous deviez renseigner le champs password
-          </p>
-        )}
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <div className='flex relative flex-col gap-0.5'>
+          <input
+            type='password'
+            className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
+            placeholder='Password *'
+            {...connexion('password', { required: true, minLength: { value: 6 } })}
+          />
+          {errorLog.email && (
+            <p className='text-[.7rem] text-red-600'>
+              Vous deviez renseigner le champs
+            </p>
+          )}
+        </div>
+        <div className='flex relative flex-col gap-0.5'>
+          <input
+            type='password'
+            className='flex border w-full px-3 py-2.5 rounded-[5px] outline-0'
+            placeholder='Confimer le mot de passe *'
+            {...connexion('confimPass', { required: true, validate: (v) =>
+                v === password || "Les mots de passe ne correspondent pas",})}
+          />
+          {errorLog.confimPass && (
+            <p className='text-[.7rem] text-red-600'>
+              {errorLog.confimPass.message}
+            </p>
+          )}
+        </div>
       </div>
       <div className='flex relative flex-col gap-0.5'>
         <input
@@ -186,8 +192,8 @@ function FormRegister ({
             'Enregistrer'
           )}
         </button>
-        <span className='text-[.9rem] flex items-center'>J'ai déjà un compte ! 
-        <NavLink className='underline text-gray-600 text-secondary/80' to={'/mon-compte/connexion'}>
+        <span className='text-[.9rem] flex items-center'>J'ai déjà un compte ! &nbsp;
+        <NavLink className='hover:underline font-semibold text-gray-400 hover:text-blue-600' to={'/mon-compte/connexion'}>
           Se connecter
         </NavLink></span>
       </div>

@@ -1,54 +1,54 @@
-// WizardContainer.jsx
-import React from "react";
-import { Wizard, useWizard } from "react-use-wizard";
-import { motion, AnimatePresence } from "framer-motion";
-import StepPersonalInfo from "./StepPersonalInfo";
-import StepAccountDetails from "./StepAccountDetails";
+import React, { useState } from "react";
+import StepWizard from "react-step-wizard";
+import { motion } from "framer-motion";
+import StepOwnerInfo from "./StepOwnerInfo";
+import StepStoreDetails from "./StepStoreDetails";
+import StepDocuments from "./StepDocuments";
 import StepConfirmation from "./StepConfirmation";
 import ProgressBar from "./ProgressBar";
+import { NavLink } from "react-router-dom";
 
 export default function WizardContainer() {
-  return (
-    <div className="bg-white shadow-xl rounded-2xl w-full max-w-xl p-8 mx-auto mt-10">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-        Enregistrement
-      </h2>
+  const [activeStep, setActiveStep] = useState(1);
+  const [totalSteps, setTotalSteps] = useState(1);
+  const steps = ["Principale", "Légales & Fiscales", "Contact","Pret!"];
 
-      <Wizard>
-        <WizardSteps />
-      </Wizard>
-    </div>
-  );
-}
-
-// Composant gérant l'affichage des étapes avec animation
-function WizardSteps() {
-  const { stepCount, activeStep, goToStep } = useWizard();
-
-  // Tableau des étapes
-  const steps = [
-    <StepPersonalInfo key={0} />,
-    <StepAccountDetails key={1} />,
-    <StepConfirmation key={2} />,
-  ];
+  const onStepChange = (stats) => {
+    setActiveStep(stats.activeStep);
+    setTotalSteps(stats.totalSteps);
+  };
 
   return (
-    <div>
-      <ProgressBar stepCount={stepCount} activeStep={activeStep} goToStep={goToStep} />
-
-      <div className="mt-6 relative h-[300px] overflow-hidden">
-        <AnimatePresence exitBeforeEnter>
+    <div className="min-h-screen pt-[4.5rem] bg-soft-gradient bg-[length:400%_400%] animate-gradient-move flex flex-col items-center">
+      <div className="flex flex-col gap-6  w-[55%]">
+        <ProgressBar steps={steps} currentStep={activeStep} />
+        <div className="flex flex-col w-full">
           <motion.div
-            key={activeStep} // clé unique = étape active
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute w-full"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-white overflow-hidden border rounded-[6px] p-8"
           >
-            {steps[activeStep]}
+            <StepWizard
+              isHashEnabled={false}
+              onStepChange={onStepChange}
+              initialStep={activeStep}
+              transitions={{
+                enterRight: "animate__animated animate__fadeInRight",
+                exitLeft: "animate__animated animate__fadeOutLeft",
+                enterLeft: "animate__animated animate__fadeInLeft",
+                exitRight: "animate__animated animate__fadeOutRight",
+              }}
+            >
+              <StepOwnerInfo />
+              <StepStoreDetails />
+              <StepDocuments />
+              <StepConfirmation />
+              <StepConfirmation />
+            </StepWizard>
           </motion.div>
-        </AnimatePresence>
+          {activeStep===4 && <NavLink to={"/"} className="text-center mt-1 font-medium text-gray-500 text-sm hover:underline hover:text-blue-600">Retour à la page d'acceuil</NavLink>}
+       </div>
       </div>
     </div>
   );

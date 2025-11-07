@@ -29,6 +29,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useToast } from '../../../hook/use-toast'
 import { getAllProduits } from '../../../store/slices/produits.slice'
 import LoaderUltra from '../../../components/ui/LoaderUltra'
+import { getAllVendor } from '../../../store/slices/vendeur.slice'
+import Slugify from '../../../utils/Slugify'
+import { useAuth } from '../../../context/authContext'
 
 function DetailFournisseur () {
   const { t } = useTranslation()
@@ -40,15 +43,15 @@ function DetailFournisseur () {
     //   const { userConnected } = useAuth()
     const { toast } = useToast()
     const { produits } = useSelector(state => state.produit)
-    // const { vendeurs } = useSelector(state => state.vendeur)
+    const { vendeurs } = useSelector(state => state.vendeur)
 
     useEffect(() => {
       const fetchData = async () => {
-        // setIsLoading(true)
         const start = performance.now()
         try {
           await Promise.all([
               dispatch(getAllProduits()).unwrap(),
+              dispatch(getAllVendor()).unwrap(),
         ])
   
           const end = performance.now()
@@ -66,25 +69,27 @@ function DetailFournisseur () {
       fetchData()
     }, [dispatch,toast])
 
-  const fournisseur = datas?.find(x => x.id === id)
-  const mesProduits=produits
+  const {userConnected}=useAuth()
+  const fournisseur = vendeurs?.find(x => Slugify(x?.shopname) === id)
+  const mesProduits=produits?.filter((x)=>x?.idVendeur===fournisseur?.id)
 
   const bread = [
     { label: t('accueille'), path: '/a' },
     { label: 'Fournisseurs', path: '/fournisseurs' },
-    { label: fournisseur?.nom, path: '/fournisseurs/produits/' + id }
+    { label: fournisseur?.shopname, path: '/fournisseurs/produits/' + fournisseur?.shopname }
   ]
 
   if (isLoading) {
         return <LoaderUltra loading={isLoading} duration={loadTime} />
       }
+
   return (
     <div className='flex flex-col gap-6'>
-      <div className='px-[5%] py-[1.5rem] bg-gray-100'>
+      <div className='px-[5%] py-[.85rem] border-b bg-gray-100'>
         <Breadcrumb data={bread} />
       </div>
       <div className={`px-[${paddingH}]`}>
-        <BannerFournisseur datas={fournisseur} />
+        <BannerFournisseur datas={fournisseur} email={userConnected?.email} />
         <div className={`flex gap-6 pt-4 pb-8 md:pt-5`}>
           <div className='w-[22%] border border-black/30 px-7 rounded-[7px] sticky top-[15px] h-[650px]'>
             <SideShop />

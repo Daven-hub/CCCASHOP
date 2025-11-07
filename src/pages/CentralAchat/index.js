@@ -4,7 +4,7 @@ import datas from '../../datas/fournisseur.json'
 import { NavLink } from 'react-router-dom'
 import { paddingH } from '../../components/Navbar/CentraleAchat/Headers'
 import { FaCheck } from 'react-icons/fa'
-import { MoveRight } from 'lucide-react'
+import { Locate, MoveRight } from 'lucide-react'
 import PresentationLabel from '../../components/PresentationLabel'
 import {
   Building01Icon,
@@ -23,10 +23,48 @@ import LoaderUltra from '../../components/ui/LoaderUltra.js'
 // import { getAllVariantValues } from '../../store/slices/variantValue.slice.js'
 import { useToast } from '../../hook/use-toast.js'
 import { CardProduit } from '../../components/card/CardProduit.js'
+import { BaseUrl } from '../../config.js'
+import Slugify from '../../utils/Slugify.js'
+import {formatTimeDifference} from '../../utils/formatTimeDifference.js'
+import StarRating from '../../components/ui/StarRating.js'
+import { MdEmail } from 'react-icons/md'
+import { BsEnvelopeAt } from 'react-icons/bs'
 
-export const CardFournisseur = ({ item }) => {
+export const CardFournisseur = ({ item,total }) => {
+  
+  const data=[
+    {
+      icon:<Locate size={18} />,
+      label:item?.adresse1
+    },
+    {
+      icon:<BsEnvelopeAt size={18} />,
+      label:item?.adresse1
+    }
+  ]
   return (
-    <div className='px-3.5 md:px-4 py-4 flex flex-col gap-4 rounded-[6px] border'></div>
+    <NavLink to={'/fournisseur/'+Slugify(item?.shopname)} className='p-5 hover:border-primary translate-y-0.5 transition-all duration-300 flex flex-col gap-4 rounded-[6px] border'>
+        <div className="flex items-center justify-between border-b pb-4">
+          <div className="flex flex-col gap-1.5">
+            <img className="rounded-full object-cover w-[55] h-[50px] p-0.5" src={BaseUrl+item?.profile} alt={item?.profile} />
+            <StarRating rating={item?.profile} size={10} />
+          </div>
+          <div className="flex flex-col gap-1.5 items-end">
+            <div className='py-1.5 w-fit px-3 font-semibold text-xs bg-gray-200 rounded-[6px]'>
+                {total} produits
+            </div>
+            <span className="text-xs text-gray-400">membre depuis {formatTimeDifference(item?.created_at)} </span>
+          </div>
+        </div>
+        <ul className="py-4 flex flex-col gap-1">
+          {data?.map((x,index)=>
+            <li key={index} className='flex py-1.5 items-center gap-2'>
+              {x?.icon}
+              {x?.label}
+            </li>
+          )}
+        </ul>
+    </NavLink>
   )
 }
 
@@ -269,16 +307,16 @@ function CentralAchat () {
             Component={''}
           />
           <div className='grid grid-cols-1 gap-4 md:grid-cols-6'>
-            {datas?.slice(0, 6)?.map((item, ind) => (
+            {vendeurs?.slice(0, 6)?.map((item, ind) => (
               <NavLink
-                to={'/fournisseurs/' + item?.id}
+                to={'/fournisseurs/' + Slugify(item?.shopname)}
                 className='border shadow-sm aspect-video rounded-[6px] flex items-center justify-center p-1 '
                 key={ind}
               >
                 <img
                   className='w-[90%] rounded-[6px] object-contain h-[90%]'
-                  src={item?.image}
-                  alt={item?.nom}
+                  src={BaseUrl+item?.profile}
+                  alt={item?.shopname}
                 />
               </NavLink>
             ))}

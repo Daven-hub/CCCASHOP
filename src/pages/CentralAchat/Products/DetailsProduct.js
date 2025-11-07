@@ -603,7 +603,7 @@ const DetailsProduct = ({ product }) => {
               </div>
               <NavLink
                 className="flex items-center text-sm font-semibold gap-3 py-2.5 px-7 rounded-full text-white bg-secondary"
-                to={"/fournisseurs/" + detailVendeur?.id}
+                to={"/fournisseurs/" +Slugify(detailVendeur?.shopname)}
               >
                 Visiter la boutique <MoveRight size={14} />{" "}
               </NavLink>

@@ -227,7 +227,7 @@ function Product () {
                 <TableHead>Sous-catégorie</TableHead>
                 <TableHead>Qte</TableHead>
                 <TableHead>Pu</TableHead>
-                <TableHead>Variant?</TableHead>
+                {/* <TableHead>Variant?</TableHead> */}
                 <TableHead>Visible</TableHead>
                 <TableHead className='text-right'>actions</TableHead>
               </TableRow>
@@ -271,9 +271,9 @@ function Product () {
                     <TableCell className='hidden md:table-cell'>
                       {species?.hasVariation===0?monaie+' '+species?.pu:getPrixVariantSock(species?.idproduits)}
                     </TableCell>
-                    <TableCell className='hidden md:table-cell'>
+                    {/* <TableCell className='hidden md:table-cell'>
                       {species?.hasVariation===0?'Non':'Oui'}
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell className='hidden md:table-cell'>
                       {parseInt(species?.status)===1?
                       <div className='badge flex px-2.5 uppercase items-center justify-center rounded-[50px] text-[.6rem] font-extrabold bg-green-100 text-green-700'>
